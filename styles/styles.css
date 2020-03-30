@@ -14,11 +14,116 @@
 body {
   font-family: Arial, Helvetica, sans-serif;
   background-color: #fff;
+  color: #303030;
 }
 
 .wrapper {
   max-width: 1200px;
   margin: 0 auto;
+  padding: 0 30px;
+}
+
+.header {
+  padding: 35px 0;
+  margin-bottom: 35px;
+  border-bottom: 2px solid #e5e5e5;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: justify;
+      -ms-flex-pack: justify;
+          justify-content: space-between;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+}
+
+.header__navbar {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+}
+
+.header__navbar-logo {
+  width: 45px;
+  height: 45px;
+  margin-right: 40px;
+  background-image: url("/images/icons/logo.jpg");
+}
+
+.header__navbar a.navbar-item {
+  text-decoration: none;
+  color: inherit;
+  margin: 0 15px;
+  padding: 5px 0;
+  position: relative;
+}
+
+.header__navbar a.navbar-item::after {
+  content: '';
+  width: 0;
+  height: 2px;
+  background-color: #303030;
+  -webkit-transition: 0.3s ease-in-out;
+  transition: 0.3s ease-in-out;
+  position: absolute;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  margin: 0 auto;
+}
+
+.header__navbar a.navbar-item:hover::after {
+  width: 100%;
+}
+
+.header__user-box a {
+  text-decoration: none;
+  color: inherit;
+  margin-left: 70px;
+  padding: 5px 0;
+  position: relative;
+}
+
+.header__user-box a::before {
+  content: '';
+  width: 30px;
+  height: 30px;
+  background-size: contain;
+  position: absolute;
+  left: -30px;
+  top: 0;
+  bottom: 0;
+  margin: auto 0;
+}
+
+.header__user-box a.user-box__login::before {
+  background-image: url("/images/icons/account.png");
+}
+
+.header__user-box a.user-box__basket::before {
+  background-image: url("/images/icons/bascet.png");
+}
+
+.header__user-box a::after {
+  content: '';
+  width: 0;
+  height: 2px;
+  background-color: #303030;
+  -webkit-transition: 0.3s ease-in-out;
+  transition: 0.3s ease-in-out;
+  position: absolute;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  margin: 0 auto;
+}
+
+.header__user-box a:hover::after {
+  width: 100%;
 }
 
 .loader {

@@ -23,3 +23,17 @@ include('parts/header_conf.php');
 
 <body>
     <div class="wrapper">
+        <header class="header">
+            <nav class="header__navbar">
+                <div class="header__navbar-logo"></div>
+                <a href="#" class="navbar-item">Женщинам</a>
+                <a href="catalog.php" class="navbar-item">Мужчинам</a>
+                <a href="#" class="navbar-item">Детям</a>
+                <a href="#" class="navbar-item">Новинки</a>
+                <a href="#" class="navbar-item">О нас</a>
+            </nav>
+            <div class="header__user-box">
+                <a href="#" class="user-box__login">Войти</a>
+                <a href="#" class="user-box__basket">Корзина</a>
+            </div>
+        </header>

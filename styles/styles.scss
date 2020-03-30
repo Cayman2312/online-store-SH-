@@ -3,38 +3,137 @@
 * Общие стили для всех страниц
 *
 */
+$mainTextColor: #303030;
 
 * {
-    margin: 0;
-    padding: 0;
-    box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
 }
 
 body {
-    font-family: Arial, Helvetica, sans-serif;
-    background-color: #fff;
+  font-family: Arial, Helvetica, sans-serif;
+  background-color: #fff;
+  color: $mainTextColor;
 }
 
 // Общий контейнер
 .wrapper {
-    max-width: 1200px;
-    margin: 0 auto;
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0 30px;
+}
+
+//header
+.header {
+  padding: 35px 0;
+  margin-bottom: 35px;
+  border-bottom: 2px solid #e5e5e5;
+
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+
+  &__navbar {
+    display: flex;
+    align-items: center;
+
+    &-logo {
+      width: 45px;
+      height: 45px;
+      margin-right: 40px;
+      background-image: url('/images/icons/logo.jpg');
+    }
+    & a.navbar-item {
+      text-decoration: none;
+      color: inherit;
+      margin: 0 15px;
+      padding: 5px 0;
+      position: relative;
+
+      &::after {
+        content: '';
+        width: 0;
+        height: 2px;
+        background-color: $mainTextColor;
+        transition: 0.3s ease-in-out;
+
+        position: absolute;
+        left: 0;
+        right: 0;
+        bottom: 0;
+        margin: 0 auto;
+      }
+
+      &:hover::after {
+        width: 100%;
+      }
+    }
+  }
+  &__user-box {
+    & a {
+      text-decoration: none;
+      color: inherit;
+      margin-left: 70px;
+      padding: 5px 0;
+      position: relative;
+
+      &::before {
+        content: '';
+        width: 30px;
+        height: 30px;
+        background-size: contain;
+
+        position: absolute;
+        left: -30px;
+        top: 0;
+        bottom: 0;
+        margin: auto 0;
+      }
+
+      &.user-box__login::before {
+        background-image: url('/images/icons/account.png');
+      }
+
+      &.user-box__basket::before {
+        background-image: url('/images/icons/bascet.png');
+      }
+
+      &::after {
+        content: '';
+        width: 0;
+        height: 2px;
+        background-color: $mainTextColor;
+        transition: 0.3s ease-in-out;
+
+        position: absolute;
+        left: 0;
+        right: 0;
+        bottom: 0;
+        margin: 0 auto;
+      }
+
+      &:hover::after {
+        width: 100%;
+      }
+    }
+  }
 }
 
 // Лоадер
 .loader {
-    display: none;
-    position: absolute;
-    top: 0;
-    right: 0;
-    bottom: 0;
-    left: 0;
-    align-items: center;
-    justify-content: center;
-    color: #fff;
-    background-color: rgba(0, 0, 0, .5);
+  display: none;
+  position: absolute;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  left: 0;
+  align-items: center;
+  justify-content: center;
+  color: #fff;
+  background-color: rgba(0, 0, 0, 0.5);
 
-    &.show {
-        display: flex;
-    }
+  &.show {
+    display: flex;
+  }
 }
