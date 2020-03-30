@@ -1,4 +1,3 @@
-@import url("https://fonts.googleapis.com/css?family=Lora&display=swap");
 .basket-top {
   text-align: center;
   padding: 122px 0 97px;
@@ -284,6 +283,13 @@
   text-transform: uppercase;
   color: white;
   margin-top: 38px;
+  -webkit-transition: .3s;
+  transition: .3s;
+  cursor: pointer;
+}
+
+.basket-payment .payment__container [type="submit"]:hover {
+  background-color: #f87620;
 }
 
 .basket-payment .popup__select {
