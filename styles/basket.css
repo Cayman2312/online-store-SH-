@@ -130,7 +130,7 @@
   margin: 0 135px 0 30px;
 }
 
-.basket-container__simbol {
+.basket-container__symbol {
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
@@ -143,7 +143,7 @@
   height: 170px;
 }
 
-.basket-container__simbol .simbol-el {
+.basket-container__symbol .symbol-el {
   width: 3px;
   height: 30px;
   background-color: #f6955d;
@@ -153,7 +153,7 @@
   position: relative;
 }
 
-.basket-container__simbol .simbol-el::after {
+.basket-container__symbol .symbol-el::after {
   content: "";
   position: absolute;
   width: 3px;
@@ -168,7 +168,7 @@
 .basket-form {
   background-color: #fefefe;
   border: 1px solid #e5e5e5;
-  padding: 101px 0 216px;
+  padding: 101px 0 116px;
   text-align: center;
 }
 
@@ -233,8 +233,27 @@
   margin-right: 21px;
 }
 
+.basket-form .popup-adress [type="submit"],
+.basket-form .payment__container [type="submit"] {
+  position: relative;
+  bottom: -880px;
+  border: 1px solid #e67429;
+  background-color: #f68236;
+  width: 192px;
+  text-transform: uppercase;
+  color: white;
+  -webkit-transition: .3s;
+  transition: .3s;
+  cursor: pointer;
+}
+
+.basket-form .popup-adress [type="submit"]:hover,
+.basket-form .payment__container [type="submit"]:hover {
+  background-color: #f87620;
+}
+
 .basket-payment {
-  padding-bottom: 0;
+  padding-bottom: 50px;
 }
 
 .basket-payment .payment__container {
@@ -274,22 +293,6 @@
 
 .basket-payment .payment__container .payment__list-right li:last-child {
   color: #f6955d;
-}
-
-.basket-payment .payment__container [type="submit"] {
-  border: 1px solid #e67429;
-  background-color: #f68236;
-  width: 192px;
-  text-transform: uppercase;
-  color: white;
-  margin-top: 38px;
-  -webkit-transition: .3s;
-  transition: .3s;
-  cursor: pointer;
-}
-
-.basket-payment .payment__container [type="submit"]:hover {
-  background-color: #f87620;
 }
 
 .basket-payment .popup__select {

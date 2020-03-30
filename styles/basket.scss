@@ -131,13 +131,13 @@ $orange: #f6955d;
     margin: 0 135px 0 30px;
   }
 
-  &__simbol {
+  &__symbol {
     display: flex;
     align-items: center;
     justify-content: center;
     height: 170px;
 
-    .simbol-el {
+    .symbol-el {
       width: 3px;
       height: 30px;
       background-color: $orange;
@@ -162,7 +162,7 @@ $orange: #f6955d;
 .basket-form {
   background-color: #fefefe;
   border: 1px solid #e5e5e5;
-  padding: 101px 0 216px;
+  padding: 101px 0 116px;
   text-align: center;
 
   .basket-top__title {
@@ -214,11 +214,28 @@ $orange: #f6955d;
         }
       }
     }
+
+
+    [type="submit"] {
+      position: relative;
+      bottom: -880px;
+      border:1px solid rgb(230, 116, 41);
+      background-color: rgb(246, 130, 54);
+      width: 192px;
+      text-transform: uppercase;
+      color: white;
+      transition: .3s;
+      cursor: pointer;
+      
+      &:hover {
+        background-color: rgb(248, 118, 32);
+      }
+    }
   }
 }
 
 .basket-payment {
-  padding-bottom: 0;
+  padding-bottom: 50px;
 
   .payment__container {
     margin-top: 0;
@@ -249,21 +266,6 @@ $orange: #f6955d;
         & li:last-child {
           color: $orange;
         }
-      }
-    }
-
-    [type="submit"] {
-      border:1px solid rgb(230, 116, 41);
-      background-color: rgb(246, 130, 54);
-      width: 192px;
-      text-transform: uppercase;
-      color: white;
-      margin-top: 38px;
-      transition: .3s;
-      cursor: pointer;
-      
-      &:hover {
-        background-color: rgb(248, 118, 32);
       }
     }
   }
