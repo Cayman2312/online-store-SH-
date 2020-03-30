@@ -1,24 +1,25 @@
 <?php
+
 /**
  * 
  * Корзина
  * 
  */
 
-    $header_config = [
-        'title' => 'Корзина',
-        'style' => 'basket.css'
-    ];
+$header_config = [
+    'title' => 'Корзина',
+    'style' => 'basket.css'
+];
 
-    include('parts/header.php');
+include('parts/header.php');
 ?>
 
 <div>Корзина</div>
 
 <?php
-    $footer_config = [
-        'script' => 'basket.js'
-    ];
+$footer_config = [
+    'script' => 'basket.js'
+];
 
-    include('parts/footer.php');
+include('parts/footer.php');
 ?>

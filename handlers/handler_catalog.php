@@ -15,4 +15,3 @@
 
     sleep(3);
     echo json_encode($response['products']);
-?>

@@ -1,16 +1,17 @@
 <?php
+
 /**
  * 
  * Каталог товаров
  * 
  */
 
-    $header_config = [
-        'title' => 'Каталог товаров',
-        'style' => 'catalog.css'
-    ];
+$header_config = [
+    'title' => 'Каталог товаров',
+    'style' => 'catalog.css'
+];
 
-    include('parts/header.php');
+include('parts/header.php');
 ?>
 
 <div class="catalog">
@@ -27,9 +28,9 @@
 </div>
 
 <?php
-    $footer_config = [
-        'script' => 'catalog.js'
-    ];
+$footer_config = [
+    'script' => 'catalog.js'
+];
 
-    include('parts/footer.php');
+include('parts/footer.php');
 ?>
