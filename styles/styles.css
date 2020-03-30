@@ -126,6 +126,106 @@ body {
   width: 100%;
 }
 
+.footer {
+  margin: 100px 0 50px;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: justify;
+      -ms-flex-pack: justify;
+          justify-content: space-between;
+  -webkit-box-align: start;
+      -ms-flex-align: start;
+          align-items: flex-start;
+}
+
+.footer :first-child {
+  padding-left: 0;
+  border-left: none;
+}
+
+.footer__container {
+  -ms-flex-preferred-size: 33%;
+      flex-basis: 33%;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  -webkit-box-align: start;
+      -ms-flex-align: start;
+          align-items: flex-start;
+  padding-left: 11%;
+  min-height: 150px;
+  border-left: 1px solid #eaeaea;
+}
+
+.footer__container h3.title {
+  text-transform: uppercase;
+  font-size: 1.1em;
+  margin-bottom: 10px;
+}
+
+.footer__container a.link {
+  text-decoration: none;
+  color: #303030;
+  position: relative;
+  padding: 6px 0;
+}
+
+.footer__container a.link::before {
+  content: '';
+  height: 2px;
+  width: 0;
+  background-color: #303030;
+  -webkit-transition: 0.3s ease-in-out;
+  transition: 0.3s ease-in-out;
+  position: absolute;
+  left: 0;
+  bottom: 3px;
+}
+
+.footer__container a.link:hover::before {
+  width: 100%;
+}
+
+.footer__container p.text {
+  margin: 6px 0;
+}
+
+.footer__container .social a {
+  color: #303030;
+  text-decoration: none;
+}
+
+.footer__container .social a::before {
+  font-size: 22px;
+  padding: 5px;
+  border: 1px solid #303030;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  width: 30px;
+  height: 30px;
+  margin-top: 15px;
+  margin-right: 10px;
+  -webkit-transition: 0.3s ease-in-out;
+  transition: 0.3s ease-in-out;
+}
+
+.footer__container .social a:hover::before {
+  color: #fff;
+  background-color: #303030;
+}
+
 .loader {
   display: none;
   position: absolute;
