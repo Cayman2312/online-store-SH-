@@ -216,14 +216,13 @@ $orange: #f6955d;
     }
 
     [type="submit"] {
-      border:1px solid rgb(230, 116, 41);
-      background-color: rgb(246, 130, 54);
       position: relative;
       bottom: -925px;
+      border:1px solid rgb(230, 116, 41);
+      background-color: rgb(246, 130, 54);
       width: 192px;
       text-transform: uppercase;
       color: white;
-      margin-top: 38px;
       transition: .3s;
       cursor: pointer;
       

@@ -235,14 +235,13 @@
 
 .basket-form .popup-adress [type="submit"],
 .basket-form .payment__container [type="submit"] {
-  border: 1px solid #e67429;
-  background-color: #f68236;
   position: relative;
   bottom: -925px;
+  border: 1px solid #e67429;
+  background-color: #f68236;
   width: 192px;
   text-transform: uppercase;
   color: white;
-  margin-top: 38px;
   -webkit-transition: .3s;
   transition: .3s;
   cursor: pointer;
