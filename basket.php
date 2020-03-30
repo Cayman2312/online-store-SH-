@@ -54,10 +54,10 @@ include('parts/header.php');
     </div>
 </div>
 
-<div class="basket-container__simbol">
-    <div class="simbol-el"></div>
-    <div class="simbol-el"></div>
-    <div class="simbol-el"></div>
+<div class="basket-container__symbol">
+    <div class="symbol-el"></div>
+    <div class="symbol-el"></div>
+    <div class="symbol-el"></div>
 </div>
 
 <div class="basket-form">
@@ -109,13 +109,15 @@ include('parts/header.php');
                 <input type="email" name="email">
             </div>
         </div>
+
+        <input type="submit" value="заказать">
     </form>
 </div>
 
-<div class="basket-container__simbol">
-    <div class="simbol-el"></div>
-    <div class="simbol-el"></div>
-    <div class="simbol-el"></div>
+<div class="basket-container__symbol">
+    <div class="symbol-el"></div>
+    <div class="symbol-el"></div>
+    <div class="symbol-el"></div>
 </div>
 
 <div class="basket-form basket-payment">
@@ -145,8 +147,6 @@ include('parts/header.php');
             </select>
             <img src="/images/basket/cards.jpg" alt="">
         </div>
-
-        <input type="submit" value="заказать">
     </div>
 </div>
 
