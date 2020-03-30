@@ -1,1 +1,304 @@
-/* No CSS *//*# sourceMappingURL=basket.css.map */
+.basket-top {
+  text-align: center;
+  padding: 122px 0 97px;
+}
+
+.basket-top__title {
+  color: #303030;
+  font-size: 36px;
+  text-transform: uppercase;
+  margin-bottom: 10px;
+  font-weight: 300;
+  letter-spacing: 2px;
+}
+
+.basket-top__title-plus {
+  color: #7c7c7c;
+  font-size: 21px;
+  font-style: italic;
+  font-family: "Lora";
+}
+
+.basket-container table {
+  width: 100%;
+  border-collapse: collapse;
+  text-align: left;
+}
+
+.basket-container tr {
+  height: 137px;
+  border-top: 1px solid #e5e5e5;
+  border-bottom: 1px solid #e5e5e5;
+}
+
+.basket-container img {
+  border: 1px solid #e5e5e5;
+  height: 100px;
+  width: 100px;
+  margin: 0 24px 0 10px;
+}
+
+.basket-container .basket-header {
+  height: 33px;
+  border-top: 0;
+  color: #c1c1c1;
+  font-size: 12px;
+  text-transform: uppercase;
+}
+
+.basket-container__img {
+  width: 10%;
+}
+
+.basket-container__name {
+  font-size: 14px;
+  color: #303030;
+  text-transform: uppercase;
+}
+
+.basket-container__article {
+  color: #949494;
+  font-size: 10px;
+  text-transform: none;
+  margin-top: 5px;
+}
+
+.basket-container .basket-option {
+  width: 112px;
+  text-align: center;
+}
+
+.basket-container .buttons {
+  position: relative;
+}
+
+.basket-container .buttons img {
+  width: 12px;
+  height: 12px;
+  border: 0;
+  cursor: pointer;
+}
+
+.basket-container .buttons .btn-plus {
+  position: absolute;
+  top: 53px;
+  left: 56px;
+}
+
+.basket-container .buttons .btn-minus {
+  position: absolute;
+  top: 67px;
+  left: 56px;
+}
+
+.basket-container .basket-x {
+  width: 2px;
+  height: 17px;
+  border-radius: 30%;
+  background-color: black;
+  margin: 0 auto;
+  -webkit-transform: rotate(45deg);
+          transform: rotate(45deg);
+  position: relative;
+}
+
+.basket-container .basket-x::after {
+  content: "";
+  position: absolute;
+  width: 2px;
+  height: 17px;
+  border-radius: 30%;
+  background-color: black;
+  -webkit-transform: rotate(90deg);
+          transform: rotate(90deg);
+  left: 0;
+  top: 0;
+}
+
+.basket-container__result {
+  text-align: right;
+  height: 60px;
+  width: 100%;
+  background-color: #f9f9f9;
+  margin-top: 4px;
+  padding: 23px 0 22px 0;
+  font-size: 14px;
+}
+
+.basket-container__sum {
+  color: #f6955d;
+  margin: 0 135px 0 30px;
+}
+
+.basket-container__simbol {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  height: 170px;
+}
+
+.basket-container__simbol .simbol-el {
+  width: 3px;
+  height: 30px;
+  background-color: #f6955d;
+  margin: 0 19px;
+  -webkit-transform: rotate(45deg);
+          transform: rotate(45deg);
+  position: relative;
+}
+
+.basket-container__simbol .simbol-el::after {
+  content: "";
+  position: absolute;
+  width: 3px;
+  height: 30px;
+  background-color: #f6955d;
+  -webkit-transform: rotate(90deg);
+          transform: rotate(90deg);
+  left: -14px;
+  top: 15px;
+}
+
+.basket-form {
+  background-color: #fefefe;
+  border: 1px solid #e5e5e5;
+  padding: 101px 0 216px;
+  text-align: center;
+}
+
+.basket-form .basket-top__title {
+  letter-spacing: 1px;
+}
+
+.basket-form .popup-adress,
+.basket-form .payment__container {
+  max-width: 580px;
+  margin: 0 auto;
+  margin-top: 101px;
+}
+
+.basket-form .popup-adress input,
+.basket-form .popup-adress select,
+.basket-form .payment__container input,
+.basket-form .payment__container select {
+  width: 100%;
+  height: 42px;
+  color: #949494;
+  margin-top: 14px;
+  padding: 5px;
+}
+
+.basket-form .popup-adress [name="service"],
+.basket-form .payment__container [name="service"] {
+  border: 0;
+  background-color: white;
+  margin-top: 0;
+}
+
+.basket-form .popup-adress .popup__select,
+.basket-form .payment__container .popup__select {
+  border: 1px solid #dfdfdf;
+  margin-top: 14px;
+}
+
+.basket-form .popup-adress .popup__text,
+.basket-form .payment__container .popup__text {
+  font-size: 12px;
+  color: #949494;
+  text-transform: uppercase;
+  text-align: left;
+  margin-top: 50px;
+}
+
+.basket-form .popup-adress .popup-flex,
+.basket-form .payment__container .popup-flex {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+}
+
+.basket-form .popup-adress .popup-flex__box,
+.basket-form .payment__container .popup-flex__box {
+  width: 100%;
+}
+
+.basket-form .popup-adress .popup-flex__box:nth-child(2n + 1),
+.basket-form .payment__container .popup-flex__box:nth-child(2n + 1) {
+  margin-right: 21px;
+}
+
+.basket-payment {
+  padding-bottom: 0;
+}
+
+.basket-payment .payment__container {
+  margin-top: 0;
+  padding-bottom: 101px;
+}
+
+.basket-payment .payment__container .payment__list {
+  list-style: none;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  margin-top: 101px;
+  color: #606060;
+  font-style: italic;
+  line-height: 2;
+}
+
+.basket-payment .payment__container .payment__list-left {
+  text-align: right;
+  margin-right: 20px;
+}
+
+.basket-payment .payment__container .payment__list-left li:last-child {
+  color: #f6955d;
+}
+
+.basket-payment .payment__container .payment__list-right {
+  text-align: left;
+}
+
+.basket-payment .payment__container .payment__list-right li:last-child {
+  color: #f6955d;
+}
+
+.basket-payment .payment__container [type="submit"] {
+  border: 1px solid #e67429;
+  background-color: #f68236;
+  width: 192px;
+  text-transform: uppercase;
+  color: white;
+  margin-top: 38px;
+  -webkit-transition: .3s;
+  transition: .3s;
+  cursor: pointer;
+}
+
+.basket-payment .payment__container [type="submit"]:hover {
+  background-color: #f87620;
+}
+
+.basket-payment .popup__select {
+  position: relative;
+}
+
+.basket-payment .popup__select img {
+  position: absolute;
+  top: 12px;
+  right: 44px;
+}
+/*# sourceMappingURL=basket.css.map */
