@@ -1,79 +1,118 @@
 // Переменные для страницы basket
+@import "mixin.scss";
+
 $orange: #f6955d;
+$border: #e5e5e5;
+$back: #f9f9f9;
 
 .basket-top {
   text-align: center;
   padding: 122px 0 97px;
-
-  &__title {
-    color: #303030;
-    font-size: 36px;
-    text-transform: uppercase;
-    margin-bottom: 10px;
-    font-weight: 300;
-    letter-spacing: 2px;
-  }
-
-  &__title-plus {
-    color: #7c7c7c;
-    font-size: 21px;
-    font-style: italic;
-    font-family: "Lora";
-  }
 }
 
-.basket-container {
-  table {
-    width: 100%;
-    border-collapse: collapse;
-    text-align: left;
-  }
+.big-title {
+  font-size: 36px;
+  text-transform: uppercase;
+  margin-bottom: 10px;
+  font-weight: 300;
+  letter-spacing: 2px;
+}
 
-  tr {
-    height: 137px;
-    border-top: 1px solid #e5e5e5;
-    border-bottom: 1px solid #e5e5e5;
-  }
+.min-title {
+  color: #7c7c7c;
+  font-size: 21px;
+  font-style: italic;
+  font-family: "Lora";
+  font-weight: 300;
+}
 
-  img {
-    border: 1px solid #e5e5e5;
-    height: 100px;
-    width: 100px;
-    margin: 0 24px 0 10px;
-  }
+.orange {
+  color: $orange;
+}
 
-  .basket-header {
-    height: 33px;
-    border-top: 0;
+.basket-order {
+  display: grid;
+  grid-template-rows: 33px 137px 60px;
+
+  &__header {
+    display: grid;
+    grid-template-columns: 1fr 4fr repeat(4, 1fr);
+
+    border-bottom: 1px solid $border;
     color: #c1c1c1;
     font-size: 12px;
     text-transform: uppercase;
+
+    p {
+      margin: auto 0;
+    }
   }
 
-  &__img {
-    width: 10%;
+  .option {
+    margin: auto;
   }
 
-  &__name {
+  &__item {
+    display: grid;
+    grid-template-columns: 1fr 4fr repeat(4, 1fr);
+
+    border-bottom: 1px solid $border;
     font-size: 14px;
-    color: #303030;
-    text-transform: uppercase;
+
+    img {
+      border: 1px solid $border;
+      height: 100px;
+      width: 100px;
+      margin: auto 24px auto 10px;
+
+      // @include adaptive(tablet) {
+      //   margin: 0 24px 0 24px;
+      // }
+    }
+
+    p {
+      margin: auto 0;
+    }
+
+    .name {
+      position: relative;
+      text-transform: uppercase;
+
+      &:after {
+        content: attr(article);
+        position: absolute;
+        color: #949494;
+        text-transform: none;
+        font-size: 10px;
+        bottom: -15px;
+        left: 0;
+      }
+    }
   }
 
-  &__article {
-    color: #949494;
-    font-size: 10px;
-    text-transform: none;
-    margin-top: 5px;
-  }
+  &__result {
+    display: grid;
+    grid-template-columns: 1fr 4fr repeat(4, 1fr);
 
-  .basket-option {
-    width: 112px;
-    text-align: center;
+    background-color: $back;
+    margin-top: 4px;
+
+    .text {
+      grid-column: 4;
+      text-align: right;
+      margin: auto 0;
+    }
+
+    .sum {
+      grid-column: 5;
+      margin: auto;
+      color: $orange;
+    }
   }
 
   .buttons {
     position: relative;
+
     img {
       width: 12px;
       height: 12px;
@@ -83,14 +122,14 @@ $orange: #f6955d;
 
     .btn-plus {
       position: absolute;
-      top: 53px;
-      left: 56px;
+      top: -7px;
+      left: 5px;
     }
 
     .btn-minus {
       position: absolute;
-      top: 67px;
-      left: 56px;
+      top: 9px;
+      left: 5px;
     }
   }
 
@@ -99,9 +138,10 @@ $orange: #f6955d;
     height: 17px;
     border-radius: 30%;
     background-color: black;
-    margin: 0 auto;
+    margin: auto;
     transform: rotate(45deg);
     position: relative;
+    cursor: pointer;
 
     &::after {
       content: "";
@@ -115,65 +155,61 @@ $orange: #f6955d;
       top: 0;
     }
   }
+}
 
-  &__result {
-    text-align: right;
-    height: 60px;
-    width: 100%;
-    background-color: #f9f9f9;
-    margin-top: 4px;
-    padding: 23px 0 22px 0;
-    font-size: 14px;
-  }
+.symbol {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 170px;
+  margin: 0 auto;
 
-  &__sum {
-    color: $orange;
-    margin: 0 135px 0 30px;
-  }
+  .symbol-el {
+    width: 2px;
+    height: 30px;
+    background-color: $orange;
+    margin: 0 19px;
+    transform: rotate(45deg);
+    position: relative;
 
-  &__symbol {
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    height: 170px;
-
-    .symbol-el {
-      width: 3px;
+    &::after {
+      content: "";
+      position: absolute;
+      width: 2px;
       height: 30px;
       background-color: $orange;
-      margin: 0 19px;
-      transform: rotate(45deg);
-      position: relative;
-
-      &::after {
-        content: "";
-        position: absolute;
-        width: 3px;
-        height: 30px;
-        background-color: $orange;
-        transform: rotate(90deg);
-        left: -14px;
-        top: 15px;
-      }
+      transform: rotate(90deg);
+      left: -14px;
+      top: 14px;
     }
   }
 }
 
 .basket-form {
-  background-color: #fefefe;
-  border: 1px solid #e5e5e5;
-  padding: 101px 0 166px;
+  background-color: $back;
+  border: 1px solid $border;
+  padding: 101px 0 0;
   text-align: center;
+  margin: 0 auto;
 
-  .basket-top__title {
-    letter-spacing: 1px;
+  @include adaptive(tablet) {
+    max-width: 920px;
   }
 
-  .popup-adress,
-  .payment__container {
-    max-width: 580px;
-    margin: 0 auto;
-    margin-top: 101px;
+  @include adaptive(mobile_lg) {
+    max-width: 680px;
+  }
+
+  .popup {
+    display: grid;
+    grid-auto-columns: minmax(auto, 310px);
+    grid-auto-rows: minmax(auto);
+    justify-content: center;
+
+    text-align: left;
+    color: #949494;
+    font-size: 12px;
+    margin-top: 56px;
 
     input,
     select {
@@ -182,100 +218,76 @@ $orange: #f6955d;
       color: #949494;
       margin-top: 14px;
       padding: 5px;
+      border: 1px solid $border;
     }
 
-    [name="service"] {
-      border: 0;
-      background-color: white;
-      margin-top: 0;
-    }
+    &__box {
+      margin: 50px 10px 0;
 
-    .popup__select {
-      border: 1px solid #dfdfdf;
-      margin-top: 14px;
-    }
-
-    .popup__text {
-      font-size: 12px;
-      color: #949494;
-      text-transform: uppercase;
-      text-align: left;
-      margin-top: 50px;
-    }
-
-    .popup-flex {
-      display: flex;
-
-      &__box {
-        width: 100%;
-
-        &:nth-child(2n + 1) {
-          margin-right: 21px;
-        }
+      &:before {
+        content: attr(title);
+        position: relative;
       }
+    }
+
+    .box_full {
+      grid-column-start: 1;
+      grid-column-end: 3;
+      text-align: center;
     }
 
     [type="submit"] {
       position: relative;
-      bottom: -925px;
-      border:1px solid rgb(230, 116, 41);
+      bottom: -780px;
+      border: 1px solid rgb(230, 116, 41);
       background-color: rgb(246, 130, 54);
       width: 192px;
       text-transform: uppercase;
       color: white;
-      transition: .3s;
+      transition: 0.3s;
       cursor: pointer;
-      
+
       &:hover {
         background-color: rgb(248, 118, 32);
+      }
+    }
+
+    #payment {
+      position: relative;
+      bottom: -820px;
+      text-align: left;
+
+      img {
+        position: relative;
+        bottom: 30px;
+        right: -490px;
       }
     }
   }
 }
 
-.basket-payment {
-  padding-bottom: 50px;
+.basket_payment {
+  padding-bottom: 330px;
 
-  .payment__container {
-    margin-top: 0;
-    padding-bottom: 101px;
-
-    .payment__list {
-      list-style: none;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      margin-top: 101px;
-      color: rgb(96, 96, 96);
-      font-style: italic;
-      line-height: 2;
-
-      &-left {
-        text-align: right;
-        margin-right: 20px;
-
-        & li:last-child {
-          color: $orange;
-        }
-      }
-
-      &-right {
+  .payment-list {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    grid-template-rows: 1fr, 1fr, 1fr;
+    
+    margin-top: 101px;
+    color: rgb(96, 96, 96);
+    line-height: 2;
+    list-style: none;
+    
+    li {
+      text-align: right;
+      margin: 0 10px;
+      
+      &:nth-child(even) {
         text-align: left;
-
-        & li:last-child {
-          color: $orange;
-        }
+        font-style: italic;
+        font-family: 'Lora';
       }
-    }
-  }
-
-  .popup__select {
-    position: relative;
-
-    img {
-        position: absolute;
-        top: 12px;
-        right: 44px;
     }
   }
 }

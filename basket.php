@@ -9,144 +9,119 @@ include('parts/header.php');
 ?>
 
 <div class="basket-top">
-    <h1 class="basket-top__title">Ваша корзина</h1>
-    <p class="basket-top__title-plus">Товары резервируются на ограниченное время</p>
+    <h1 class="big-title">Ваша корзина</h1>
+    <h3 class="min-title">Товары резервируются на ограниченное время</h3>
 </div>
 
-<div class="basket-container">
-    <table>
-        <tr class="basket-header">
-            <th>Фото</th>
-            <th>Наименование</th>
-            <th class="basket-option">Размер</th>
-            <th class="basket-option">Колличество</th>
-            <th class="basket-option">Стоимость</th>
-            <th class="basket-option">Удалить</th>
-        </tr>
+<div class="basket-order">
+    <div class="basket-order__header">
+        <p>Фото</p>
+        <p>Наименование</p>
+        <p class="option">Размер</p>
+        <p class="option">Колличество</p>
+        <p class="option">Стоимость</p>
+        <p class="option">Удалить</p>
+    </div>
 
-        <tr>
-            <td class="basket-container__img">
-                <img src="images/catalog/1.jpg" alt="">
-            </td>
+    <div class="basket-order__item">
+        <img src="images/catalog/1.jpg" alt="">
+        <p article="арт. 123412" class="name">Куртка синяя</p>
+        <p class="option">39</p>
+        <div class="option buttons">
+            1
+            <img class="btn-plus" src="/images/basket/plus.jpg" alt="">
+            <img class="btn-minus" src="/images/basket/minus.jpg" alt="">
+        </div>
+        <p class="option">3800 руб.</p>
+        <div class="basket-x"></div>
+    </div>
 
-            <td class="basket-container__name">
-                <p>Куртка синяя</p>
-                <p class="basket-container__article">арт. 123412</p>
-            </td>
-
-            <td class="basket-option">39</td>
-            <td class="basket-option buttons">
-                1
-                <img class="btn-plus" src="/images/basket/plus.jpg" alt="">
-                <img class="btn-minus" src="/images/basket/minus.jpg" alt="">
-            </td>
-
-            <td class="basket-option">3800 руб.</td>
-            <td class="basket-option">
-                <div class="basket-x"></div>
-            </td>
-        </tr>
-    </table>
-
-    <div class="basket-container__result">
-        <span>Итог:</span>
-        <span class="basket-container__sum">12500 руб.</span>
+    <div class="basket-order__result">
+        <span class="text">Итог:</span>
+        <span class="sum">12500 руб.</span>
     </div>
 </div>
 
-<div class="basket-container__symbol">
+<div class="symbol">
     <div class="symbol-el"></div>
     <div class="symbol-el"></div>
     <div class="symbol-el"></div>
 </div>
 
-<div class="basket-form">
-    <h1 class="basket-top__title">Адрес доставки</h1>
-    <p class="basket-top__title-plus">Все поля обязательны для заполнения</p>
 
-    <form action="/#" class="popup-adress">
-        <p class="popup__text">Выберите вариант доставки</p>
-        <div class="popup__select">
-            <select name="service" id="">
+<div class="basket-form">
+    <h2 class="big-title">Адрес доставки</h2>
+    <h3 class="min-title">Все поля обязательны для заполнения</h3>
+
+    <form action="/#" class="popup">
+        <div title="Выберите вариант доставки" class="popup__box box_full">
+            <select title="Выберите вариант доставки" name="service" id="">
                 <option value="">Курьерская служба - 500р</option>
                 <option value="">Курьерская служба - 500р</option>
                 <option value="">Курьерская служба - 500р</option>
             </select>
         </div>
 
-        <div class="popup-flex">
-            <div class="popup-flex__box">
-                <p class="popup__text">Имя</p>
-                <input type="text" name="name">
-            </div>
-            <div class="popup-flex__box">
-                <p class="popup__text">Фамилия</p>
-                <input type="text" name="surname">
-            </div>
+        <div title="Имя" class="popup__box">
+            <input type="text" name="name">
         </div>
 
-        <p class="popup__text">Адрес</p>
-        <input type="text" name="adress">
-
-        <div class="popup-flex">
-            <div class="popup-flex__box">
-                <p class="popup__text">Город</p>
-                <input type="text" name="city">
-            </div>
-            <div class="popup-flex__box">
-                <p class="popup__text">Индекс</p>
-                <input type="text" name="index">
-            </div>
+        <div title="Фамилия" class="popup__box">
+            <input type="text" name="surname">
         </div>
 
-        <div class="popup-flex">
-            <div class="popup-flex__box">
-                <p class="popup__text">Телефон</p>
-                <input type="tel" name="phone">
-            </div>
-            <div class="popup-flex__box">
-                <p class="popup__text">E-mail</p>
-                <input type="email" name="email">
-            </div>
-        </div>
-        
-        <input type="submit" value="заказать">
-    </form>
-</div>
-
-<div class="basket-container__symbol">
-    <div class="symbol-el"></div>
-    <div class="symbol-el"></div>
-    <div class="symbol-el"></div>
-</div>
-
-<div class="basket-form basket-payment">
-    <div class="payment__container">
-        <h1 class="basket-top__title">Варианты оплаты</h1>
-        <p class="basket-top__title-plus">Все поля обязательны для заполнения</p>
-
-        <div class="payment__list">
-            <div class="payment__list-left">
-                <li class="payment__item">Стоимость:</li>
-                <li class="payment__item">Доставка:</li>
-                <li class="payment__item">Итого:</li>
-            </div>
-            <div class="payment__list-right">
-                <li class="payment__item">12500 руб.</li>
-                <li class="payment__item">500 руб.</li>
-                <li class="payment__item">13000 руб.</li>
-            </div>
+        <div title="Адрес" class="popup__box box_full">
+            <input type="text" name="adress">
         </div>
 
-        <p class="popup__text">Выберите способ оплаты</p>
-        <div class="popup__select">
-            <select name="service" id="">
+        <div title="Город" class="popup__box">
+            <input type="text" name="city">
+        </div>
+
+        <div title="Индекс" class="popup__box">
+            <input type="text" name="index">
+        </div>
+
+        <div title="Телефон" class="popup__box">
+            <input type="tel" name="phone">
+        </div>
+
+        <div title="E-mail" class="popup__box">
+            <input type="email" name="email">
+        </div>
+
+        <div title="Выберите способ оплаты" class="popup__box box_full" id="payment">
+            <select name="payment">
                 <option value="">Банковская карта</option>
                 <option value="">Банковская карта</option>
                 <option value="">Банковская карта</option>
             </select>
             <img src="/images/basket/cards.jpg" alt="">
         </div>
+
+        <div class="popup__box box_full">
+            <input type="submit" value="заказать">
+        </div>
+    </form>
+</div>
+
+<div class="symbol">
+    <div class="symbol-el"></div>
+    <div class="symbol-el"></div>
+    <div class="symbol-el"></div>
+</div>
+
+<div class="basket-form basket_payment">
+    <h2 class="big-title">Варианты оплаты</h2>
+    <h3 class="min-title">Все поля обязательны для заполнения</h3>
+
+    <div class="payment-list">
+        <li class="list-item">Стоимость:</li>
+        <li class="list-item">12500 руб.</li>
+        <li class="list-item">Доставка:</li>
+        <li class="list-item">500 руб.</li>
+        <li class="list-item orange">Итого:</li>
+        <li class="list-item orange">13000 руб.</li>
     </div>
 </div>
 
