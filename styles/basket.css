@@ -1,3 +1,25 @@
+@-webkit-keyframes Revers {
+  20%, 40% {
+    -webkit-transform: rotate(45deg);
+            transform: rotate(45deg);
+  }
+  60%, 80% {
+    -webkit-transform: rotate(225deg);
+            transform: rotate(225deg);
+  }
+}
+
+@keyframes Revers {
+  20%, 40% {
+    -webkit-transform: rotate(45deg);
+            transform: rotate(45deg);
+  }
+  60%, 80% {
+    -webkit-transform: rotate(225deg);
+            transform: rotate(225deg);
+  }
+}
+
 .basket-top {
   text-align: center;
   padding: 122px 0 97px;
@@ -177,6 +199,8 @@
   -webkit-transform: rotate(45deg);
           transform: rotate(45deg);
   position: relative;
+  -webkit-animation: Revers 10s infinite;
+          animation: Revers 10s infinite;
 }
 
 .symbol .symbol-el::after {
@@ -305,6 +329,6 @@
 .basket_payment .payment-list li:nth-child(even) {
   text-align: left;
   font-style: italic;
-  font-family: 'Lora';
+  font-family: "Lora";
 }
 /*# sourceMappingURL=basket.css.map */

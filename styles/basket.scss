@@ -5,6 +5,17 @@ $orange: #f6955d;
 $border: #e5e5e5;
 $back: #f9f9f9;
 
+@keyframes Revers {
+
+  20%, 40% {
+    transform: rotate(45deg);
+  }
+
+  60%, 80% {
+    transform: rotate(225deg);
+  }
+}
+
 .basket-top {
   text-align: center;
   padding: 122px 0 97px;
@@ -171,6 +182,8 @@ $back: #f9f9f9;
     margin: 0 19px;
     transform: rotate(45deg);
     position: relative;
+    animation: Revers 10s infinite;
+
 
     &::after {
       content: "";
@@ -273,20 +286,20 @@ $back: #f9f9f9;
     display: grid;
     grid-template-columns: 1fr 1fr;
     grid-template-rows: 1fr, 1fr, 1fr;
-    
+
     margin-top: 101px;
     color: rgb(96, 96, 96);
     line-height: 2;
     list-style: none;
-    
+
     li {
       text-align: right;
       margin: 0 10px;
-      
+
       &:nth-child(even) {
         text-align: left;
         font-style: italic;
-        font-family: 'Lora';
+        font-family: "Lora";
       }
     }
   }
