@@ -1,5 +1,4 @@
 <?php
-
 $header_config = [
     'title' => 'Корзина',
     'style' => 'basket.css'

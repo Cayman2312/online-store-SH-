@@ -67,6 +67,7 @@
 }
 
 body {
+  color: #303030;
   font-family: 'Open Sans';
   background-color: #fff;
 }
@@ -74,6 +75,210 @@ body {
 .wrapper {
   max-width: 1200px;
   margin: 0 auto;
+  padding: 0 30px;
+}
+
+.header {
+  padding: 35px 0;
+  margin-bottom: 35px;
+  border-bottom: 2px solid #e5e5e5;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: justify;
+      -ms-flex-pack: justify;
+          justify-content: space-between;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+}
+
+.header__navbar {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+}
+
+.header__navbar-logo {
+  width: 45px;
+  height: 45px;
+  margin-right: 40px;
+  background-image: url("/images/icons/logo.jpg");
+}
+
+.header__navbar a.navbar-item {
+  text-decoration: none;
+  color: inherit;
+  margin: 0 15px;
+  padding: 5px 0;
+  position: relative;
+}
+
+.header__navbar a.navbar-item::after {
+  content: '';
+  width: 0;
+  height: 2px;
+  background-color: #303030;
+  -webkit-transition: 0.3s ease-in-out;
+  transition: 0.3s ease-in-out;
+  position: absolute;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  margin: 0 auto;
+}
+
+.header__navbar a.navbar-item:hover::after {
+  width: 100%;
+}
+
+.header__user-box a {
+  text-decoration: none;
+  color: inherit;
+  margin-left: 70px;
+  padding: 5px 0;
+  position: relative;
+}
+
+.header__user-box a::before {
+  content: '';
+  width: 30px;
+  height: 30px;
+  background-size: contain;
+  position: absolute;
+  left: -30px;
+  top: 0;
+  bottom: 0;
+  margin: auto 0;
+}
+
+.header__user-box a.user-box__login::before {
+  background-image: url("/images/icons/account.png");
+}
+
+.header__user-box a.user-box__basket::before {
+  background-image: url("/images/icons/bascet.png");
+}
+
+.header__user-box a::after {
+  content: '';
+  width: 0;
+  height: 2px;
+  background-color: #303030;
+  -webkit-transition: 0.3s ease-in-out;
+  transition: 0.3s ease-in-out;
+  position: absolute;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  margin: 0 auto;
+}
+
+.header__user-box a:hover::after {
+  width: 100%;
+}
+
+.footer {
+  margin: 100px 0 50px;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: justify;
+      -ms-flex-pack: justify;
+          justify-content: space-between;
+  -webkit-box-align: start;
+      -ms-flex-align: start;
+          align-items: flex-start;
+}
+
+.footer :first-child {
+  padding-left: 0;
+  border-left: none;
+}
+
+.footer__container {
+  -ms-flex-preferred-size: 33%;
+      flex-basis: 33%;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  -webkit-box-align: start;
+      -ms-flex-align: start;
+          align-items: flex-start;
+  padding-left: 11%;
+  min-height: 150px;
+  border-left: 1px solid #eaeaea;
+}
+
+.footer__container h3.title {
+  text-transform: uppercase;
+  font-size: 1.1em;
+  margin-bottom: 10px;
+}
+
+.footer__container a.link {
+  text-decoration: none;
+  color: #303030;
+  position: relative;
+  padding: 6px 0;
+}
+
+.footer__container a.link::before {
+  content: '';
+  height: 2px;
+  width: 0;
+  background-color: #303030;
+  -webkit-transition: 0.3s ease-in-out;
+  transition: 0.3s ease-in-out;
+  position: absolute;
+  left: 0;
+  bottom: 3px;
+}
+
+.footer__container a.link:hover::before {
+  width: 100%;
+}
+
+.footer__container p.text {
+  margin: 6px 0;
+}
+
+.footer__container .social a {
+  color: #303030;
+  text-decoration: none;
+}
+
+.footer__container .social a::before {
+  font-size: 22px;
+  padding: 5px;
+  border: 1px solid #303030;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  width: 30px;
+  height: 30px;
+  margin-top: 15px;
+  margin-right: 10px;
+  -webkit-transition: 0.3s ease-in-out;
+  transition: 0.3s ease-in-out;
+}
+
+.footer__container .social a:hover::before {
+  color: #fff;
+  background-color: #303030;
 }
 
 .loader {

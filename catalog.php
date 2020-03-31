@@ -1,28 +1,29 @@
 <?php
+
 /**
  * 
  * Каталог товаров
  * 
  */
 
-    $header_config = [
-        'title' => 'Каталог товаров',
-        'style' => 'catalog.css'
-    ];
+$header_config = [
+    'title' => 'Каталог товаров',
+    'style' => 'catalog.css'
+];
 
-    include('parts/header.php');
+include('parts/header.php');
 
-    $category_id = 1;
+$category_id = 1;
 
-    if (!empty($_GET['category_id'])) {
-        // (int) '10' - переведет из строки '10' в число 10
-        $category_id = (int) $_GET['category_id'];
-    }
+if (!empty($_GET['category_id'])) {
+    // (int) '10' - переведет из строки '10' в число 10
+    $category_id = (int) $_GET['category_id'];
+}
 
-    $sql_category = "SELECT * FROM categories WHERE id='{$category_id}'";
-    $result = mysqli_query($link, $sql_category);
+$sql_category = "SELECT * FROM categories WHERE id='{$category_id}'";
+$result = mysqli_query($link, $sql_category);
 
-    $category = mysqli_fetch_assoc($result);
+$category = mysqli_fetch_assoc($result);
 ?>
 
 <div class="catalog" data-category-id="<?= $category['id'] ?>">
@@ -39,9 +40,9 @@
 </div>
 
 <?php
-    $footer_config = [
-        'script' => 'catalog.js'
-    ];
+$footer_config = [
+    'script' => 'catalog.js'
+];
 
-    include('parts/footer.php');
+include('parts/footer.php');
 ?>
