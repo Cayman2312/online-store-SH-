@@ -1,20 +1,24 @@
 @-webkit-keyframes Revers {
-  20%, 40% {
+  20%,
+  40% {
     -webkit-transform: rotate(45deg);
             transform: rotate(45deg);
   }
-  60%, 80% {
+  60%,
+  80% {
     -webkit-transform: rotate(225deg);
             transform: rotate(225deg);
   }
 }
 
 @keyframes Revers {
-  20%, 40% {
+  20%,
+  40% {
     -webkit-transform: rotate(45deg);
             transform: rotate(45deg);
   }
-  60%, 80% {
+  60%,
+  80% {
     -webkit-transform: rotate(225deg);
             transform: rotate(225deg);
   }
@@ -270,12 +274,6 @@
 @media (max-width: 1024px) {
   .basket-form {
     max-width: 920px;
-  }
-}
-
-@media (max-width: 768px) {
-  .basket-form {
-    max-width: 680px;
   }
 }
 

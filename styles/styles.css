@@ -6,6 +6,59 @@
 */
 @import url("https://fonts.googleapis.com/css?family=Lora&display=swap");
 @import url("https://fonts.googleapis.com/css?family=Open+Sans:300,300i,400,400i,600,600i,700,700i,800,800i&display=swap&subset=cyrillic,cyrillic-ext");
+@-webkit-keyframes Revers {
+  20%,
+  40% {
+    -webkit-transform: rotate(45deg);
+            transform: rotate(45deg);
+  }
+  60%,
+  80% {
+    -webkit-transform: rotate(225deg);
+            transform: rotate(225deg);
+  }
+}
+@keyframes Revers {
+  20%,
+  40% {
+    -webkit-transform: rotate(45deg);
+            transform: rotate(45deg);
+  }
+  60%,
+  80% {
+    -webkit-transform: rotate(225deg);
+            transform: rotate(225deg);
+  }
+}
+
+@-webkit-keyframes fromTop {
+  100% {
+    opacity: 1;
+    top: 0;
+  }
+}
+
+@keyframes fromTop {
+  100% {
+    opacity: 1;
+    top: 0;
+  }
+}
+
+@-webkit-keyframes fromBot {
+  100% {
+    opacity: 1;
+    bottom: 0;
+  }
+}
+
+@keyframes fromBot {
+  100% {
+    opacity: 1;
+    bottom: 0;
+  }
+}
+
 * {
   margin: 0;
   padding: 0;
