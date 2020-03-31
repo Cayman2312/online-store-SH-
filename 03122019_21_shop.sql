@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Хост: localhost
--- Время создания: Мар 19 2020 г., 19:29
+-- Время создания: Мар 31 2020 г., 20:08
 -- Версия сервера: 10.4.11-MariaDB
 -- Версия PHP: 7.2.27
 
@@ -27,6 +27,27 @@ USE `03122019_21_shop`;
 -- --------------------------------------------------------
 
 --
+-- Структура таблицы `categories`
+--
+
+CREATE TABLE IF NOT EXISTS `categories` (
+  `id` int(11) NOT NULL AUTO_INCREMENT,
+  `name` varchar(30) NOT NULL,
+  PRIMARY KEY (`id`)
+) ENGINE=InnoDB AUTO_INCREMENT=4 DEFAULT CHARSET=utf8;
+
+--
+-- Дамп данных таблицы `categories`
+--
+
+INSERT INTO `categories` (`id`, `name`) VALUES
+(1, 'Женщинам'),
+(2, 'Мужчинам'),
+(3, 'Детям');
+
+-- --------------------------------------------------------
+
+--
 -- Структура таблицы `products`
 --
 
@@ -37,7 +58,7 @@ CREATE TABLE IF NOT EXISTS `products` (
   `description` text NOT NULL,
   `price` float NOT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=3 DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB AUTO_INCREMENT=5 DEFAULT CHARSET=utf8;
 
 --
 -- Дамп данных таблицы `products`
@@ -45,7 +66,33 @@ CREATE TABLE IF NOT EXISTS `products` (
 
 INSERT INTO `products` (`id`, `img_url`, `name`, `description`, `price`) VALUES
 (1, '/images/catalog/1.jpg', 'Куртка', 'Ой какая красивая куртка', 4500),
-(2, '/images/catalog/9.jpg', 'Кеды', 'Хорошие кеды', 999);
+(2, '/images/catalog/9.jpg', 'Кеды', 'Хорошие кеды', 999),
+(3, '/images/catalog/7.jpg', 'Куртка', 'Ой какая красивая куртка', 500),
+(4, '/images/catalog/3.png', 'Кеды', 'Хорошие кеды', 3000);
+
+-- --------------------------------------------------------
+
+--
+-- Структура таблицы `product_category`
+--
+
+CREATE TABLE IF NOT EXISTS `product_category` (
+  `id` int(11) NOT NULL AUTO_INCREMENT,
+  `product_id` int(11) NOT NULL,
+  `category_id` int(11) NOT NULL,
+  PRIMARY KEY (`id`)
+) ENGINE=InnoDB AUTO_INCREMENT=6 DEFAULT CHARSET=utf8;
+
+--
+-- Дамп данных таблицы `product_category`
+--
+
+INSERT INTO `product_category` (`id`, `product_id`, `category_id`) VALUES
+(1, 1, 2),
+(2, 2, 1),
+(3, 2, 2),
+(4, 3, 1),
+(5, 4, 3);
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;

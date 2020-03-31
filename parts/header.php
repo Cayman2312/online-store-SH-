@@ -27,9 +27,9 @@ include('parts/header_conf.php');
         <header class="header">
             <nav class="header__navbar">
                 <div class="header__navbar-logo"></div>
-                <a href="#" class="navbar-item">Женщинам</a>
-                <a href="catalog.php" class="navbar-item">Мужчинам</a>
-                <a href="#" class="navbar-item">Детям</a>
+                <a href="/catalog.php?category_id=1" class="navbar-item">Женщинам</a>
+                <a href="/catalog.php?category_id=2" class="navbar-item">Мужчинам</a>
+                <a href="/catalog.php?category_id=3" class="navbar-item">Детям</a>
                 <a href="#" class="navbar-item">Новинки</a>
                 <a href="#" class="navbar-item">О нас</a>
             </nav>
