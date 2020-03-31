@@ -49,7 +49,7 @@
         <a href="#/">32</a>
     </div>
 
-    <div class="product-btn">Добавить в корзину</div>
+    <div class="product-btn" data-product-id="<?= $template['id'] ?>">Добавить в корзину</div>
 </div>
 
 <?php
