@@ -40,89 +40,139 @@ $back: #f9f9f9;
 
 .basket-order {
   display: grid;
-  grid-template-rows: 33px 137px 60px;
-
+  grid-template-columns: 1fr 4fr repeat(4, 1fr);
+  grid-auto-rows: minmax(auto);
+  // 33px 137px 60px
+  
+  // grid-template-areas: 
+  // "hd1 hd2 hd3 hd4 hd5 hd6"
+  // // "im1 im2 im3 im4 im5 im6"
+  // "rt1 rt1 rt1 rt1 rt1 rt1";
+  
   position: relative;
   bottom: -500px;
   opacity: 0;
   animation: fromBot 2s forwards;
   animation-delay: 1s;
-
-  &__header {
-    display: grid;
-    grid-template-columns: 1fr 4fr repeat(4, 1fr);
-
-    border-bottom: 1px solid $border;
+  
+  h4 {
     color: #c1c1c1;
     font-size: 12px;
     text-transform: uppercase;
+    padding: 7px 0;
+  }
+  
+  .item {
+    grid-column-start: 1;
+    grid-column-end: 7;
+    display: grid;
+    grid-template-columns: 1fr 4fr repeat(4, 1fr);
+    border-bottom: 1px solid $border;
+    border-top: 1px solid $border;
+    padding: 13px 0;
+  }
+  
+  .sum {
+    grid-column-start: 1;
+    grid-column-end: 7;
 
-    p {
-      margin: auto 0;
+    position: relative;
+    background-color: $back;
+    margin-top: 4px;
+    padding: 20px 0;
+    color: $orange;
+    text-align: right;
+    
+    &:before {
+      content: attr(sum);
+      position: absolute;
+      right: 100px;
+      color: black;
     }
+  }
+
+  // &__header {
+  //   // display: grid;
+  //   // grid-template-columns: 1fr 4fr repeat(4, 1fr);
+
+  //   border-bottom: 1px solid $border;
+  //   color: #c1c1c1;
+  //   font-size: 12px;
+  //   text-transform: uppercase;
+
+  //   p {
+  //     margin: auto 0;
+  //   }
+
+  //   @include adaptive (mobile) {
+  //     display: none;
+  //   }
+  // }
+
+  img {
+    border: 1px solid $border;
+    height: 100px;
+    width: 100px;
+    margin: auto 24px auto 10px;
   }
 
   .option {
     margin: auto;
   }
 
-  &__item {
-    display: grid;
-    grid-template-columns: 1fr 4fr repeat(4, 1fr);
+  // &__item {
+  //   // display: grid;
+  //   // grid-template-columns: 1fr 4fr repeat(4, 1fr);
 
-    border-bottom: 1px solid $border;
-    font-size: 14px;
+  //   border-bottom: 1px solid $border;
+  //   font-size: 14px;
 
-    img {
-      border: 1px solid $border;
-      height: 100px;
-      width: 100px;
-      margin: auto 24px auto 10px;
+  //   img {
+  //     border: 1px solid $border;
+  //     height: 100px;
+  //     width: 100px;
+  //     margin: auto 24px auto 10px;
+  //   }
 
-      // @include adaptive(tablet) {
-      //   margin: 0 24px 0 24px;
-      // }
-    }
+  //   p {
+  //     margin: auto 0;
+  //   }
 
-    p {
-      margin: auto 0;
-    }
+  //   .name {
+  //     position: relative;
+  //     text-transform: uppercase;
 
-    .name {
-      position: relative;
-      text-transform: uppercase;
+  //     &:after {
+  //       content: attr(article);
+  //       position: absolute;
+  //       color: #949494;
+  //       text-transform: none;
+  //       font-size: 10px;
+  //       bottom: -15px;
+  //       left: 0;
+  //     }
+  //   }
+  // }
 
-      &:after {
-        content: attr(article);
-        position: absolute;
-        color: #949494;
-        text-transform: none;
-        font-size: 10px;
-        bottom: -15px;
-        left: 0;
-      }
-    }
-  }
+  // &__result {
+  //   // display: grid;
+  //   // grid-template-columns: 1fr 4fr repeat(4, 1fr);
 
-  &__result {
-    display: grid;
-    grid-template-columns: 1fr 4fr repeat(4, 1fr);
+  //   background-color: $back;
+  //   margin-top: 4px;
 
-    background-color: $back;
-    margin-top: 4px;
+  //   .text {
+  //     grid-column: 4;
+  //     text-align: right;
+  //     margin: auto 0;
+  //   }
 
-    .text {
-      grid-column: 4;
-      text-align: right;
-      margin: auto 0;
-    }
-
-    .sum {
-      grid-column: 5;
-      margin: auto;
-      color: $orange;
-    }
-  }
+  //   .sum {
+  //     grid-column: 5;
+  //     margin: auto;
+  //     color: $orange;
+  //   }
+  // }
 
   .buttons {
     position: relative;
@@ -249,7 +299,10 @@ $back: #f9f9f9;
     .box_full {
       grid-column-start: 1;
       grid-column-end: 3;
-      text-align: center;
+
+      &:last-child {
+        text-align: center;
+      }
     }
 
     [type="submit"] {

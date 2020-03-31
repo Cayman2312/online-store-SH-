@@ -14,33 +14,50 @@ include('parts/header.php');
 </div>
 
 <div class="basket-order">
-    <div class="basket-order__header">
-        <p>Фото</p>
-        <p>Наименование</p>
-        <p class="option">Размер</p>
-        <p class="option">Колличество</p>
-        <p class="option">Стоимость</p>
-        <p class="option">Удалить</p>
-    </div>
 
-    <div class="basket-order__item">
-        <img src="images/catalog/1.jpg" alt="">
-        <p article="арт. 123412" class="name">Куртка синяя</p>
-        <p class="option">39</p>
+    <h4>Фото</h4>
+    <h4>Наименование</h4>
+    <h4 class="option">Размер</h4>
+    <h4 class="option">Колличество</h4>
+    <h4 class="option">Стоимость</h4>
+    <h4 class="option">Удалить</h4>
+
+    <div class="item">
+        <div class="">
+            <img src="images/catalog/1.jpg">
+        </div>
+
+        <div class="name" article="арт. 123412">Куртка синяя</div>
+        <div class="option">39</div>
+
         <div class="option buttons">
             1
             <img class="btn-plus" src="/images/basket/plus.jpg" alt="">
             <img class="btn-minus" src="/images/basket/minus.jpg" alt="">
         </div>
-        <p class="option">3800 руб.</p>
+
+        <div class="option">3800 руб.</div>
         <div class="basket-x"></div>
     </div>
 
-    <div class="basket-order__result">
-        <span class="text">Итог:</span>
-        <span class="sum">12500 руб.</span>
-    </div>
+    <!-- <div class="item">
+        <div class="item"  im1">
+            <img src="images/catalog/1.jpg">
+        </div>
+        <div class="item name"  im2"  article="арт. 123412">Куртка синяя</div>
+        <div class="item option"  im3">39</div>
+        <div class="item option buttons"  im4">
+            1
+            <img class="btn-plus" src="/images/basket/plus.jpg" alt="">
+            <img class="btn-minus" src="/images/basket/minus.jpg" alt="">
+        </div>
+        <div class="item option"  im5">3800 руб.</div>
+        <div class="item basket-x"  im6"></div>
+    </div>  -->
+
+    <div class="sum" sum="Итог:">12500 руб.</div>
 </div>
+
 
 <div class="symbol">
     <div class="symbol-el"></div>
@@ -99,7 +116,7 @@ include('parts/header.php');
             <img src="/images/basket/cards.jpg" alt="">
         </div>
 
-        <div class="popup__box box_full">
+        <div class="popup__box box_full" id="btn">
             <input type="submit" value="заказать">
         </div>
     </form>

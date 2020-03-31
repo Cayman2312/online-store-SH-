@@ -89,8 +89,9 @@
 .basket-order {
   display: -ms-grid;
   display: grid;
-  -ms-grid-rows: 33px 137px 60px;
-      grid-template-rows: 33px 137px 60px;
+  -ms-grid-columns: 1fr 4fr (1fr)[4];
+      grid-template-columns: 1fr 4fr repeat(4, 1fr);
+  grid-auto-rows: minmax(auto);
   position: relative;
   bottom: -500px;
   opacity: 0;
@@ -100,81 +101,54 @@
           animation-delay: 1s;
 }
 
-.basket-order__header {
-  display: -ms-grid;
-  display: grid;
-  -ms-grid-columns: 1fr 4fr (1fr)[4];
-      grid-template-columns: 1fr 4fr repeat(4, 1fr);
-  border-bottom: 1px solid #e5e5e5;
+.basket-order h4 {
   color: #c1c1c1;
   font-size: 12px;
   text-transform: uppercase;
+  padding: 7px 0;
 }
 
-.basket-order__header p {
-  margin: auto 0;
-}
-
-.basket-order .option {
-  margin: auto;
-}
-
-.basket-order__item {
+.basket-order .item {
+  -ms-grid-column: 1;
+      grid-column-start: 1;
+  grid-column-end: 7;
   display: -ms-grid;
   display: grid;
   -ms-grid-columns: 1fr 4fr (1fr)[4];
       grid-template-columns: 1fr 4fr repeat(4, 1fr);
   border-bottom: 1px solid #e5e5e5;
-  font-size: 14px;
+  border-top: 1px solid #e5e5e5;
+  padding: 13px 0;
 }
 
-.basket-order__item img {
+.basket-order .sum {
+  -ms-grid-column: 1;
+      grid-column-start: 1;
+  grid-column-end: 7;
+  position: relative;
+  background-color: #f9f9f9;
+  margin-top: 4px;
+  padding: 20px 0;
+  color: #f6955d;
+  text-align: right;
+}
+
+.basket-order .sum:before {
+  content: attr(sum);
+  position: absolute;
+  right: 100px;
+  color: black;
+}
+
+.basket-order img {
   border: 1px solid #e5e5e5;
   height: 100px;
   width: 100px;
   margin: auto 24px auto 10px;
 }
 
-.basket-order__item p {
-  margin: auto 0;
-}
-
-.basket-order__item .name {
-  position: relative;
-  text-transform: uppercase;
-}
-
-.basket-order__item .name:after {
-  content: attr(article);
-  position: absolute;
-  color: #949494;
-  text-transform: none;
-  font-size: 10px;
-  bottom: -15px;
-  left: 0;
-}
-
-.basket-order__result {
-  display: -ms-grid;
-  display: grid;
-  -ms-grid-columns: 1fr 4fr (1fr)[4];
-      grid-template-columns: 1fr 4fr repeat(4, 1fr);
-  background-color: #f9f9f9;
-  margin-top: 4px;
-}
-
-.basket-order__result .text {
-  -ms-grid-column: 4;
-  grid-column: 4;
-  text-align: right;
-  margin: auto 0;
-}
-
-.basket-order__result .sum {
-  -ms-grid-column: 5;
-  grid-column: 5;
+.basket-order .option {
   margin: auto;
-  color: #f6955d;
 }
 
 .basket-order .buttons {
@@ -314,6 +288,9 @@
   -ms-grid-column: 1;
       grid-column-start: 1;
   grid-column-end: 3;
+}
+
+.basket-form .popup .box_full:last-child {
   text-align: center;
 }
 
