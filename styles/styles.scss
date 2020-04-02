@@ -231,6 +231,11 @@ body {
   justify-content: space-between;
   align-items: flex-start;
 
+  @include adaptive(tablet) {
+    flex-wrap: wrap;
+    justify-content: center;
+  }
+
   :first-child {
     padding-left: 0;
     border-left: none;
@@ -244,6 +249,37 @@ body {
     padding-left: 11%;
     min-height: 150px;
     border-left: 1px solid #eaeaea;
+
+    @include adaptive(tablet) {
+      flex-basis: 50%;
+    }
+
+    @include adaptive(mobile) {
+      flex-basis: 100%;
+      align-items: center;
+      padding: 0;
+      margin-bottom: 20px;
+    }
+
+    &:nth-of-type(2) {
+      @include adaptive(tablet) {
+        align-items: flex-end;
+      }
+
+      @include adaptive(mobile) {
+        align-items:center;
+      }
+    }
+
+    &:last-of-type {
+    @include adaptive(tablet) {
+      flex-basis: 100%;
+      padding-left: 0;
+      border-left: none;
+      margin-top: 20px;
+      align-items: center;
+    }
+  }
 
     & h3.title {
       text-transform: uppercase;
