@@ -1,9 +1,9 @@
 <footer class="footer">
   <div class="footer__container">
     <h3 class="title">Коллекции</h3>
-    <a href="#" class="link">Женщинам ()</a>
-    <a href="#" class="link">Мужчинам ()</a>
-    <a href="#" class="link">Детям ()</a>
+    <a href="/catalog.php?category_id=1" class="link">Женщинам ()</a>
+    <a href="/catalog.php?category_id=2" class="link">Мужчинам ()</a>
+    <a href="/catalog.php?category_id=3" class="link">Детям ()</a>
     <a href="#" class="link">Новинки ()</a>
   </div>
   <div class="footer__container">
