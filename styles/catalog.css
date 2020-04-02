@@ -30,10 +30,9 @@
 .catalog-list {
   display: -ms-grid;
   display: grid;
-  -ms-grid-rows: 1fr 1fr 1fr;
-      grid-template-rows: 1fr 1fr 1fr;
-  -ms-grid-columns: 1fr 1fr 1fr 1fr;
-      grid-template-columns: 1fr 1fr 1fr 1fr;
+  -ms-grid-columns: (1fr)[4];
+      grid-template-columns: repeat(4, 1fr);
+  grid-row-gap: 30px;
 }
 
 .catalog-item {
@@ -92,17 +91,25 @@
 }
 
 .page {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
   margin: 7px;
   width: 30px;
   height: 30px;
   color: white;
-  text-align: center;
-  padding-top: 6px;
   background-color: #1f1f1f;
   font-family: 'Source Sans Pro', sans-serif;
+  cursor: pointer;
 }
 
-.page:hover {
+.page:hover, .page.active {
   background-color: white;
   color: #000;
   border: 1px solid black;

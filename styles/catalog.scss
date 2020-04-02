@@ -24,8 +24,8 @@
     }
     &-list {
         display: grid;
-        grid-template-rows: 1fr 1fr 1fr;
-        grid-template-columns: 1fr 1fr 1fr 1fr;
+        grid-template-columns: repeat(4, 1fr);
+        grid-row-gap: 30px;
     }
     &-item {
         width: 80%;
@@ -72,15 +72,18 @@
 }
 
 .page {
+    display: flex;
+    align-items: center;
+    justify-content: center;
     margin: 7px;
     width: 30px;
     height: 30px;
     color: white;
-    text-align: center;
-    padding-top: 6px;
     background-color: rgb(31, 31, 31);
     font-family: 'Source Sans Pro', sans-serif;
-    &:hover {
+    cursor: pointer;
+    &:hover,
+    &.active {
         background-color: white;
         color: #000;
         border: 1px solid black;

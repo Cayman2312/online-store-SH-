@@ -57,13 +57,8 @@ $category = mysqli_fetch_assoc($result);
     <div class="catalog-list"></div>
 
     <div class="loader">Загрузка...</div>
-</div>
 
-<div class="page-wrap">
-    <div class="page">1</div>
-    <div class="page">2</div>
-    <div class="page">3</div>
-    <div class="page">4</div>
+    <div class="page-wrap"></div>
 </div>
 
 <?php
