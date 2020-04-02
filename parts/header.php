@@ -42,6 +42,6 @@ include('parts/header_conf.php');
             </nav>
             <div class="header__user-box">
                 <a href="#" class="user-box__login">Войти</a>
-                <a href="#" class="user-box__basket">Корзина</a>
+                <a href="/basket.php" class="user-box__basket">Корзина</a>
             </div>
         </header>
