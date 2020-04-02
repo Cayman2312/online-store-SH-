@@ -79,9 +79,10 @@ body {
 }
 
 .header {
-  padding: 35px 0;
+  padding: 15px 0;
   margin-bottom: 35px;
   border-bottom: 2px solid #e5e5e5;
+  width: 100%;
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
@@ -93,6 +94,13 @@ body {
           align-items: center;
 }
 
+@media (max-width: 991px) {
+  .header {
+    -ms-flex-wrap: wrap;
+        flex-wrap: wrap;
+  }
+}
+
 .header__navbar {
   display: -webkit-box;
   display: -ms-flexbox;
@@ -100,24 +108,131 @@ body {
   -webkit-box-align: center;
       -ms-flex-align: center;
           align-items: center;
+  padding: 20px 0;
 }
 
-.header__navbar-logo {
+@media (max-width: 991px) {
+  .header__navbar {
+    width: 100%;
+    -webkit-box-pack: justify;
+        -ms-flex-pack: justify;
+            justify-content: space-between;
+  }
+}
+
+@media (max-width: 767px) {
+  .header__navbar {
+    -ms-flex-wrap: wrap;
+        flex-wrap: wrap;
+  }
+}
+
+.header__navbar a.navbar-logo {
   width: 45px;
   height: 45px;
-  margin-right: 40px;
+  margin-right: 55px;
   background-image: url("/images/icons/logo.jpg");
+  -webkit-transition: 0.3s ease-in-out;
+  transition: 0.3s ease-in-out;
+  -webkit-box-flex: 0;
+      -ms-flex: none;
+          flex: none;
 }
 
-.header__navbar a.navbar-item {
+.header__navbar a.navbar-logo:hover {
+  -webkit-transform: scale(1.1);
+          transform: scale(1.1);
+}
+
+.header__navbar .navbar-toggle {
+  display: none;
+  height: 36px;
+  width: 50px;
+  border: 2px solid #6f6f6f;
+  border-radius: 5px;
+  cursor: pointer;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+}
+
+@media (max-width: 767px) {
+  .header__navbar .navbar-toggle {
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: flex;
+  }
+}
+
+.header__navbar .navbar-toggle span {
+  width: 70%;
+  height: 2px;
+  margin: 2px;
+  background-color: #6f6f6f;
+}
+
+@media (max-width: 767px) {
+  .header__navbar .navbar-menu {
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: flex;
+    -webkit-box-orient: vertical;
+    -webkit-box-direction: normal;
+        -ms-flex-direction: column;
+            flex-direction: column;
+    width: 100%;
+    -webkit-box-align: start;
+        -ms-flex-align: start;
+            align-items: flex-start;
+    -webkit-box-pack: center;
+        -ms-flex-pack: center;
+            justify-content: center;
+    max-height: 0px;
+    -webkit-transition: 0.8s ease-in-out;
+    transition: 0.8s ease-in-out;
+    overflow: hidden;
+  }
+}
+
+@media (max-width: 575px) {
+  .header__navbar .navbar-menu {
+    -webkit-box-align: center;
+        -ms-flex-align: center;
+            align-items: center;
+  }
+}
+
+.header__navbar .navbar-menu.open {
+  max-height: 250px;
+  margin: 15px 0 0;
+}
+
+.header__navbar .navbar-menu a.menu-item {
   text-decoration: none;
   color: inherit;
-  margin: 0 15px;
-  padding: 5px 0;
+  margin-right: 30px;
+  padding: 10px 0;
   position: relative;
 }
 
-.header__navbar a.navbar-item::after {
+@media (max-width: 767px) {
+  .header__navbar .navbar-menu a.menu-item {
+    margin-right: 0;
+  }
+}
+
+.header__navbar .navbar-menu a.menu-item:last-of-type {
+  margin-right: 0;
+}
+
+.header__navbar .navbar-menu a.menu-item::after {
   content: '';
   width: 0;
   height: 2px;
@@ -131,8 +246,31 @@ body {
   margin: 0 auto;
 }
 
-.header__navbar a.navbar-item:hover::after {
+.header__navbar .navbar-menu a.menu-item:hover::after {
   width: 100%;
+}
+
+@media (max-width: 991px) {
+  .header__user-box {
+    width: 100%;
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: flex;
+    -webkit-box-align: center;
+        -ms-flex-align: center;
+            align-items: center;
+    -webkit-box-pack: end;
+        -ms-flex-pack: end;
+            justify-content: flex-end;
+  }
+}
+
+@media (max-width: 575px) {
+  .header__user-box {
+    -webkit-box-pack: center;
+        -ms-flex-pack: center;
+            justify-content: center;
+  }
 }
 
 .header__user-box a {
@@ -141,6 +279,12 @@ body {
   margin-left: 70px;
   padding: 5px 0;
   position: relative;
+}
+
+@media (max-width: 575px) {
+  .header__user-box a {
+    margin: 0 20px;
+  }
 }
 
 .header__user-box a::before {

@@ -26,12 +26,19 @@ include('parts/header_conf.php');
     <div class="wrapper">
         <header class="header">
             <nav class="header__navbar">
-                <div class="header__navbar-logo"></div>
-                <a href="/catalog.php?category_id=1" class="navbar-item">Женщинам</a>
-                <a href="/catalog.php?category_id=2" class="navbar-item">Мужчинам</a>
-                <a href="/catalog.php?category_id=3" class="navbar-item">Детям</a>
-                <a href="#" class="navbar-item">Новинки</a>
-                <a href="#" class="navbar-item">О нас</a>
+                <a href="/" class="navbar-logo"></a>
+                <div class="navbar-toggle">
+                    <span></span>
+                    <span></span>
+                    <span></span>
+                </div>
+                <div class="navbar-menu">
+                    <a href="/catalog.php?category_id=1" class="menu-item">Женщинам</a>
+                    <a href="/catalog.php?category_id=2" class="menu-item">Мужчинам</a>
+                    <a href="/catalog.php?category_id=3" class="menu-item">Детям</a>
+                    <a href="#" class="menu-item">Новинки</a>
+                    <a href="#" class="menu-item">О нас</a>
+                </div>
             </nav>
             <div class="header__user-box">
                 <a href="#" class="user-box__login">Войти</a>
