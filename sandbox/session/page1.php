@@ -1,11 +1,11 @@
 <?php
-session_start();
+    session_start();
 
-// $_SESSION['count'] = 1;
-if (!empty($_SESSION['count'])) {
-    
-}
-$_SESSION['count']++;
+    if (empty($_SESSION['count'])) {
+        $_SESSION['count'] = 1;
+    }
 
-print_r($_SESSION);
+    $_SESSION['count']++;
+
+    print_r($_SESSION);
 ?>

@@ -1,4 +1,4 @@
-$productBtn = document.querySelector('.product-btn');
+const $productBtn = document.querySelector('.product-btn');
 
 $productBtn.addEventListener('click', function () {
     const productId = this.dataset.productId;

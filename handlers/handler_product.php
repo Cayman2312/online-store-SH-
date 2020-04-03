@@ -1,5 +1,4 @@
 <?php
-
     include($_SERVER['DOCUMENT_ROOT'].'/parts/header_conf.php');
 
     if (!isset($_SESSION['basket'])) {
@@ -11,5 +10,4 @@
     // echo d($_SESSION['basket']);
 
     echo count($_SESSION['basket']);
-
 ?>

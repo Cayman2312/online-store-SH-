@@ -11,5 +11,3 @@ session_start();
 
 include(ROOT_PATH.'/parts/functions.php');
 include(ROOT_PATH.'/conf/db.php');
-
-?>
