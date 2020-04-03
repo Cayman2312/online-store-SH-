@@ -8,11 +8,29 @@
   text-transform: uppercase;
 }
 
+@media (max-width: 767px) {
+  .offer__title {
+    font-size: 50px;
+  }
+}
+
+@media (max-width: 575px) {
+  .offer__title {
+    font-size: 34px;
+  }
+}
+
 .offer__text {
   font-size: 24px;
   font-family: Georgia, serif;
   font-style: italic;
   color: #959595;
+}
+
+@media (max-width: 575px) {
+  .offer__text {
+    font-size: 20px;
+  }
 }
 
 .offer a {
@@ -25,6 +43,19 @@
   text-transform: uppercase;
   -webkit-transition: 0.3s ease-in-out;
   transition: 0.3s ease-in-out;
+}
+
+@media (max-width: 991px) {
+  .offer a {
+    margin: 30px auto 30px;
+  }
+}
+
+@media (max-width: 575px) {
+  .offer a {
+    padding: 15px 25px;
+    font-size: 14px;
+  }
 }
 
 .offer a:hover {
@@ -68,8 +99,8 @@
   .offer__grid-container {
     -ms-grid-columns: (1fr)[2];
         grid-template-columns: repeat(2, 1fr);
-    -ms-grid-rows: (150px)[5];
-        grid-template-rows: repeat(5, 150px);
+    -ms-grid-rows: (minmax(150px, auto))[6];
+        grid-template-rows: repeat(6, minmax(150px, auto));
   }
 }
 
@@ -280,6 +311,42 @@
   .offer__grid-container .item-new {
     font-size: 12px;
   }
+}
+
+.offer__grid-container .item-alert {
+  height: 35px;
+  width: 35px;
+  margin-bottom: 10px;
+  background-image: url("/images/icons/attention-sign-outline.png");
+  background-size: cover;
+  position: relative;
+}
+
+@media (max-width: 575px) {
+  .offer__grid-container .item-alert {
+    height: 25px;
+    width: 25px;
+    margin-bottom: 5px;
+  }
+}
+
+.offer__grid-container .item-alert::before, .offer__grid-container .item-alert::after {
+  content: '';
+  height: 1px;
+  width: 22px;
+  background-color: #fff;
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  margin: auto 0;
+}
+
+.offer__grid-container .item-alert::before {
+  left: -30px;
+}
+
+.offer__grid-container .item-alert::after {
+  right: -30px;
 }
 
 .offer__grid-container .item-text {
