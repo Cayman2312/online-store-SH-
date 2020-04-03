@@ -69,11 +69,11 @@ class Catalog {
     removeCatalogData() {
         /**
          * Методы очистки элементов
-         * 
+         *
          * числовая переменная count = 0;
          * строковая переменная text = '';
          * переменная с массивом arr = [];
-         * 
+         *
          */
 
         this.$catalogList.innerHTML = '';
