@@ -9,6 +9,8 @@
 class Catalog {
     constructor() {
         this.$catalog = document.querySelector('.catalog');
+        this.$catalogList = this.$catalog.querySelector('.catalog-list');
+        this.$pagination = this.$catalog.querySelector('.page-wrap');
         this.products = [];
         this.$loader = this.$catalog.querySelector('.loader');
         // Один из вариантов получения значения атрибута
@@ -16,7 +18,7 @@ class Catalog {
         this.categoryId = this.$catalog.dataset.categoryId;
     }
 
-    load() {
+    load(active = 1) {
         // Будет загружать данные по ajax
         // После загрузки будет вызывать метод render
         /**
@@ -24,10 +26,12 @@ class Catalog {
          * и вывести их в консоль
          */
 
+        this.removeCatalogData();
+
         this.showLoader();
 
         const xhr = new XMLHttpRequest();
-        xhr.open('GET', `/handlers/handler_catalog.php?category_id=${this.categoryId}`);
+        xhr.open('GET', `/handlers/handler_catalog.php?category_id=${this.categoryId}&active=${active}`);
         xhr.send();
 
         xhr.addEventListener('load', () => {
@@ -35,7 +39,7 @@ class Catalog {
 
             // console.log(response);
 
-            response.forEach((item) => {
+            response.products.forEach((item) => {
                 // console.log(item);
 
                 this.products.push(
@@ -50,6 +54,7 @@ class Catalog {
             });
 
             this.render();
+            this.renderPagination(response.pagination);
         });
     }
 
@@ -61,12 +66,57 @@ class Catalog {
         this.$loader.classList.remove('show');
     }
 
+    removeCatalogData() {
+        /**
+         * Методы очистки элементов
+         * 
+         * числовая переменная count = 0;
+         * строковая переменная text = '';
+         * переменная с массивом arr = [];
+         * 
+         */
+
+        this.$catalogList.innerHTML = '';
+        this.$pagination.innerHTML = '';
+        this.products = [];
+    }
+
+    renderPagination(pagination) {
+        for (let i = 1; i <= pagination.count; i++) {
+            let $paginationItem = document.createElement('div');
+            $paginationItem.classList.add('page');
+            $paginationItem.innerHTML = i;
+            $paginationItem.dataset.page = i;
+
+            // Добавляем класс active для текущей страницы
+            if (i === pagination.active) {
+                $paginationItem.classList.add('active');
+            }
+
+            this.$pagination.append($paginationItem);
+
+            $paginationItem.addEventListener('click', (e) => {
+                // Получили элемент, по которому кликнули
+                const target = e.target;
+
+                // Удаляем класс active у всех элементов пагинации
+                this.$pagination.querySelectorAll('.page').forEach(item => {
+                    item.classList.remove('active');
+                });
+
+                // Добавить класс active
+                target.classList.add('active');
+
+                // Вызываем загрузку каталога
+                this.load(target.dataset.page);
+            });
+        }
+    }
+
     render() {
         // отрисовывает карточку товара
-        const $catalogList = this.$catalog.querySelector('.catalog-list');
-
         this.products.forEach((item) => {
-            $catalogList.append(item.getElement());
+            this.$catalogList.append(item.getElement());
         });
 
         this.hideLoader();
