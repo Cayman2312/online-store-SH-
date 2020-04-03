@@ -273,10 +273,87 @@ $borderColor: #959595;
           font-size: 20px;
         }
       }
+    }
+  }
+}
 
-      
+.subscribe {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
 
+  margin: 200px 0 150px;
 
+  @include adaptive(tablet) {
+    margin: 100px 0 50px;
+  }
+
+  &__title {
+    font-size: 36px;
+    text-transform: uppercase;
+    font-weight: normal;
+
+    @include adaptive(mobile) {
+      font-size: 32px;
+    }
+  }
+  &__text {
+    color: #606060;
+    font-family: Georgia, serif;
+    font-style: italic;
+    font-size: 18px;
+    margin: 10px 0 40px;
+
+    @include adaptive(mobile) {
+      font-size: 16px;
+    }
+
+  }
+  &__form {
+    width: 50%;
+    display: inline-flex;
+
+    @include adaptive(notebook) {
+      width: 60%;
+    }
+    @include adaptive(tablet) {
+      width: 75%;
+    }
+    @include adaptive(smartphone) {
+      width: 90%;
+    }
+    @include adaptive(mobile) {
+      width: 100%;
+    }
+    
+    & .input-email {
+      flex-basis: 77%;
+      padding: 10px;
+      font-style: italic;
+    }
+    & .input-submit {
+      flex-basis: 23%;
+      padding: 20px 0;
+      cursor: pointer;
+      color: #fff;
+      background-color: #f68236;
+      border: none;
+    }
+  }
+  &__error {
+    font-size: 14px;
+    color: red;
+    font-style:italic;
+    margin-top: 20px;
+
+    @include adaptive(mobile) {
+      font-size: 12px;
+    }
+
+    &.hide {
+      display: none;
     }
   }
 }

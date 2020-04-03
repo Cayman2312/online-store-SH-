@@ -63,6 +63,20 @@ include('parts/header.php');
     </div>
 </div>
 
+<div class="subscribe">
+    <h2 class="subscribe__title">
+        Будь всегда в курсе выгодных предложений
+    </h2>
+    <p class="subscribe__text">
+        Подписывайся и следи за новинками и выгодными предложениями
+    </p>
+    <form action="#" method="get" class="subscribe__form">
+        <input type="email" name="email" placeholder="e-mail" class="input-email">
+        <input type="submit" value="записаться" class="input-submit">
+    </form>
+    <p class="subscribe__error hide">Некорректный e-mail. Попробуйте еще раз.</p>
+</div>
+
 <?php
 $footer_config = [
     'script' => 'index.js'
