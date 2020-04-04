@@ -26,34 +26,65 @@
     bottom: 0;
   }
 }
-@keyframes menuAni {
-  100% {
-    left: 0;
-    opacity: 1;
-  }
-}
-@keyframes offerTitleAni {
-  100% {
-    opacity: 1;
-    top: 0;
-  }
-}
-@keyframes offerTexteAni {
-  100% {
-    opacity: 1;
-    bottom: 0;
-  }
-}
-@keyframes itemAniVer {
+@keyframes offerItem_Vertical {
   100% {
     top: 10%;
     bottom: 10%;
   }
 }
-@keyframes itemAniHor {
+@keyframes offerItem_Horizon {
   100% {
     left: 10%;
     right: 10%;
+  }
+}
+@keyframes fromLeft {
+  100% {
+    left: 0;
+    opacity: 1;
+  }
+}
+@keyframes fromBot {
+  100% {
+    bottom: 0;
+    opacity: 1;
+  }
+}
+@keyframes fromRight {
+  100% {
+    right: 0;
+    opacity: 1;
+  }
+}
+@keyframes fromTop {
+  100% {
+    top: 0;
+    opacity: 1;
+  }
+}
+@keyframes centre {
+  100% {
+    opacity: 1;
+  }
+}
+@keyframes loaderHor {
+  100% {
+    right: 50%;
+    left: 50%;
+  }
+  50% {
+    right: 0;
+    left: 0;
+  }
+}
+@keyframes loaderVer {
+  100% {
+    top: 50%;
+    bottom: 50%;
+  }
+  50% {
+    top: 0;
+    bottom: 0;
   }
 }
 * {
@@ -167,9 +198,9 @@ body {
   position: relative;
 }
 .header__navbar .navbar-menu a.menu-item.menuAni {
-  left: -500px;
+  left: 100%;
   opacity: 0;
-  animation: menuAni 1s ease forwards;
+  animation: fromLeft 1s ease forwards;
 }
 .header__navbar .navbar-menu a.menu-item.active::after {
   content: "";
@@ -239,6 +270,16 @@ body {
   top: 0;
   bottom: 0;
   margin: auto 0;
+}
+.header__user-box a.user-box__login {
+  opacity: 0;
+  animation: centre 2s ease forwards;
+  animation-delay: 2s;
+}
+.header__user-box a.user-box__basket {
+  opacity: 0;
+  animation: centre 2s ease forwards;
+  animation-delay: 2.5s;
 }
 .header__user-box a.user-box__login::before {
   background-image: url("/images/icons/account.png");
@@ -449,17 +490,51 @@ body {
 
 .loader {
   display: none;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+  opacity: 0;
+  transition: 0.5s;
   position: absolute;
+  font-size: 15px;
   top: 0;
   right: 0;
   bottom: 0;
   left: 0;
-  align-items: center;
-  justify-content: center;
-  color: #fff;
-  background-color: rgba(0, 0, 0, 0.5);
+  color: black;
+  background-color: white;
+}
+.loader__coub {
+  position: absolute;
+  width: 100px;
+  height: 100px;
+}
+.loader__coub:before {
+  content: "";
+  position: absolute;
+  left: 50%;
+  right: 50%;
+  top: 0;
+  bottom: 0;
+  margin: 0 auto;
+  border-top: 1px solid black;
+  border-bottom: 1px solid black;
+  animation: loaderHor 1.5s ease infinite;
+}
+.loader__coub:after {
+  content: "";
+  position: absolute;
+  left: 0;
+  right: 0;
+  top: 50%;
+  bottom: 50%;
+  margin: auto 0;
+  border-left: 1px solid black;
+  border-right: 1px solid black;
+  animation: loaderVer 1.5s ease infinite;
 }
 .loader.show {
+  opacity: 1;
   display: flex;
 }
 

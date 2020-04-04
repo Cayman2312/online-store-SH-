@@ -18,34 +18,65 @@
     bottom: 0;
   }
 }
-@keyframes menuAni {
-  100% {
-    left: 0;
-    opacity: 1;
-  }
-}
-@keyframes offerTitleAni {
-  100% {
-    opacity: 1;
-    top: 0;
-  }
-}
-@keyframes offerTexteAni {
-  100% {
-    opacity: 1;
-    bottom: 0;
-  }
-}
-@keyframes itemAniVer {
+@keyframes offerItem_Vertical {
   100% {
     top: 10%;
     bottom: 10%;
   }
 }
-@keyframes itemAniHor {
+@keyframes offerItem_Horizon {
   100% {
     left: 10%;
     right: 10%;
+  }
+}
+@keyframes fromLeft {
+  100% {
+    left: 0;
+    opacity: 1;
+  }
+}
+@keyframes fromBot {
+  100% {
+    bottom: 0;
+    opacity: 1;
+  }
+}
+@keyframes fromRight {
+  100% {
+    right: 0;
+    opacity: 1;
+  }
+}
+@keyframes fromTop {
+  100% {
+    top: 0;
+    opacity: 1;
+  }
+}
+@keyframes centre {
+  100% {
+    opacity: 1;
+  }
+}
+@keyframes loaderHor {
+  100% {
+    right: 50%;
+    left: 50%;
+  }
+  50% {
+    right: 0;
+    left: 0;
+  }
+}
+@keyframes loaderVer {
+  100% {
+    top: 50%;
+    bottom: 50%;
+  }
+  50% {
+    top: 0;
+    bottom: 0;
   }
 }
 .offer {
@@ -59,8 +90,8 @@
   position: relative;
   opacity: 0;
   top: -100px;
-  animation: offerTitleAni 1.5s ease forwards;
-  animation-delay: 1.5s;
+  animation: fromTop 1s ease forwards;
+  animation-delay: 1s;
   z-index: 1;
 }
 @media (max-width: 767px) {
@@ -81,7 +112,7 @@
   position: relative;
   bottom: -100px;
   opacity: 0;
-  animation: offerTexteAni 1.5s ease-in forwards;
+  animation: fromBot 1.5s ease-in forwards;
 }
 @media (max-width: 575px) {
   .offer__text {
@@ -97,6 +128,7 @@
   text-decoration: none;
   text-transform: uppercase;
   transition: 0.3s ease-in-out;
+  animation-delay: 1.5s;
 }
 @media (max-width: 991px) {
   .offer a {
@@ -164,7 +196,7 @@
   bottom: 50%;
   border-left: 1px solid white;
   border-right: 1px solid white;
-  animation: itemAniVer 0.5s ease forwards;
+  animation: offerItem_Vertical 0.5s ease forwards;
 }
 .offer__grid-container .item:hover:after {
   content: "";
@@ -175,7 +207,7 @@
   bottom: 15%;
   border-top: 1px solid white;
   border-bottom: 1px solid white;
-  animation: itemAniHor 0.5s ease forwards;
+  animation: offerItem_Horizon 0.5s ease forwards;
 }
 @media (max-width: 1199px) {
   .offer__grid-container .item {
@@ -429,6 +461,8 @@
   flex-basis: 77%;
   padding: 10px;
   font-style: italic;
+  border: 1px solid #959595;
+  border-right: none;
 }
 .subscribe__form .input-submit {
   flex-basis: 23%;
@@ -436,21 +470,54 @@
   cursor: pointer;
   color: #fff;
   background-color: #f68236;
-  border: none;
+  border: 1px solid #e67429;
 }
 .subscribe__error {
   font-size: 14px;
   color: red;
   font-style: italic;
   margin-top: 20px;
+  transition: 1s;
+  opacity: 0;
 }
 @media (max-width: 575px) {
   .subscribe__error {
     font-size: 12px;
   }
 }
-.subscribe__error.hide {
-  display: none;
+
+.fromLeft {
+  position: relative;
+  left: -100%;
+  opacity: 0;
+  animation: fromLeft 2s ease forwards;
+}
+
+.fromBottom {
+  position: relative;
+  bottom: -100%;
+  opacity: 0;
+  animation: fromBot 2s ease forwards;
+}
+
+.fromRight {
+  position: relative;
+  right: -100%;
+  opacity: 0;
+  animation: fromRight 2s ease forwards;
+}
+
+.fromTop {
+  position: relative;
+  top: -100%;
+  opacity: 0;
+  animation: fromTop 2s ease forwards;
+}
+
+.centre {
+  position: relative;
+  opacity: 0;
+  animation: centre 2s ease forwards;
 }
 
 /*# sourceMappingURL=index.css.map */

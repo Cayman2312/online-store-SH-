@@ -47,7 +47,7 @@ include('parts/header_conf.php');
             <div class="popup-log">
                 <div class="error-login"><img src="/images/icons/warning.png">поле не заполнено</div>
                 <div class="error-pass"><img src="/images/icons/warning.png">поле не заполнено</div>
-                <form method="get" action="/#" class="popup-log__form" onsubmit="return checkForm(this.elements)">
+                <form method="get" action="/#" class="popup-log__form" onsubmit="return checkFormLogin(this.elements)">
                     <input type="email" name="login" placeholder="E-mail">
                     <input type="password" name="pass" placeholder="Password">
                     <input type="submit" value="Войти">

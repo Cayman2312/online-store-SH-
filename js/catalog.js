@@ -150,3 +150,20 @@ const catalog = new Catalog();
 
 // Вызываем загрузку данных
 catalog.load();
+
+
+// Loader ----------------------------------
+
+const $loader = document.querySelector('.loader__coub');
+let count = 0;
+
+setInterval(function () {
+    $loader.style.transform = `rotate(${count}deg)`;
+    count++;
+    if (count == 180) {
+        count = 0;
+    }
+    console.log(count)
+}, 20);
+
+//------------------------------------------
