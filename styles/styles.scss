@@ -38,12 +38,14 @@ body {
   margin-bottom: 35px;
   border-bottom: 2px solid #e5e5e5;
   width: 100%;
+  overflow: hidden;
+
 
   display: flex;
   justify-content: space-between;
   align-items: center;
 
-  @include adaptive(tablet){
+  @include adaptive(tablet) {
     flex-wrap: wrap;
     // justify-content: center;
   }
@@ -53,12 +55,12 @@ body {
     align-items: center;
     padding: 20px 0;
 
-    @include adaptive(tablet){
-     width: 100%;
-     justify-content: space-between;
+    @include adaptive(tablet) {
+      width: 100%;
+      justify-content: space-between;
     }
 
-    @include adaptive(smartphone){
+    @include adaptive(smartphone) {
       flex-wrap: wrap;
     }
 
@@ -87,7 +89,7 @@ body {
       align-items: center;
       justify-content: center;
 
-      @include adaptive(smartphone){
+      @include adaptive(smartphone) {
         display: flex;
       }
 
@@ -95,14 +97,14 @@ body {
         width: 70%;
         height: 2px;
         margin: 2px;
-        background-color:#6f6f6f;
+        background-color: #6f6f6f;
       }
 
     }
 
     & .navbar-menu {
-      @include adaptive(smartphone){
-        display:flex;
+      @include adaptive(smartphone) {
+        display: flex;
         flex-direction: column;
         width: 100%;
         align-items: flex-start;
@@ -112,16 +114,16 @@ body {
         overflow: hidden;
       }
 
-      @include adaptive(mobile){
+      @include adaptive(mobile) {
         align-items: center;
       }
 
       &.open {
-        max-height: 250px;   
+        max-height: 250px;
         margin: 15px 0 0;
 
       }
-      
+
       & a.menu-item {
         text-decoration: none;
         color: inherit;
@@ -129,9 +131,29 @@ body {
         padding: 10px 0;
         position: relative;
 
-      @include adaptive(smartphone){
-        margin-right: 0;
-      }
+        &.menuAni {
+          left: -500px;
+          opacity: 0;
+          animation: menuAni 1s ease forwards;
+        }
+
+        &.active {
+          &::after {
+            content: '';
+            width: 100%;
+            height: 2px;
+            background-color: $mainTextColor;
+
+            position: absolute;
+            left: 0;
+            right: 0;
+            bottom: 0;
+          }
+        }
+
+        @include adaptive(smartphone) {
+          margin-right: 0;
+        }
 
         &:last-of-type {
           margin-right: 0;
@@ -155,19 +177,20 @@ body {
           width: 100%;
         }
       }
-      }
+    }
 
 
   }
+
   &__user-box {
 
-    @include adaptive(tablet){
-     width: 100%;
-     display: flex;
-     align-items: center;
-     justify-content: flex-end;
+    @include adaptive(tablet) {
+      width: 100%;
+      display: flex;
+      align-items: center;
+      justify-content: flex-end;
     }
-    @include adaptive(mobile){
+    @include adaptive(mobile) {
       justify-content: center;
     }
 
@@ -178,7 +201,7 @@ body {
       padding: 5px 0;
       position: relative;
 
-      @include adaptive(mobile){
+      @include adaptive(mobile) {
         margin: 0 20px;
       }
 
@@ -222,6 +245,101 @@ body {
       }
     }
   }
+
+  // popup автаризации --------------------
+
+  .popup-log {
+    position: absolute;
+    border: 2px solid #e5e5e5;
+    background-color: rgba(255, 255, 255);
+    padding: 30px;
+    right: 10%;
+    top: 115px;
+    opacity: 0;
+    z-index: 2;
+    transition: .5s;
+
+    & .error-login, & .error-pass {
+      position: absolute;
+      display: flex;
+      align-items: center;
+      opacity: 0;
+      color: inherit;
+      font-size: 12px;
+      text-align: center;
+      padding: 5px 15px;
+      border: 1px solid $orange;
+      border-radius: 4px;
+      background-color: white;
+      box-shadow: 0 2px 2px rgba(0,0,0,0.25), 0 2px 2px rgba(0,0,0,0.22);
+      transition: 1s;
+      top: 10px;
+      right: 8px;
+
+      & img {
+        margin: auto;
+        width: 15px;
+        height: 15px;
+        margin-right: 5px;
+      }
+
+      &:before {
+        content: '';
+        position: absolute;
+        border-right: 1px solid $orange;
+        border-bottom: 1px solid $orange;
+        width: 5px;
+        height: 5px;
+        left: 3px;
+        top: 25px;
+        transform: rotate(45deg);
+      }
+    }
+
+    & .error-pass {
+      top: 60px;
+    }
+
+    &__form {
+      display: flex;
+      flex-direction: column;
+
+      & input,
+      & [type="submit"] {
+        border-radius: 0;
+        border: 1px solid #e5e5e5;
+        margin: 5px 0;
+        padding: 10px;
+        width: 100%;
+        color: inherit;
+        font-size: inherit;
+      }
+
+      & [type="submit"] {
+        background-color: $orange;
+        color: white;
+        transition: .5s;
+        cursor: pointer;
+
+        &:hover {
+          background-color: #f6651e;
+        }
+      }
+    }
+
+    & a {
+      text-decoration: none;
+      font-size: inherit;
+      color: inherit;
+      transition: 1s;
+
+      &:hover {
+        color: $orange;
+      }
+    }
+  }
+
+  //----------------------------------------
 }
 
 // footer
@@ -267,19 +385,19 @@ body {
       }
 
       @include adaptive(mobile) {
-        align-items:center;
+        align-items: center;
       }
     }
 
     &:last-of-type {
-    @include adaptive(tablet) {
-      flex-basis: 100%;
-      padding-left: 0;
-      border-left: none;
-      margin-top: 20px;
-      align-items: center;
+      @include adaptive(tablet) {
+        flex-basis: 100%;
+        padding-left: 0;
+        border-left: none;
+        margin-top: 20px;
+        align-items: center;
+      }
     }
-  }
 
     & h3.title {
       text-transform: uppercase;
@@ -304,6 +422,7 @@ body {
         left: 0;
         bottom: 3px;
       }
+
       &:hover::before {
         width: 100%;
       }
