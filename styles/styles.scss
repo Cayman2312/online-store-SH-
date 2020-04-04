@@ -132,9 +132,9 @@ body {
         position: relative;
 
         &.menuAni {
-          left: -500px;
+          left: 100%;
           opacity: 0;
-          animation: menuAni 1s ease forwards;
+          animation: fromLeft 1s ease forwards;
         }
 
         &.active {
@@ -216,6 +216,18 @@ body {
         top: 0;
         bottom: 0;
         margin: auto 0;
+      }
+
+      &.user-box__login {
+        opacity: 0;
+        animation: centre 2s ease forwards;
+        animation-delay: 2s;
+      }
+
+      &.user-box__basket {
+        opacity: 0;
+        animation: centre 2s ease forwards;
+        animation-delay: 2.5s;
       }
 
       &.user-box__login::before {
@@ -464,7 +476,7 @@ body {
 
 // Лоадер
 .loader {
-  display: flex;
+  display: none;
   align-items: center;
   justify-content: center;
   flex-direction: column;
@@ -515,5 +527,6 @@ body {
 
   &.show {
     opacity: 1;
+    display: flex;
   }
 }

@@ -15,8 +15,8 @@ $borderColor: #959595;
     position: relative;
     opacity: 0;
     top: -100px;
-    animation: offerTitleAni 1.5s ease forwards;
-    animation-delay: 1.5s;
+    animation: fromTop 1s ease forwards;
+    animation-delay: 1s;
     z-index: 1;
 
 
@@ -37,7 +37,7 @@ $borderColor: #959595;
     position: relative;
     bottom: -100px;
     opacity: 0;
-    animation: offerTexteAni 1.5s ease-in forwards;
+    animation: fromBot 1.5s ease-in forwards;
 
     @include adaptive(mobile) {
       font-size: 20px;
@@ -54,7 +54,8 @@ $borderColor: #959595;
     text-decoration: none;
     text-transform: uppercase;
     transition: 0.3s ease-in-out;
-
+    animation-delay: 1.5s;
+    
     @include adaptive(tablet) {
       margin: 30px auto 30px;
     }
@@ -90,7 +91,6 @@ $borderColor: #959595;
       grid-template-rows: repeat(6, minmax(150px, auto));
     }
 
-
     & .item {
       display: flex;
       align-items: center;
@@ -116,7 +116,7 @@ $borderColor: #959595;
          bottom: 50%;
          border-left: 1px solid white;
          border-right: 1px solid white;
-         animation: itemAniVer 0.5s ease forwards;
+         animation: offerItem_Vertical 0.5s ease forwards;
        }
 
       &:hover:after {
@@ -128,7 +128,7 @@ $borderColor: #959595;
         bottom: 15%;
         border-top: 1px solid white;
         border-bottom: 1px solid white;
-        animation: itemAniHor 0.5s ease forwards;
+        animation: offerItem_Horizon 0.5s ease forwards;
       }
 
       @include adaptive(notebook) {
@@ -384,6 +384,8 @@ $borderColor: #959595;
       flex-basis: 77%;
       padding: 10px;
       font-style: italic;
+      border: 1px solid $borderColor;
+      border-right: none;
     }
 
     & .input-submit {
@@ -392,7 +394,7 @@ $borderColor: #959595;
       cursor: pointer;
       color: #fff;
       background-color: #f68236;
-      border: none;
+      border: 1px solid #e67429;
     }
   }
 
@@ -401,13 +403,49 @@ $borderColor: #959595;
     color: red;
     font-style: italic;
     margin-top: 20px;
+    transition: 1s;
+    opacity: 0;
 
     @include adaptive(mobile) {
       font-size: 12px;
     }
-
-    &.hide {
-      display: none;
-    }
   }
 }
+
+// Классы с анимациями ------------------
+
+.fromLeft {
+  position: relative;
+  left: -100%;
+  opacity: 0;
+  animation: fromLeft 2s ease forwards;
+}
+
+.fromBottom {
+  position: relative;
+  bottom: -100%;
+  opacity: 0;
+  animation: fromBot 2s ease forwards;
+}
+
+.fromRight {
+  position: relative;
+  right: -100%;
+  opacity: 0;
+  animation: fromRight 2s ease forwards;
+}
+
+.fromTop {
+  position: relative;
+  top: -100%;
+  opacity: 0;
+  animation: fromTop 2s ease forwards;
+}
+
+.centre {
+  position: relative;
+  opacity: 0;
+  animation: centre 2s ease forwards;
+}
+
+//---------------------------------------
