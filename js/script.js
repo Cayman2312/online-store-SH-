@@ -51,7 +51,7 @@ $logIn.addEventListener('click', function () {
 const $errorLogin = document.querySelector('.error-login');
 const $errorPass = document.querySelector('.error-pass');
 
-function checkForm(form) {
+function checkFormLogin(form) {
     let e = 0;
 
     for (let i = 0; i < form.length - 1; i++) {
