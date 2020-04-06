@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Хост: localhost
--- Время создания: Апр 02 2020 г., 20:22
+-- Время создания: Апр 07 2020 г., 00:11
 -- Версия сервера: 10.4.11-MariaDB
 -- Версия PHP: 7.2.27
 
@@ -117,6 +117,49 @@ INSERT INTO `product_category` (`id`, `product_id`, `category_id`) VALUES
 (15, 15, 1),
 (16, 16, 1),
 (17, 11, 1);
+
+-- --------------------------------------------------------
+
+--
+-- Структура таблицы `subscribers`
+--
+
+CREATE TABLE IF NOT EXISTS `subscribers` (
+  `id` int(11) NOT NULL AUTO_INCREMENT,
+  `subscriber` varchar(50) NOT NULL,
+  PRIMARY KEY (`id`)
+) ENGINE=InnoDB AUTO_INCREMENT=83 DEFAULT CHARSET=utf8;
+
+--
+-- Дамп данных таблицы `subscribers`
+--
+
+INSERT INTO `subscribers` (`id`, `subscriber`) VALUES
+(81, 'asd@sad'),
+(82, 'asd@asdasd');
+
+-- --------------------------------------------------------
+
+--
+-- Структура таблицы `users`
+--
+
+CREATE TABLE IF NOT EXISTS `users` (
+  `id` int(11) NOT NULL AUTO_INCREMENT,
+  `name` varchar(30) NOT NULL,
+  `surname` varchar(50) NOT NULL,
+  `email` varchar(50) NOT NULL,
+  `pass` varchar(50) NOT NULL,
+  PRIMARY KEY (`id`)
+) ENGINE=InnoDB AUTO_INCREMENT=6 DEFAULT CHARSET=utf8;
+
+--
+-- Дамп данных таблицы `users`
+--
+
+INSERT INTO `users` (`id`, `name`, `surname`, `email`, `pass`) VALUES
+(4, 'asd', 'asd', 'asd@asd', 'asd'),
+(5, 'fdsdfs', 'dfsfds', 'asd@asd', 'ghdfghfd');
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;

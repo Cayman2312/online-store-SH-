@@ -1,6 +1,8 @@
 // Анимация для меню header.php ------------
 
 const $navMenu = document.querySelectorAll('.menu-item');
+const $navMenuLog = document.querySelector('.user-box__login');
+const $navMenuBasket = document.querySelector('.user-box__basket');
 let delay = 0;
 
 $navMenu.forEach(function (item) {
@@ -10,6 +12,9 @@ $navMenu.forEach(function (item) {
     delay++;
 
 });
+
+$navMenuLog.classList.add('centre');
+$navMenuBasket.classList.add('centre');
 
 
 //------------------------------------------
@@ -25,6 +30,12 @@ function checkFormSubscribe(form) {
     } else {
         $subError.style.opacity = 0;
         alert('Поздравляем тебя, подписота! ;)')
+    }
+}
+
+function checkKeyupFormSubscribe(form) {
+    if (form[0].value.replace(/^\s+|\s+$/g, '')) {
+        $subError.style.opacity = 0;
     }
 }
 

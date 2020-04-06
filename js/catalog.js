@@ -163,7 +163,6 @@ setInterval(function () {
     if (count == 180) {
         count = 0;
     }
-    console.log(count)
 }, 20);
 
 //------------------------------------------
