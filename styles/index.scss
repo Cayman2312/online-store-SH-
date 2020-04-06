@@ -16,7 +16,7 @@ $borderColor: #959595;
     opacity: 0;
     top: -100px;
     animation: fromTop 1s ease forwards;
-    animation-delay: 1s;
+    animation-delay: 1.5s;
     z-index: 1;
 
 
@@ -37,7 +37,7 @@ $borderColor: #959595;
     position: relative;
     bottom: -100px;
     opacity: 0;
-    animation: fromBot 1.5s ease-in forwards;
+    animation: fromBot 1.5s ease forwards;
 
     @include adaptive(mobile) {
       font-size: 20px;
@@ -386,6 +386,7 @@ $borderColor: #959595;
       font-style: italic;
       border: 1px solid $borderColor;
       border-right: none;
+      outline: none;
     }
 
     & .input-submit {
@@ -395,6 +396,7 @@ $borderColor: #959595;
       color: #fff;
       background-color: #f68236;
       border: 1px solid #e67429;
+      outline: none;
     }
   }
 
@@ -412,40 +414,4 @@ $borderColor: #959595;
   }
 }
 
-// Классы с анимациями ------------------
 
-.fromLeft {
-  position: relative;
-  left: -100%;
-  opacity: 0;
-  animation: fromLeft 2s ease forwards;
-}
-
-.fromBottom {
-  position: relative;
-  bottom: -100%;
-  opacity: 0;
-  animation: fromBot 2s ease forwards;
-}
-
-.fromRight {
-  position: relative;
-  right: -100%;
-  opacity: 0;
-  animation: fromRight 2s ease forwards;
-}
-
-.fromTop {
-  position: relative;
-  top: -100%;
-  opacity: 0;
-  animation: fromTop 2s ease forwards;
-}
-
-.centre {
-  position: relative;
-  opacity: 0;
-  animation: centre 2s ease forwards;
-}
-
-//---------------------------------------

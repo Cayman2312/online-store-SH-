@@ -78,6 +78,20 @@
   }
 }
 
+@keyframes logError {
+  30% {
+    transform: rotate(0deg);
+  }
+
+  80% {
+    transform: rotate(0deg);
+  }
+
+  100% {
+    transform: rotate(25deg);
+  }
+}
+
 //------------------------------------------------
 
 // Для preloader ---------------------------------

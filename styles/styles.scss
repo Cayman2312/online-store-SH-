@@ -23,6 +23,7 @@ body {
   color: $mainTextColor;
   font-family: 'Open Sans', Arial, Helvetica, sans-serif;
   background-color: #fff;
+  cursor: default;
 }
 
 // Общий контейнер
@@ -219,23 +220,19 @@ body {
       }
 
       &.user-box__login {
-        opacity: 0;
-        animation: centre 2s ease forwards;
         animation-delay: 2s;
+
+        &::before {
+          background-image: url('/images/icons/account.png');
+        }
       }
 
       &.user-box__basket {
-        opacity: 0;
-        animation: centre 2s ease forwards;
         animation-delay: 2.5s;
-      }
 
-      &.user-box__login::before {
-        background-image: url('/images/icons/account.png');
-      }
-
-      &.user-box__basket::before {
-        background-image: url('/images/icons/bascet.png');
+        &::before {
+          background-image: url('/images/icons/bascet.png');
+        }
       }
 
       &::after {
@@ -261,6 +258,7 @@ body {
   // popup автаризации --------------------
 
   .popup-log {
+    display: none;
     position: absolute;
     border: 2px solid #e5e5e5;
     background-color: rgba(255, 255, 255);
@@ -269,72 +267,100 @@ body {
     top: 115px;
     opacity: 0;
     z-index: 2;
-    transition: .5s;
+    transition: .7s;
+    overflow: hidden;
 
-    & .error-login, & .error-pass {
+    &__close {
       position: absolute;
-      display: flex;
-      align-items: center;
-      opacity: 0;
-      color: inherit;
-      font-size: 12px;
-      text-align: center;
-      padding: 5px 15px;
-      border: 1px solid $orange;
-      border-radius: 4px;
-      background-color: white;
-      box-shadow: 0 2px 2px rgba(0,0,0,0.25), 0 2px 2px rgba(0,0,0,0.22);
-      transition: 1s;
-      top: 10px;
-      right: 8px;
+      top: 0;
+      right: 0;
+      width: 25px;
+      height: 25px;
+      opacity: 0.1;
+      transition: .5s;
+      cursor: pointer;
 
-      & img {
-        margin: auto;
-        width: 15px;
-        height: 15px;
-        margin-right: 5px;
+      &:hover {
+        opacity: 1;
       }
 
-      &:before {
+      &:before,
+      &:after {
         content: '';
         position: absolute;
-        border-right: 1px solid $orange;
-        border-bottom: 1px solid $orange;
-        width: 5px;
-        height: 5px;
-        left: 3px;
-        top: 25px;
+        width: 1px;
+        background-color: black;
+        top: 0;
+        bottom: 0;
+        left: 0;
+        right: 0;
+        margin: 0 auto;
         transform: rotate(45deg);
       }
-    }
 
-    & .error-pass {
-      top: 60px;
+      &:after {
+        transform: rotate(135deg);
+      }
     }
 
     &__form {
       display: flex;
       flex-direction: column;
 
-      & input,
-      & [type="submit"] {
-        border-radius: 0;
-        border: 1px solid #e5e5e5;
-        margin: 5px 0;
-        padding: 10px;
+      & input {
+        border: 0;
+        border-bottom: 1px solid #e5e5e5;
+        margin: 10px 0;
+        padding: 5px 10px;
         width: 100%;
         color: inherit;
         font-size: inherit;
+        outline: none;
+        transition: 0.3s;
+        background-color: transparent;
+
+        &:focus {
+          border-bottom: 1px solid $orange;
+        }
+      }
+
+      & .form__group {
+        position: relative;
+
+        & label {
+          position: absolute;
+          font-size: inherit;
+          opacity: 1;
+          transition: .3s;
+          color: #767676;
+          left: 5px;
+          bottom: 15px;
+          z-index: -1;
+        }
+
+        input:focus ~ label,
+        input:not(:placeholder-shown) ~ label {
+          opacity: 0;
+          left: 10%;
+          font-size: 0;
+          bottom: 25px;
+        }
       }
 
       & [type="submit"] {
         background-color: $orange;
+        padding: 8px;
         color: white;
         transition: .5s;
         cursor: pointer;
 
         &:hover {
           background-color: #f6651e;
+        }
+
+        &:disabled {
+          cursor: not-allowed;
+          background-color: #c1c1c1;
         }
       }
     }
@@ -352,7 +378,185 @@ body {
   }
 
   //----------------------------------------
+
+  // Popup регистрации новых пользователей -
+
+  .registration {
+    position: fixed;
+    top: 0;
+    bottom: 100%;
+    right: 0;
+    left: 0;
+    background-color: rgba(255, 255, 255, 0.91);
+    z-index: 1000;
+    transition: 1.5s;
+
+    &__title {
+      font-size: 24px;
+      text-transform: uppercase;
+      font-weight: 300;
+      letter-spacing: 4px;
+      text-align: center;
+      cursor: default;
+    }
+
+    &__error {
+      display: flex;
+      position: absolute;
+      top: 172px;
+      opacity: 0;
+      transition: .5s;
+      font-size: 13px;
+      font-weight: 100;
+      font-style: italic;
+      color: red;
+
+      & img {
+        width: 17px;
+        height: 17px;
+        margin-right: 5px;
+        transform: rotate(-25deg);
+        animation: logError 2s ease infinite alternate;
+      }
+    }
+
+    &__close,
+    & .forgot-popup__close {
+      position: absolute;
+      top: 20px;
+      right: 20px;
+      width: 30px;
+      height: 30px;
+      border: 1px solid #b3b3b3;
+      opacity: 0.1;
+      transition: .5s;
+      cursor: pointer;
+
+      &:hover {
+        opacity: 1;
+      }
+
+      &:before,
+      &:after {
+        content: '';
+        position: absolute;
+        width: 1px;
+        background-color: black;
+        top: 0;
+        bottom: 0;
+        left: 0;
+        right: 0;
+        margin: 0 auto;
+        transform: rotate(45deg);
+      }
+
+      &:after {
+        transform: rotate(135deg);
+      }
+    }
+
+    &__popup {
+      display: none;
+      position: relative;
+      border: 1px solid #b3b3b3;
+      padding: 20px;
+      width: 30%;
+      margin: 120px auto;
+      background-color: #ffffff;
+      opacity: 0;
+      transition: 1.5s;
+
+
+      & .flex-box {
+        display: flex;
+        justify-content: space-between;
+
+        & input {
+          width: 48%;
+        }
+      }
+
+      input {
+        width: 100%;
+        padding: 10px 5px;
+        margin: 15px 0;
+        outline: none;
+        border: 1px solid #e5e5e5;
+      }
+
+      & [type="submit"] {
+        background-color: $orange;
+        color: white;
+        text-transform: uppercase;
+        padding: 15px 0;
+        cursor: pointer;
+        border: 1px solid #ff7115;
+        transition: .5s;
+
+        &:hover {
+          background-color: #ff7115;
+        }
+      }
+
+      & [type="checkbox"] {
+        width: 10px;
+        margin-right: 10px;
+      }
+    }
+
+    // Форма забытого пароля
+    .forgot-popup {
+      width: 50%;
+      display: none;
+      position: relative;
+      border: 1px solid #b3b3b3;
+      padding: 20px;
+      margin: 120px auto;
+      background-color: #ffffff;
+      opacity: 0;
+      transition: 1.5s;
+
+      & .flex-box {
+        display: flex;
+      }
+
+      &__error {
+        font-size: 12px;
+        color: red;
+        font-style: italic;
+        transition: 1s;
+        opacity: 0;
+        text-align: center;
+      }
+
+      [type="email"] {
+        width: 80%;
+        padding: 10px;
+        margin: 10px 0;
+        border: 1px solid $border;
+        border-right: 0;
+        outline: none;
+      }
+
+      [type="submit"] {
+        width: 20%;
+        padding: 10px;
+        margin: 10px 0;
+        background-color: $orange;
+        border-radius: 0;
+        border-color: orange;
+        transition: .5s;
+        outline: none;
+        cursor: pointer;
+
+        &:hover {
+          background-color: #f6651e;
+        }
+      }
+    }
+  }
 }
+  //----------------------------------------
 
 // footer
 .footer {
@@ -524,9 +728,46 @@ body {
   }
 
 
-
   &.show {
     opacity: 1;
     display: flex;
   }
 }
+
+// Классы с анимациями ------------------
+
+.fromLeft {
+  position: relative;
+  left: -100%;
+  opacity: 0;
+  animation: fromLeft 2s ease forwards;
+}
+
+.fromBottom {
+  position: relative;
+  bottom: -100%;
+  opacity: 0;
+  animation: fromBot 2s ease forwards;
+}
+
+.fromRight {
+  position: relative;
+  right: -100%;
+  opacity: 0;
+  animation: fromRight 2s ease forwards;
+}
+
+.fromTop {
+  position: relative;
+  top: -100%;
+  opacity: 0;
+  animation: fromTop 2s ease forwards;
+}
+
+.centre {
+  position: relative;
+  opacity: 0;
+  animation: centre 2s ease forwards;
+}
+
+//---------------------------------------

@@ -36,7 +36,7 @@ include('parts/header.php');
             <div class="size centre">39</div>
 
             <div class="count centre">
-                1
+                <span>1</span>
                 <img class="btn-plus" src="/images/basket/plus.jpg" alt="">
                 <img class="btn-minus" src="/images/basket/minus.jpg" alt="">
             </div>
