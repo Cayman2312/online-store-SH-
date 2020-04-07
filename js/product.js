@@ -1,13 +1,46 @@
-const $productBtn = document.querySelector('.product-btn');
+const $addToBasket = document.forms.addToBasket;
 
-$productBtn.addEventListener('click', function () {
-    const productId = this.dataset.productId;
+$addToBasket.addEventListener('submit', function (e) {
+    e.preventDefault();
 
-    const xhr = new XMLHttpRequest();
-    xhr.open('GET', `/handlers/handler_product.php?product_id=${productId}`);
-    xhr.send();
+    const productId = this.submit.dataset.productId;
+    let productSizes = [];
 
-    xhr.addEventListener('load', function () {
-        console.log(xhr.response);
-    });
+    document.querySelectorAll('input[type="checkbox"]').forEach(item => {
+        if (item.checked) {
+            productSizes.push(+item.value)
+        }
+    })
+
+    if (productSizes.length == 0) {
+        alert('Необходимо выбрать размер(-ы) для добавления в корзину');
+    } else {
+
+        let newProduct = {
+            productId,
+            productSizes
+        }
+
+        const xhr = new XMLHttpRequest();
+        xhr.open('POST', '/handlers/handler_product.php');
+
+        xhr.setRequestHeader('Content-type', 'application/json; charset=utf-8');
+
+        xhr.addEventListener('error', () => {
+            alert('К сожалению сервер не отвечает на запрос... Попробуйте позднее.');
+        })
+
+        xhr.addEventListener('load', function () {
+            if (xhr.status != 200) {
+                alert('К сожалению отправка не удалась... Попробуйте позднее.');
+            } else {
+                alert('Товар был успешно добавлен в корзину!');
+            }
+            ;
+        });
+
+        let json = JSON.stringify(newProduct);
+
+        xhr.send(json);
+    }
 });

@@ -51,4 +51,160 @@
     bottom: 0;
   }
 }
+
+@-webkit-keyframes offerItem_Vertical {
+  100% {
+    top: 10%;
+    bottom: 10%;
+  }
+}
+
+@keyframes offerItem_Vertical {
+  100% {
+    top: 10%;
+    bottom: 10%;
+  }
+}
+
+@-webkit-keyframes offerItem_Horizon {
+  100% {
+    left: 10%;
+    right: 10%;
+  }
+}
+
+@keyframes offerItem_Horizon {
+  100% {
+    left: 10%;
+    right: 10%;
+  }
+}
+
+@-webkit-keyframes fromLeft {
+  100% {
+    left: 0;
+    opacity: 1;
+  }
+}
+
+@keyframes fromLeft {
+  100% {
+    left: 0;
+    opacity: 1;
+  }
+}
+
+@keyframes fromBot {
+  100% {
+    bottom: 0;
+    opacity: 1;
+  }
+}
+
+@-webkit-keyframes fromRight {
+  100% {
+    right: 0;
+    opacity: 1;
+  }
+}
+
+@keyframes fromRight {
+  100% {
+    right: 0;
+    opacity: 1;
+  }
+}
+
+@keyframes fromTop {
+  100% {
+    top: 0;
+    opacity: 1;
+  }
+}
+
+@-webkit-keyframes centre {
+  100% {
+    opacity: 1;
+  }
+}
+
+@keyframes centre {
+  100% {
+    opacity: 1;
+  }
+}
+
+@-webkit-keyframes logError {
+  30% {
+    -webkit-transform: rotate(0deg);
+            transform: rotate(0deg);
+  }
+  80% {
+    -webkit-transform: rotate(0deg);
+            transform: rotate(0deg);
+  }
+  100% {
+    -webkit-transform: rotate(25deg);
+            transform: rotate(25deg);
+  }
+}
+
+@keyframes logError {
+  30% {
+    -webkit-transform: rotate(0deg);
+            transform: rotate(0deg);
+  }
+  80% {
+    -webkit-transform: rotate(0deg);
+            transform: rotate(0deg);
+  }
+  100% {
+    -webkit-transform: rotate(25deg);
+            transform: rotate(25deg);
+  }
+}
+
+@-webkit-keyframes loaderHor {
+  100% {
+    right: 50%;
+    left: 50%;
+  }
+  50% {
+    right: 0;
+    left: 0;
+  }
+}
+
+@keyframes loaderHor {
+  100% {
+    right: 50%;
+    left: 50%;
+  }
+  50% {
+    right: 0;
+    left: 0;
+  }
+}
+
+@-webkit-keyframes loaderVer {
+  100% {
+    top: 50%;
+    bottom: 50%;
+  }
+  50% {
+    top: 0;
+    bottom: 0;
+  }
+}
+
+@keyframes loaderVer {
+  100% {
+    top: 50%;
+    bottom: 50%;
+  }
+  50% {
+    top: 0;
+    bottom: 0;
+  }
+}
 /*# sourceMappingURL=animations.css.map */
