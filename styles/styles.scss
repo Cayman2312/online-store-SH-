@@ -412,6 +412,7 @@ body {
       letter-spacing: 4px;
       text-align: center;
       cursor: default;
+      margin: 0 0 0 30px;
 
       @include adaptive(smartphone) {
         font-size: 16px;

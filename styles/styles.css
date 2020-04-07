@@ -447,6 +447,7 @@ body {
   letter-spacing: 4px;
   text-align: center;
   cursor: default;
+  margin: 0 0 0 30px;
 }
 @media (max-width: 767px) {
   .header .registration__title {
