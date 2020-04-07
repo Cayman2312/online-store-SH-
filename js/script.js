@@ -97,6 +97,8 @@ const $regPopup = document.querySelector('.registration__popup');
 const $regPopupEl = $regPopup.getElementsByTagName('*');
 const $regClose = document.querySelector('.registration__close');
 const $errorReg = document.querySelector('.registration__error');
+const $regPass = document.querySelector('.registration__popup [name="pass"]');
+const $regPassCheck = document.querySelector('.registration__popup [name="pass-check"]');
 
 // Ссылка на регистрацию
 $regHref.addEventListener('click', function () {
@@ -149,6 +151,11 @@ function chekFormReg(form) {
 
     if (!form['agree'].checked) {
         alert ('Либо за меня выходи, либо закрой страницу! xD');
+        return false;
+    }
+
+    if ($regPass.value !== $regPassCheck.value) {
+        alert('Пароли не совпадают');
         return false;
     }
 
