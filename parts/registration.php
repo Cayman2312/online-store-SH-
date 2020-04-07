@@ -2,8 +2,8 @@
     <form action="#" class="registration__popup" method="POST"
           onsubmit="return chekFormReg(this.elements)"
           onkeyup="return checkKeyupFormReg(this.elements)">
-        <h2 class="registration__title">Регистрация</h2>
         <div class="registration__close"></div>
+        <h2 class="registration__title">Регистрация</h2>
         <div class="flex-box">
             <input type="text" name="name" placeholder="Ваше имя">
             <input type="text" name="surname" placeholder="Ваша фамилия">
@@ -28,9 +28,9 @@
     <form action="#" class="forgot-popup" method="GET"
     onsubmit="return checkFormForgot(this.elements)"
     onkeyup="return checkKeyupFormForgot(this.elements)">
+        <div class="forgot-popup__close"></div>
         <p class="forgot-popup__text">Укажите свою почту при регистрации и мы направим Вам инструкцию, как восстановить
             пароль от личного кабинета</p>
-        <div class="forgot-popup__close"></div>
         <div class="flex-box">
             <input type="email" name="email" placeholder="e-mail">
             <input type="submit" value="-->">

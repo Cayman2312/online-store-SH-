@@ -270,6 +270,20 @@ body {
     transition: .7s;
     overflow: hidden;
 
+    @include adaptive(notebook) {
+      right: 0;
+    }
+
+    @include adaptive(tablet) {
+      top: 147px;
+    }
+
+    @include adaptive(smartphone) {
+      margin: 0 auto;
+      position: relative;
+      top: 17px;
+    }
+
     &__close {
       position: absolute;
       top: 0;
@@ -398,6 +412,11 @@ body {
       letter-spacing: 4px;
       text-align: center;
       cursor: default;
+      margin: 0 0 0 30px;
+
+      @include adaptive(smartphone) {
+        font-size: 16px;
+      }
     }
 
     &__error {
@@ -422,12 +441,12 @@ body {
 
     &__close,
     & .forgot-popup__close {
-      position: absolute;
-      top: 20px;
-      right: 20px;
+      position: relative;
+      float: right;
       width: 30px;
       height: 30px;
-      border: 1px solid #b3b3b3;
+      border: 1px solid #e5e5e5;
+      background-color: #f9f9f9;
       opacity: 0.1;
       transition: .5s;
       cursor: pointer;
@@ -458,21 +477,41 @@ body {
     &__popup {
       display: none;
       position: relative;
-      border: 1px solid #b3b3b3;
       padding: 20px;
       width: 30%;
       margin: 120px auto;
-      background-color: #ffffff;
+      background-color: #f9f9f9;
+      border: 1px solid #e5e5e5;
       opacity: 0;
       transition: 1.5s;
+
+      @include adaptive(notebook) {
+        width: 40%;
+      }
+
+      @include adaptive(smartphone) {
+        width: 50%;
+      }
+
+      @include adaptive(mobile) {
+        width: 100%;
+      }
 
 
       & .flex-box {
         display: flex;
         justify-content: space-between;
 
+        @include adaptive(tablet) {
+          display: block;
+        }
+
         & input {
           width: 48%;
+
+          @include adaptive(tablet) {
+            width: 100%;
+          }
         }
       }
 
@@ -492,6 +531,7 @@ body {
         cursor: pointer;
         border: 1px solid #ff7115;
         transition: .5s;
+        letter-spacing: 2px;
 
         &:hover {
           background-color: #ff7115;
@@ -509,12 +549,24 @@ body {
       width: 50%;
       display: none;
       position: relative;
-      border: 1px solid #b3b3b3;
+      background-color: #f9f9f9;
+      border: 1px solid #e5e5e5;
       padding: 20px;
       margin: 120px auto;
-      background-color: #ffffff;
       opacity: 0;
       transition: 1.5s;
+
+      @include adaptive(notebook) {
+        width: 60%;
+      }
+
+      @include adaptive(smartphone) {
+        width: 70%;
+      }
+
+      @include adaptive(mobile) {
+        width: 100%;
+      }
 
       & .flex-box {
         display: flex;
@@ -531,7 +583,8 @@ body {
 
       [type="email"] {
         width: 80%;
-        padding: 10px;
+        padding: 15px;
+        font-size: 15px;
         margin: 10px 0;
         border: 1px solid $border;
         border-right: 0;
