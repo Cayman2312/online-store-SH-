@@ -7,16 +7,18 @@
     include('parts/header.php');
 
     if (isset($_SESSION['basket']) && !empty($_SESSION['basket'])) {
-        $temp = [];
+        $productArr = [];
+        $sum = 0; 
 
         foreach ($_SESSION['basket'] as $key => $value) {
             $qr = "SELECT * FROM products WHERE id=$key";
             $result = mysqli_query($link, $qr);
             $row = mysqli_fetch_assoc($result);
-            $temp[] = $row;
+            $productArr[] = $row;
         }
         // d($_SESSION);
-        // d($temp);
+        // d($productArr);
+        
     }
 ?>
 
@@ -36,39 +38,41 @@
             <h4 class="centre">Удалить</h4>
         </div>
 
-        <?php foreach($temp as $value) : ?>
+        <?php foreach($productArr as $producItem) : ?>
         <?php 
             //считаем количество уникальных размеров
-            $sizesArr = array_count_values( $_SESSION['basket']["{$value['id']}"] ); 
+            $sizesArr = array_count_values( $_SESSION['basket']["{$producItem['id']}"] );
+            
         ?>
-            <?php foreach($sizesArr as $sizeKey=>$sizeValue) : ?>
+            <?php foreach($sizesArr as $size=>$sizeAmount) : ?>
                 <div class="item">
                     <div class="image centre">
-                        <img src="<?= $value['img_url']?>" alt="<?= $value['name'] ?>">
+                        <img src="<?= $producItem['img_url']?>" alt="<?= $producItem['name'] ?>">
                     </div>
 
                     <div class="name">
-                        <p><?= $value['name'] ?></p>
-                        <p>арт. <?= $value['id'] ?></p>
+                        <p><?= $producItem['name'] ?></p>
+                        <p>арт. <?= $producItem['id'] ?></p>
                     </div>
 
-                    <div class="size centre"><?= $sizeKey ?></div>
+                    <div class="size centre"><?= $size ?></div>
 
                     <div class="count centre">
-                        <span><?= $sizeValue ?></span>
+                        <span><?= $sizeAmount ?></span>
                         <img class="btn-plus" src="/images/basket/plus.jpg" alt="">
                         <img class="btn-minus" src="/images/basket/minus.jpg" alt="">
                     </div>
 
-                    <div class="price centre"><?= $value['price']?> руб.</div>
+                    <div class="price centre"><?= $producItem['price']?> руб.</div>
                     <div class="basket-x"></div>
                 </div>
+            <?php $sum += $producItem['price']*$sizeAmount ?>
             <?php endforeach ; ?>
         <?php endforeach ; ?>
 
         <div class="result">
             <span class="centre">Итог:</span>
-            <span class="centre orange">12500 руб.</span>
+            <span class="centre orange"><?= $sum ?> руб.</span>
         </div>
     
     <?php else : ?>
