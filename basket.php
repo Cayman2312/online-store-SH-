@@ -38,21 +38,20 @@
             <h4 class="centre">Удалить</h4>
         </div>
 
-        <?php foreach($productArr as $producItem) : ?>
+        <?php foreach($productArr as $$productItem) : ?>
         <?php 
             //считаем количество уникальных размеров
-            $sizesArr = array_count_values( $_SESSION['basket']["{$producItem['id']}"] );
-            
+            $sizesArr = array_count_values( $_SESSION['basket']["{$$productItem['id']}"] );     
         ?>
             <?php foreach($sizesArr as $size=>$sizeAmount) : ?>
                 <div class="item">
                     <div class="image centre">
-                        <img src="<?= $producItem['img_url']?>" alt="<?= $producItem['name'] ?>">
+                        <img src="<?= $$productItem['img_url']?>" alt="<?= $$productItem['name'] ?>">
                     </div>
 
                     <div class="name">
-                        <p><?= $producItem['name'] ?></p>
-                        <p>арт. <?= $producItem['id'] ?></p>
+                        <p><?= $$productItem['name'] ?></p>
+                        <p>арт. <?= $$productItem['id'] ?></p>
                     </div>
 
                     <div class="size centre"><?= $size ?></div>
@@ -63,10 +62,10 @@
                         <img class="btn-minus" src="/images/basket/minus.jpg" alt="">
                     </div>
 
-                    <div class="price centre"><?= $producItem['price']?> руб.</div>
+                    <div class="price centre"><?= $$productItem['price']?> руб.</div>
                     <div class="basket-x"></div>
                 </div>
-            <?php $sum += $producItem['price']*$sizeAmount ?>
+            <?php $sum += $$productItem['price']*$sizeAmount ?>
             <?php endforeach ; ?>
         <?php endforeach ; ?>
 

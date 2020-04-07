@@ -33,6 +33,30 @@ $back: #f9f9f9;
   font-style: italic;
   font-family: "Lora";
   font-weight: 300;
+
+  & a{
+    color: $orange;
+    text-decoration: none;
+    position: relative;
+    
+    &::before {
+      content: '';
+      position: absolute;
+      left: 0;
+      bottom: -5px;
+      
+      width: 0;
+      height: 2px;
+      background-color: $orange;
+      transition: 0.3s ease-in-out;
+    }
+
+    &:hover::before {
+      width: 100%;
+    }
+  }
+
+
 }
 
 .orange {
