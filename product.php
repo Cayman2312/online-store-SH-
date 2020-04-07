@@ -42,7 +42,7 @@ if (!empty($_GET['id'])) {
 }
 ?>
 
-<form action="#" class="product">
+<form name="addToBasket" action="#" class="product">
     <div class="product-img" style="background-image: url(<?= $template['img_url'] ?>)"></div>
     <div class="product-name"><?= $template['name'] ?></div>
     <div class="product-article">артикул <?= $template['id'] ?></div>
@@ -57,7 +57,7 @@ if (!empty($_GET['id'])) {
         <?php endwhile ; ?>
     </div>
 
-    <input type="submit" class="product-btn" value="Добавить в корзину" data-product-id="<?= $template['id'] ?>">
+    <input name="submit" type="submit" class="product-btn" value="Добавить в корзину" data-product-id="<?= $template['id'] ?>">
 </form>
 
 <?php
