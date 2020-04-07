@@ -16,9 +16,6 @@
             $row = mysqli_fetch_assoc($result);
             $productArr[] = $row;
         }
-        d($_SESSION);
-        // d($productArr);
-        
     }
 ?>
 
@@ -67,7 +64,7 @@
                         <img class="btn-minus" src="/images/basket/minus.jpg" alt="">
                     </div>
 
-                    <div class="price centre"><?= $productItem['price']?> руб.</div>
+                    <div class="price centre"><?= $productItem['price']*$sizeAmount?> руб.</div>
                     <div class="basket-x"></div>
                 </div>
             <?php $sum += $productItem['price']*$sizeAmount ?>
