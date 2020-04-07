@@ -323,6 +323,23 @@ body {
   transition: 0.7s;
   overflow: hidden;
 }
+@media (max-width: 1199px) {
+  .header .popup-log {
+    right: 0;
+  }
+}
+@media (max-width: 991px) {
+  .header .popup-log {
+    top: 147px;
+  }
+}
+@media (max-width: 767px) {
+  .header .popup-log {
+    margin: 0 auto;
+    position: relative;
+    top: 17px;
+  }
+}
 .header .popup-log__close {
   position: absolute;
   top: 0;
@@ -431,6 +448,11 @@ body {
   text-align: center;
   cursor: default;
 }
+@media (max-width: 767px) {
+  .header .registration__title {
+    font-size: 16px;
+  }
+}
 .header .registration__error {
   display: flex;
   position: absolute;
@@ -450,12 +472,12 @@ body {
   animation: logError 2s ease infinite alternate;
 }
 .header .registration__close, .header .registration .forgot-popup__close {
-  position: absolute;
-  top: 20px;
-  right: 20px;
+  position: relative;
+  float: right;
   width: 30px;
   height: 30px;
-  border: 1px solid #b3b3b3;
+  border: 1px solid #e5e5e5;
+  background-color: #f9f9f9;
   opacity: 0.1;
   transition: 0.5s;
   cursor: pointer;
@@ -481,20 +503,45 @@ body {
 .header .registration__popup {
   display: none;
   position: relative;
-  border: 1px solid #b3b3b3;
   padding: 20px;
   width: 30%;
   margin: 120px auto;
-  background-color: #ffffff;
+  background-color: #f9f9f9;
+  border: 1px solid #e5e5e5;
   opacity: 0;
   transition: 1.5s;
+}
+@media (max-width: 1199px) {
+  .header .registration__popup {
+    width: 40%;
+  }
+}
+@media (max-width: 767px) {
+  .header .registration__popup {
+    width: 50%;
+  }
+}
+@media (max-width: 575px) {
+  .header .registration__popup {
+    width: 100%;
+  }
 }
 .header .registration__popup .flex-box {
   display: flex;
   justify-content: space-between;
 }
+@media (max-width: 991px) {
+  .header .registration__popup .flex-box {
+    display: block;
+  }
+}
 .header .registration__popup .flex-box input {
   width: 48%;
+}
+@media (max-width: 991px) {
+  .header .registration__popup .flex-box input {
+    width: 100%;
+  }
 }
 .header .registration__popup input {
   width: 100%;
@@ -511,6 +558,7 @@ body {
   cursor: pointer;
   border: 1px solid #ff7115;
   transition: 0.5s;
+  letter-spacing: 2px;
 }
 .header .registration__popup [type=submit]:hover {
   background-color: #ff7115;
@@ -523,12 +571,27 @@ body {
   width: 50%;
   display: none;
   position: relative;
-  border: 1px solid #b3b3b3;
+  background-color: #f9f9f9;
+  border: 1px solid #e5e5e5;
   padding: 20px;
   margin: 120px auto;
-  background-color: #ffffff;
   opacity: 0;
   transition: 1.5s;
+}
+@media (max-width: 1199px) {
+  .header .registration .forgot-popup {
+    width: 60%;
+  }
+}
+@media (max-width: 767px) {
+  .header .registration .forgot-popup {
+    width: 70%;
+  }
+}
+@media (max-width: 575px) {
+  .header .registration .forgot-popup {
+    width: 100%;
+  }
 }
 .header .registration .forgot-popup .flex-box {
   display: flex;
@@ -543,7 +606,8 @@ body {
 }
 .header .registration .forgot-popup [type=email] {
   width: 80%;
-  padding: 10px;
+  padding: 15px;
+  font-size: 15px;
   margin: 10px 0;
   border: 1px solid #e5e5e5;
   border-right: 0;
