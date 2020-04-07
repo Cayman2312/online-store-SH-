@@ -1,15 +1,28 @@
 <?php
-$header_config = [
-    'title' => 'Корзина',
-    'style' => 'basket.css'
-];
+    $header_config = [
+        'title' => 'Корзина',
+        'style' => 'basket.css'
+    ];
 
-include('parts/header.php');
+    include('parts/header.php');
 
+    if (isset($_SESSION['basket']) && !empty($_SESSION['basket'])) {
+        $temp = [];
+
+        foreach ($_SESSION['basket'] as $key => $value) {
+            $qr = "SELECT * FROM products WHERE id=$key";
+            $result = mysqli_query($link, $qr);
+            $row = mysqli_fetch_assoc($result);
+            $temp[] = $row;
+        }
+        // d($_SESSION);
+        // d($temp);
+    }
 ?>
 
     <div class="basket-top">
         <h1 class="big-title">Ваша корзина</h1>
+    <?php if (isset($_SESSION['basket']) && !empty($_SESSION['basket'])) : ?>
         <h3 class="min-title">Товары резервируются на ограниченное время</h3>
     </div>
 
@@ -18,39 +31,52 @@ include('parts/header.php');
             <h4>Фото</h4>
             <h4>Наименование</h4>
             <h4 class="centre">Размер</h4>
-            <h4 class="centre">Колличество</h4>
+            <h4 class="centre">Количество</h4>
             <h4 class="centre">Стоимость</h4>
             <h4 class="centre">Удалить</h4>
         </div>
 
-        <div class="item">
-            <div class="image centre">
-                <img src="images/catalog/1.jpg">
-            </div>
+        <?php foreach($temp as $value) : ?>
+        <?php 
+            //считаем количество уникальных размеров
+            $sizesArr = array_count_values( $_SESSION['basket']["{$value['id']}"] ); 
+        ?>
+            <?php foreach($sizesArr as $sizeKey=>$sizeValue) : ?>
+                <div class="item">
+                    <div class="image centre">
+                        <img src="<?= $value['img_url']?>" alt="<?= $value['name'] ?>">
+                    </div>
 
-            <div class="name">
-                <p>Куртка синяя</p>
-                <p>арт. 123412</p>
-            </div>
+                    <div class="name">
+                        <p><?= $value['name'] ?></p>
+                        <p>арт. <?= $value['id'] ?></p>
+                    </div>
 
-            <div class="size centre">39</div>
+                    <div class="size centre"><?= $sizeKey ?></div>
 
-            <div class="count centre">
-                <span>1</span>
-                <img class="btn-plus" src="/images/basket/plus.jpg" alt="">
-                <img class="btn-minus" src="/images/basket/minus.jpg" alt="">
-            </div>
+                    <div class="count centre">
+                        <span><?= $sizeValue ?></span>
+                        <img class="btn-plus" src="/images/basket/plus.jpg" alt="">
+                        <img class="btn-minus" src="/images/basket/minus.jpg" alt="">
+                    </div>
 
-            <div class="price centre">3800 руб.</div>
-            <div class="basket-x"></div>
-        </div>
+                    <div class="price centre"><?= $value['price']?> руб.</div>
+                    <div class="basket-x"></div>
+                </div>
+            <?php endforeach ; ?>
+        <?php endforeach ; ?>
 
         <div class="result">
             <span class="centre">Итог:</span>
             <span class="centre orange">12500 руб.</span>
         </div>
+    
+    <?php else : ?>
+        <h3 class="min-title">В вашей корзине товаров нет. Вы можете <a href="/catalog.php">исправить это!</a></h3>
     </div>
 
+    <?php endif ;?>
+    </div>
 
     <div class="symbol">
         <div class="symbol-el"></div>
