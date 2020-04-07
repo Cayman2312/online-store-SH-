@@ -39,7 +39,17 @@
         justify-content: center;
         margin: 0 0 50px;
 
-        a {
+        & input[type="checkbox"] {
+            display: none;
+            
+            &:checked + label {
+                background-color: #ff8d00;
+                color:#fff;
+                border: 1px solid #ff8d00;
+            }
+        }
+
+        & label {
             border: 1px solid rgb(149, 149, 149);
             width: 30px;
             height: 30px;
@@ -47,7 +57,13 @@
             color: #7a7a7a;
             padding: 3px 0 0;
             margin: 0 7px;
+            transition: 0.3s ease-in-out;
+
+
         }
+
+
+
     }
 
     &-btn {
