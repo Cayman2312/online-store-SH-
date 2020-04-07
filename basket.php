@@ -16,7 +16,7 @@
             $row = mysqli_fetch_assoc($result);
             $productArr[] = $row;
         }
-        // d($_SESSION);
+        d($_SESSION);
         // d($productArr);
         
     }
@@ -38,20 +38,25 @@
             <h4 class="centre">Удалить</h4>
         </div>
 
-        <?php foreach($productArr as $$productItem) : ?>
+        <?php foreach($productArr as $productItem) : ?>
         <?php 
             //считаем количество уникальных размеров
-            $sizesArr = array_count_values( $_SESSION['basket']["{$$productItem['id']}"] );     
+            $sizesArr = array_count_values( $_SESSION['basket']["{$productItem['id']}"] );     
         ?>
             <?php foreach($sizesArr as $size=>$sizeAmount) : ?>
-                <div class="item">
+                <div 
+                    class="item" 
+                    data-product-id="<?= $productItem['id'] ?>"
+                    data-product-size="<?= $size ?>"
+                    data-product-size-amount="<?= $sizeAmount ?>"
+                >
                     <div class="image centre">
-                        <img src="<?= $$productItem['img_url']?>" alt="<?= $$productItem['name'] ?>">
+                        <img src="<?= $productItem['img_url']?>" alt="<?= $productItem['name'] ?>">
                     </div>
 
                     <div class="name">
-                        <p><?= $$productItem['name'] ?></p>
-                        <p>арт. <?= $$productItem['id'] ?></p>
+                        <p><?= $productItem['name'] ?></p>
+                        <p>арт. <?= $productItem['id'] ?></p>
                     </div>
 
                     <div class="size centre"><?= $size ?></div>
@@ -62,10 +67,10 @@
                         <img class="btn-minus" src="/images/basket/minus.jpg" alt="">
                     </div>
 
-                    <div class="price centre"><?= $$productItem['price']?> руб.</div>
+                    <div class="price centre"><?= $productItem['price']?> руб.</div>
                     <div class="basket-x"></div>
                 </div>
-            <?php $sum += $$productItem['price']*$sizeAmount ?>
+            <?php $sum += $productItem['price']*$sizeAmount ?>
             <?php endforeach ; ?>
         <?php endforeach ; ?>
 

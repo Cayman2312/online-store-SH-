@@ -447,15 +447,11 @@
 }
 
 .basket-order .item .basket-x {
-  width: 2px;
-  height: 17px;
-  border-radius: 30%;
-  background-color: black;
-  margin: auto;
-  -webkit-transform: rotate(45deg);
-          transform: rotate(45deg);
+  width: 20px;
+  height: 20px;
   position: relative;
   cursor: pointer;
+  margin: auto;
 }
 
 @media (max-width: 575px) {
@@ -464,17 +460,40 @@
   }
 }
 
-.basket-order .item .basket-x::after {
-  content: "";
+.basket-order .item .basket-x::before, .basket-order .item .basket-x::after {
+  content: '';
   position: absolute;
-  width: 2px;
-  height: 17px;
+  top: 0;
+  bottom: 0;
+  right: 0;
+  left: 0;
+  margin: auto;
+  width: 80%;
+  height: 2px;
   border-radius: 30%;
   background-color: black;
-  -webkit-transform: rotate(90deg);
-          transform: rotate(90deg);
-  left: 0;
-  top: 0;
+  -webkit-transition: 0.3s ease-in-out;
+  transition: 0.3s ease-in-out;
+}
+
+.basket-order .item .basket-x::before {
+  -webkit-transform: rotate(-45deg);
+          transform: rotate(-45deg);
+}
+
+.basket-order .item .basket-x:hover::before {
+  -webkit-transform: rotate(45deg);
+          transform: rotate(45deg);
+}
+
+.basket-order .item .basket-x::after {
+  -webkit-transform: rotate(45deg);
+          transform: rotate(45deg);
+}
+
+.basket-order .item .basket-x:hover::after {
+  -webkit-transform: rotate(135deg);
+          transform: rotate(135deg);
 }
 
 .basket-order .result {
