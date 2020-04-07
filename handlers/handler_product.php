@@ -5,9 +5,6 @@
     $postData = file_get_contents('php://input');
     $newProduct = json_decode($postData, true);
 
-    
-
-        
     if (!isset($_SESSION['basket'])) {
         $_SESSION['basket'] = [];
     } 
@@ -20,8 +17,4 @@
         }
     }
 
-    // print_r($_SESSION);
-
-    echo "Товар успешно добавлен!"
-    
 ?>
