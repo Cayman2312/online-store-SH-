@@ -116,5 +116,61 @@ document.addEventListener("DOMContentLoaded", function (e) {
   })
 
 
+  //валидация данных формы при отправке
+  let $formСheckout = document.forms.payment;
+  let $formСheckoutInput = $formСheckout.querySelectorAll('input:not([type="submit"])');
+
+  $formСheckout.addEventListener('submit', function (e) {
+    e.preventDefault();
+    $formСheckoutInput.forEach($input => {
+      if ($input.value == '') {
+        $input.classList.add('error');
+      }
+    })
+
+
+
+
+
+
+  })
+
+  //валидация данных каждого input при изменении
+
+
+  for (let $input of $formСheckoutInput) {
+    $input.addEventListener('blur', function () {
+      this.value = this.value.trim();
+      let rule = this.dataset.rule;
+      let err;
+      switch (rule) {
+        case "name":
+          this.value = this.value.replace(/\d/gu, '');
+          if (this.value.length == 0) { err = true } else { err = false }
+          break;
+        case "index":
+          this.value = this.value.replace(/\D/gu, '');
+          if (this.value.length != 6) { err = true } else { err = false }
+          break;
+        case "phone":
+          this.value = this.value.replace(/\D/gu, '');
+          if (this.value[0] == "7") this.value = '8' + this.value.slice(1);
+          if (this.value.length != 11) { err = true } else { err = false }
+          break;
+        case "email":
+          err = !(/^\w+@\w+\.\w+$/g.test(this.value));
+          break;
+        default:
+          break;
+      }
+
+      if (err) {
+        this.classList.add('error');
+      } else {
+        this.classList.remove('error');
+      }
+    })
+
+  }
 
 });

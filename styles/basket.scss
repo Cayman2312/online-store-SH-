@@ -7,7 +7,7 @@ $back: #f9f9f9;
 
 .basket-top {
   text-align: center;
-  padding: 122px 0 97px;
+  padding: 110px 0 97px;
   overflow: hidden;
 
   .big-title,
@@ -346,6 +346,11 @@ $back: #f9f9f9;
       margin-top: 14px;
       padding: 5px;
       border: 1px solid $border;
+      transition: 0.3s ease-in-out;
+
+      &.error {
+        box-shadow: 0 0 15px red;
+      }
     }
 
     &__box {

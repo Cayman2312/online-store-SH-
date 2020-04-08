@@ -210,7 +210,7 @@
 
 .basket-top {
   text-align: center;
-  padding: 122px 0 97px;
+  padding: 110px 0 97px;
   overflow: hidden;
 }
 
@@ -612,6 +612,14 @@
   margin-top: 14px;
   padding: 5px;
   border: 1px solid #e5e5e5;
+  -webkit-transition: 0.3s ease-in-out;
+  transition: 0.3s ease-in-out;
+}
+
+.basket-form .popup input.error,
+.basket-form .popup select.error {
+  -webkit-box-shadow: 0 0 15px red;
+          box-shadow: 0 0 15px red;
 }
 
 .basket-form .popup__box {
