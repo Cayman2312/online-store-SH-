@@ -1,5 +1,5 @@
-@import "mixin.scss";
-@import "animations.scss";
+@import 'mixin.scss';
+@import 'animations.scss';
 
 $orange: #f6955d;
 $border: #e5e5e5;
@@ -31,20 +31,20 @@ $back: #f9f9f9;
   color: #7c7c7c;
   font-size: 21px;
   font-style: italic;
-  font-family: "Lora";
+  font-family: 'Lora';
   font-weight: 300;
 
-  & a{
+  & a {
     color: $orange;
     text-decoration: none;
     position: relative;
-    
+
     &::before {
       content: '';
       position: absolute;
       left: 0;
       bottom: -5px;
-      
+
       width: 0;
       height: 2px;
       background-color: $orange;
@@ -55,8 +55,6 @@ $back: #f9f9f9;
       width: 100%;
     }
   }
-
-
 }
 
 .orange {
@@ -98,10 +96,10 @@ $back: #f9f9f9;
       grid-template-columns: 1fr 2fr 2fr 1fr;
       grid-auto-rows: minmax(auto);
       grid-template-areas:
-        "bx img img ct"
-        "bx img img ct"
-        "bx nm  nm  ct"
-        "bx pr  sz  ct";
+        'bx img img ct'
+        'bx img img ct'
+        'bx nm  nm  ct'
+        'bx pr  sz  ct';
     }
 
     .image {
@@ -151,7 +149,7 @@ $back: #f9f9f9;
       }
 
       &:before {
-        content: "размер";
+        content: 'размер';
         position: absolute;
         color: #949494;
         text-transform: none;
@@ -228,7 +226,8 @@ $back: #f9f9f9;
         grid-area: bx;
       }
 
-      &::before,  &::after{
+      &::before,
+      &::after {
         content: '';
         position: absolute;
         top: 0;
@@ -280,7 +279,8 @@ $back: #f9f9f9;
     }
 
     span:last-child {
-      grid-column: 5;
+      grid-column: 5/7;
+      margin-left: 0;
 
       @include adaptive(mobile) {
         grid-column: 2;
@@ -308,7 +308,7 @@ $back: #f9f9f9;
     animation: Revers 10s infinite;
 
     &::after {
-      content: "";
+      content: '';
       position: absolute;
       width: 2px;
       height: 30px;
@@ -351,7 +351,7 @@ $back: #f9f9f9;
     &__box {
       margin: 50px 10px 0;
 
-      @include adaptive (mobile) {
+      @include adaptive(mobile) {
         grid-column-start: 1;
         grid-column-end: 3;
       }
@@ -366,7 +366,7 @@ $back: #f9f9f9;
       }
     }
 
-    [type="submit"] {
+    [type='submit'] {
       position: relative;
       bottom: -780px;
       border: 1px solid rgb(230, 116, 41);
@@ -410,7 +410,7 @@ $back: #f9f9f9;
     line-height: 2;
     list-style: none;
 
-    @include adaptive (mobile) {
+    @include adaptive(mobile) {
       margin-top: 65px;
     }
 
@@ -421,7 +421,7 @@ $back: #f9f9f9;
       &:nth-child(even) {
         text-align: left;
         font-style: italic;
-        font-family: "Lora";
+        font-family: 'Lora';
       }
     }
   }

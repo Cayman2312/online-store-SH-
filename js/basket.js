@@ -12,6 +12,12 @@ document.addEventListener("DOMContentLoaded", function (e) {
     xhr.send();
   }
 
+  function changeFinalPrice(sum) {
+    let service = +document.querySelector('.list-item.service').textContent.slice(0, -5);
+    document.querySelector('.list-item.price').textContent = `${sum} руб.`;
+    document.querySelector('.list-item.final-price').textContent = `${sum + service} руб.`;
+  }
+
   //программируем кнопку "удалить" у товара
   let $deleteButtons = document.querySelectorAll('.basket-x');
 
@@ -22,7 +28,9 @@ document.addEventListener("DOMContentLoaded", function (e) {
         let sum = +document.querySelector('.centre.orange').textContent.slice(0, -5);
         let priceDeleted = +item.parentNode.querySelector('.price.centre').textContent.slice(0, -5);
         sum -= priceDeleted;
-        document.querySelector('.centre.orange').textContent = `${sum} руб.`;
+        document.querySelector('.list-item.price').textContent = `${sum} руб.`;
+        changeFinalPrice(sum);
+
 
         //удаляем товар из $_SESSION
         requestGet('remove', item.parentNode.dataset.productId, item.parentNode.dataset.productSize, item.parentNode.dataset.productSizeAmount);
@@ -54,6 +62,8 @@ document.addEventListener("DOMContentLoaded", function (e) {
       sum = +sum + cost;
       $item.querySelector('.price.centre').textContent = `${sum} руб.`;
 
+      changeFinalPrice(finalSum);
+
       //добавляем товар в $_SESSION
       requestGet('plus', $item.dataset.productId, $item.dataset.productSize, $item.dataset.productSizeAmount);
     })
@@ -84,12 +94,26 @@ document.addEventListener("DOMContentLoaded", function (e) {
         sum -= cost;
         $item.querySelector('.price.centre').textContent = `${sum} руб.`;
 
+        changeFinalPrice(finalSum);
+
         //добавляем товар в $_SESSION
         requestGet('minus', $item.dataset.productId, $item.dataset.productSize, $item.dataset.productSizeAmount);
       }
     })
   })
 
+  //меняем финальную сумму при изменении способа доставки
+  let $formSelectService = document.forms.payment.service;
+  let service = $formSelectService.value;
+
+  $formSelectService.addEventListener('change', function () {
+    let service = +this.value;
+    let currentSum = +document.querySelector('.list-item.price').textContent.slice(0, -5);
+
+    document.querySelector('.list-item.service').textContent = `${service} руб.`;
+    document.querySelector('.list-item.final-price').textContent = `${currentSum + service} руб.`;
+
+  })
 
 
 

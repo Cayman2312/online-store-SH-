@@ -72,10 +72,11 @@ if (isset($_SESSION['basket']) && !empty($_SESSION['basket'])) {
     </div>
 
 <?php else : ?>
+
     <h3 class="min-title">В вашей корзине товаров нет. Вы можете <a href="/catalog.php">исправить это!</a></h3>
 
-
 <?php endif; ?>
+
 </div>
 
 <div class="symbol">
@@ -89,13 +90,18 @@ if (isset($_SESSION['basket']) && !empty($_SESSION['basket'])) {
     <h2 class="big-title">Адрес доставки</h2>
     <h3 class="min-title">Все поля обязательны для заполнения</h3>
 
-    <form action="/#" class="popup">
+    <form action="/#" class="popup" name="payment">
         <div class="popup__box box_full">
             <p>Выберите вариант доставки</p>
             <select name="service">
-                <option value="">Курьерская служба - 500р</option>
-                <option value="">Курьерская служба - 500р</option>
-                <option value="">Курьерская служба - 500р</option>
+                <?php
+                $service_self = 0;
+                $service_courier = 500;
+                $service_mail = 300;
+                ?>
+                <option value="<?= $service_self ?>">Самовывоз - бесплатно!</option>
+                <option value="<?= $service_courier ?>" selected>Курьерская служба - <?= $service_courier ?>р.</option>
+                <option value="<?= $service_mail ?>">Почта России - <?= $service_mail ?>р.</option>
             </select>
         </div>
 
@@ -138,8 +144,7 @@ if (isset($_SESSION['basket']) && !empty($_SESSION['basket'])) {
             <p>Выберите способ оплаты</p>
             <select name="payment">
                 <option value="">Банковская карта</option>
-                <option value="">Банковская карта</option>
-                <option value="">Банковская карта</option>
+                <option value="">Наличными при получении</option>
             </select>
             <img src="/images/basket/cards.jpg" alt="">
         </div>
@@ -164,11 +169,11 @@ if (isset($_SESSION['basket']) && !empty($_SESSION['basket'])) {
 
     <div class="payment-list">
         <li class="list-item">Стоимость:</li>
-        <li class="list-item">12500 руб.</li>
+        <li class="list-item price"><?= $sum ?> руб.</li>
         <li class="list-item">Доставка:</li>
-        <li class="list-item">500 руб.</li>
+        <li class="list-item service"><?= $service_courier ?> руб.</li>
         <li class="list-item orange">Итого:</li>
-        <li class="list-item orange">13000 руб.</li>
+        <li class="list-item final-price orange"><?= $sum + $service_courier ?> руб.</li>
     </div>
 </div>
 
