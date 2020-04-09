@@ -1,4 +1,4 @@
-<?php 
+<?php
     include('parts/header.php'); 
     
     $sql = "SELECT * FROM products";

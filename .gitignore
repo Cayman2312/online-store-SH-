@@ -3,3 +3,7 @@
 
 # mac os files
 .DS_Store
+
+# .css and .css.map
+styles/*.css
+styles/*.css.map
