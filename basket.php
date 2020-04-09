@@ -144,11 +144,12 @@ if (isset($_SESSION['basket']) && !empty($_SESSION['basket'])) {
                     <img src="/images/basket/cards.jpg" alt="">
                 </div>
 
+                <input type="hidden" name="price" value="<?= $sum ?>">
+                <input type="hidden" name="full-price" value="<?= $sum + $service_courier ?>">
+                <input type="hidden" name="success" value="success">
                 <div class="popup__box box_full" id="btn">
                     <input type="submit" value="заказать">
                 </div>
-                <input type="hidden" name="price" value="<?= $sum ?>">
-                <input type="hidden" name="full-price" value="<?= $sum + $service_courier ?>">
             </form>
         </div>
 

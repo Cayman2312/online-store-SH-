@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Хост: 127.0.0.1
--- Время создания: Апр 07 2020 г., 17:35
+-- Время создания: Апр 09 2020 г., 13:55
 -- Версия сервера: 10.4.11-MariaDB
 -- Версия PHP: 7.4.2
 
@@ -44,6 +44,65 @@ INSERT INTO `categories` (`id`, `name`) VALUES
 (1, 'Женщинам'),
 (2, 'Мужчинам'),
 (3, 'Детям');
+
+-- --------------------------------------------------------
+
+--
+-- Структура таблицы `orders_detail`
+--
+
+CREATE TABLE IF NOT EXISTS `orders_detail` (
+  `id` int(11) NOT NULL AUTO_INCREMENT,
+  `orders_list_id` int(11) NOT NULL,
+  `product_id` int(11) NOT NULL,
+  `product_size` int(11) NOT NULL,
+  `product_size_amount` int(11) NOT NULL,
+  PRIMARY KEY (`id`)
+) ENGINE=InnoDB AUTO_INCREMENT=12 DEFAULT CHARSET=utf8;
+
+--
+-- Дамп данных таблицы `orders_detail`
+--
+
+INSERT INTO `orders_detail` (`id`, `orders_list_id`, `product_id`, `product_size`, `product_size_amount`) VALUES
+(5, 7, 0, 40, 1),
+(6, 7, 0, 41, 1),
+(7, 7, 1, 50, 1),
+(8, 7, 2, 34, 4),
+(9, 7, 2, 35, 1),
+(10, 8, 0, 41, 1),
+(11, 9, 0, 48, 3);
+
+-- --------------------------------------------------------
+
+--
+-- Структура таблицы `orders_list`
+--
+
+CREATE TABLE IF NOT EXISTS `orders_list` (
+  `id` int(11) NOT NULL AUTO_INCREMENT,
+  `name` varchar(50) NOT NULL,
+  `lastname` varchar(50) NOT NULL,
+  `phone` varchar(15) NOT NULL,
+  `email` varchar(50) NOT NULL,
+  `adress` text NOT NULL,
+  `city` varchar(50) NOT NULL,
+  `mail-index` int(11) NOT NULL,
+  `payment` varchar(20) NOT NULL,
+  `price` int(11) NOT NULL,
+  `service` int(11) NOT NULL,
+  `full-price` int(11) NOT NULL,
+  PRIMARY KEY (`id`)
+) ENGINE=InnoDB AUTO_INCREMENT=10 DEFAULT CHARSET=utf8;
+
+--
+-- Дамп данных таблицы `orders_list`
+--
+
+INSERT INTO `orders_list` (`id`, `name`, `lastname`, `phone`, `email`, `adress`, `city`, `mail-index`, `payment`, `price`, `service`, `full-price`) VALUES
+(7, 'Иван', 'Петров', '84995525423', 'ivan@mail.ru', '5-ая улица Строителей', 'Москва', 112111, 'card', 21500, 500, 22000),
+(8, 'Петр', 'Иванов', '89035214524', 'pishma@mail.ru', 'Болотная улица, д.5', 'Верхние Пупки', 665523, 'card', 999, 500, 1499),
+(9, 'Иван', 'Грозный', '89262265125', 'tsar@azesm.ru', 'Палаты', 'Москва', 111111, 'card', 13500, 500, 14000);
 
 -- --------------------------------------------------------
 
@@ -186,7 +245,7 @@ CREATE TABLE IF NOT EXISTS `users` (
   `email` varchar(50) NOT NULL,
   `pass` varchar(50) NOT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=6 DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB AUTO_INCREMENT=7 DEFAULT CHARSET=utf8;
 
 --
 -- Дамп данных таблицы `users`
@@ -194,7 +253,8 @@ CREATE TABLE IF NOT EXISTS `users` (
 
 INSERT INTO `users` (`id`, `name`, `surname`, `email`, `pass`) VALUES
 (4, 'asd', 'asd', 'asd@asd', 'asd'),
-(5, 'fdsdfs', 'dfsfds', 'asd@asd', 'ghdfghfd');
+(5, 'fdsdfs', 'dfsfds', 'asd@asd', 'ghdfghfd'),
+(6, 'n', 'n', 'n@n', 'n');
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
