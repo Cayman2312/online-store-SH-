@@ -2,10 +2,10 @@
 -- version 5.0.1
 -- https://www.phpmyadmin.net/
 --
--- Хост: 127.0.0.1
--- Время создания: Апр 09 2020 г., 13:55
+-- Хост: localhost
+-- Время создания: Апр 09 2020 г., 20:40
 -- Версия сервера: 10.4.11-MariaDB
--- Версия PHP: 7.4.2
+-- Версия PHP: 7.2.27
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 SET AUTOCOMMIT = 0;
@@ -117,7 +117,7 @@ CREATE TABLE IF NOT EXISTS `products` (
   `description` text NOT NULL,
   `price` float NOT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=17 DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB AUTO_INCREMENT=23 DEFAULT CHARSET=utf8;
 
 --
 -- Дамп данных таблицы `products`
@@ -139,7 +139,8 @@ INSERT INTO `products` (`id`, `img_url`, `name`, `description`, `price`) VALUES
 (13, '/images/catalog/11.jpg', 'Куртка', 'Ой какая красивая куртка', 4500),
 (14, '/images/catalog/10.jpg', 'Кеды', 'Хорошие кеды', 999),
 (15, '/images/catalog/1.jpg', 'Куртка', 'Ой какая красивая куртка', 500),
-(16, '/images/catalog/12.jpg', 'Кеды', 'Хорошие кеды', 3000);
+(16, '/images/catalog/12.jpg', 'Кеды', 'Хорошие кеды', 3000),
+(22, 'https://avatars.mds.yandex.net/get-pdb/1946731/c0735a26-a68f-4aca-a37f-a1985c37fa1d/s1200', 'Холин Егор Александрович', 'Ой какая красивая куртка', 1200);
 
 -- --------------------------------------------------------
 
@@ -152,7 +153,7 @@ CREATE TABLE IF NOT EXISTS `product_category` (
   `product_id` int(11) NOT NULL,
   `category_id` int(11) NOT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=18 DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB AUTO_INCREMENT=33 DEFAULT CHARSET=utf8;
 
 --
 -- Дамп данных таблицы `product_category`
@@ -175,7 +176,8 @@ INSERT INTO `product_category` (`id`, `product_id`, `category_id`) VALUES
 (14, 14, 1),
 (15, 15, 1),
 (16, 16, 1),
-(17, 11, 1);
+(17, 11, 1),
+(32, 22, 3);
 
 -- --------------------------------------------------------
 
@@ -240,21 +242,20 @@ INSERT INTO `subscribers` (`id`, `subscriber`) VALUES
 
 CREATE TABLE IF NOT EXISTS `users` (
   `id` int(11) NOT NULL AUTO_INCREMENT,
-  `name` varchar(30) NOT NULL,
-  `surname` varchar(50) NOT NULL,
+  `first_name` varchar(30) NOT NULL,
+  `last_name` varchar(50) NOT NULL,
   `email` varchar(50) NOT NULL,
-  `pass` varchar(50) NOT NULL,
+  `password` varchar(50) NOT NULL,
+  `is_admin` tinyint(1) NOT NULL DEFAULT 0,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=7 DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB AUTO_INCREMENT=8 DEFAULT CHARSET=utf8;
 
 --
 -- Дамп данных таблицы `users`
 --
 
-INSERT INTO `users` (`id`, `name`, `surname`, `email`, `pass`) VALUES
-(4, 'asd', 'asd', 'asd@asd', 'asd'),
-(5, 'fdsdfs', 'dfsfds', 'asd@asd', 'ghdfghfd'),
-(6, 'n', 'n', 'n@n', 'n');
+INSERT INTO `users` (`id`, `first_name`, `last_name`, `email`, `password`, `is_admin`) VALUES
+(7, 'Михаил', 'Борунов', 'borunow.m@gmail.com', 'prfqPTTTRUVLc', 1);
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
