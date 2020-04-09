@@ -67,17 +67,6 @@
     opacity: 1;
   }
 }
-@keyframes logError {
-  30% {
-    transform: rotate(0deg);
-  }
-  80% {
-    transform: rotate(0deg);
-  }
-  100% {
-    transform: rotate(25deg);
-  }
-}
 @keyframes loaderHor {
   100% {
     right: 50%;
@@ -627,6 +616,56 @@ body {
 }
 .header .registration .forgot-popup [type=submit]:hover {
   background-color: #f6651e;
+}
+
+.notice-popup {
+  position: absolute;
+  background-color: white;
+  border: 1px solid #f6955d;
+  border-top: 0;
+  z-index: 5;
+  top: 0;
+  bottom: 100%;
+  opacity: 0;
+  right: 30%;
+  left: 30%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: 0.8s ease;
+}
+.notice-popup .notice-message {
+  margin-right: 50px;
+}
+.notice-popup .notice-close {
+  width: 15px;
+  height: 15px;
+  border-left: 1px solid black;
+  border-top: 1px solid black;
+  transform: rotate(45deg);
+  position: relative;
+  transition: 0.8s ease;
+  cursor: pointer;
+}
+.notice-popup .notice-close:hover {
+  transform: rotate(-45deg);
+}
+.notice-popup .notice-close:before, .notice-popup .notice-close:after {
+  content: "";
+  position: absolute;
+  background: black;
+  transform: rotate(-45deg);
+  width: 1px;
+  height: 27px;
+  margin: 0 auto;
+  top: 7px;
+  bottom: 0;
+  right: 0;
+  left: 15px;
+}
+.notice-popup .notice-close:after {
+  top: 6px;
+  left: 25px;
 }
 
 .footer {

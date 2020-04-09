@@ -6,7 +6,7 @@
 document.querySelector('.navbar-toggle').addEventListener('click', function () {
     let navbarMenu = document.querySelector('.navbar-menu');
     navbarMenu.classList.toggle('open');
-})
+});
 
 
 // Клики на меню ---------------------------
@@ -150,7 +150,7 @@ function chekFormReg(form) {
     }
 
     if (!form['agree'].checked) {
-        alert ('Либо за меня выходи, либо закрой страницу! xD');
+        alert('Либо за меня выходи, либо закрой страницу! xD');
         return false;
     }
 
@@ -159,7 +159,7 @@ function chekFormReg(form) {
         return false;
     }
 
-    alert ('Поздравляю с регистрацией нашего брака! :D');
+    alert('Поздравляю с регистрацией нашего брака! :D');
 }
 
 // Валидация keyup

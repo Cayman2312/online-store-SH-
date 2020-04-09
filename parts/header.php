@@ -6,7 +6,22 @@
  *
  */
 
+
 include('parts/header_conf.php');
+
+if (isset($_SESSION['basket']) && !empty($_SESSION['basket'])) {
+    $countBasket = [];
+
+    foreach ($_SESSION['basket'] as $item) {
+        $item = count($item);
+        $countBasket[] = $item;
+    };
+
+    unset($item);
+}
+
+
+
 ?>
 
 <!DOCTYPE html>
@@ -43,7 +58,7 @@ include('parts/header_conf.php');
         </nav>
         <div class="header__user-box">
             <a href="#" class="user-box__login">Войти</a>
-            <a href="/basket.php" class="user-box__basket">Корзина</a>
+            <a href="/basket.php" class="user-box__basket">Корзина (<strong><?= array_sum($countBasket) ?></strong>)</a>
         </div>
         <div class="popup-log">
             <div class="popup-log__close"></div>
@@ -63,6 +78,11 @@ include('parts/header_conf.php');
             <span><a href="#/" class="forgot-href">забыли пароль?</a></span>
             <span>/</span>
             <span><a href="#" class="reg-href">регистрация</a></span>
+        </div>
+
+        <div class="notice-popup">
+            <p class="notice-message">Поздравляем, вы успешно авторизовались</p>
+            <div class="notice-close"></div>
         </div>
 
         <!-- Тут лежит попап регистрации новых пользователей -->
