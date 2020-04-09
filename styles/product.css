@@ -88,4 +88,109 @@
 .product-btn:hover {
   background: #ff6f00;
 }
+
+.popup {
+  position: fixed;
+  top: 0;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  background-color: #9999;
+  -webkit-transition: 0.5s ease-in-out;
+  transition: 0.5s ease-in-out;
+  z-index: -1;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+}
+
+.popup.hide {
+  opacity: 0;
+}
+
+.popup .alert-box {
+  background-color: #fff;
+  text-align: center;
+  padding: 50px;
+  max-width: 600px;
+  position: relative;
+}
+
+.popup .alert-box__close {
+  position: absolute;
+  top: 0;
+  right: 0;
+  cursor: pointer;
+  width: 40px;
+  height: 40px;
+}
+
+.popup .alert-box__close::before, .popup .alert-box__close::after {
+  content: '';
+  height: 2px;
+  width: 80%;
+  background-color: #000;
+  -webkit-transition: 0.3s ease-in-out;
+  transition: 0.3s ease-in-out;
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  margin: auto;
+}
+
+.popup .alert-box__close::before {
+  -webkit-transform: rotate(-45deg);
+          transform: rotate(-45deg);
+}
+
+.popup .alert-box__close::after {
+  -webkit-transform: rotate(45deg);
+          transform: rotate(45deg);
+}
+
+.popup .alert-box__close:hover::before {
+  -webkit-transform: rotate(45deg);
+          transform: rotate(45deg);
+}
+
+.popup .alert-box__close:hover::after {
+  -webkit-transform: rotate(135deg);
+          transform: rotate(135deg);
+}
+
+.popup .alert-box__title {
+  text-transform: uppercase;
+  margin-bottom: 20px;
+  font-weight: normal;
+}
+
+.popup .alert-box__button {
+  margin: 0 20px 20px 0;
+  display: inline-block;
+  padding: 8px 10px;
+  border: 1px solid #000;
+  -webkit-transition: 0.3s ease-in-out;
+  transition: 0.3s ease-in-out;
+}
+
+.popup .alert-box__button:hover {
+  cursor: pointer;
+  background-color: #ff8d00;
+  color: #fff;
+  -webkit-transform: scale(1.1);
+          transform: scale(1.1);
+}
+
+.popup .alert-box__button--orange {
+  background-color: #ff8d00;
+  color: #fff;
+}
 /*# sourceMappingURL=product.css.map */
