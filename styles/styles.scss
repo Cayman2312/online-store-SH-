@@ -609,7 +609,69 @@ body {
     }
   }
 }
-  //----------------------------------------
+
+//----------------------------------------
+
+// Окно уведомлений ----------------------
+
+.notice-popup {
+  position: absolute;
+  background-color: white;
+  border: 1px solid $orange;
+  border-top: 0;
+  z-index: 5;
+  top: 0;
+  bottom: 100%;
+  opacity: 0;
+  right: 30%;
+  left: 30%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: 0.8s ease;
+
+  & .notice-message {
+
+    margin-right: 50px;
+  }
+
+  & .notice-close {
+    width: 15px;
+    height: 15px;
+    border-left: 1px solid black;
+    border-top: 1px solid black;
+    transform: rotate(45deg);
+    position: relative;
+    transition: .8s ease;
+    cursor: pointer;
+
+    &:hover {
+      transform: rotate(-45deg);
+    }
+
+    &:before,
+    &:after {
+      content: '';
+      position: absolute;
+      background: black;
+      transform: rotate(-45deg);
+      width: 1px;
+      height: 27px;
+      margin: 0 auto;
+      top: 7px;
+      bottom: 0;
+      right: 0;
+      left: 15px;
+    }
+
+    &:after {
+      top: 6px;
+      left: 25px;
+    }
+  }
+}
+
+//----------------------------------------
 
 // footer
 .footer {
