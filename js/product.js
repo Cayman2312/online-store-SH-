@@ -41,7 +41,8 @@ $addToBasket.addEventListener('submit', function (e) {
     })
 
     if (productSizes.length == 0) {
-        alert('Необходимо выбрать размер(-ы) для добавления в корзину');
+        $popupError.querySelector('.alert-box__title').innerHTML = 'Пожалуйста выберите размеры товара <br>(можно выбирать сразу несколько).';
+        popupShow.call($popupError);
     } else {
 
         let newProduct = {
@@ -55,13 +56,13 @@ $addToBasket.addEventListener('submit', function (e) {
         xhr.setRequestHeader('Content-type', 'application/json; charset=utf-8');
 
         xhr.addEventListener('error', () => {
-            $popupError.querySelector('.alert-box__title').textContent = 'К сожалению сервер не отвечает на запрос.';
+            $popupError.querySelector('.alert-box__title').innerHTML = 'К сожалению сервер не отвечает на запрос.<br> Пожалуйста попробуйте позднее.';
             popupShow.call($popupError);
         })
 
         xhr.addEventListener('load', function () {
             if (xhr.status != 200) {
-                $popupError.querySelector('.alert-box__title').textContent = 'К сожалению в данный момент запрос не может быть выполнен по техническим причинам.';
+                $popupError.querySelector('.alert-box__title').innerHTML = 'К сожалению в данный момент запрос не может быть выполнен по техническим причинам.<br> Пожалуйста попробуйте позднее.';
                 popupShow.call($popupError);
             } else {
                 popupShow.call($popupSuccess);

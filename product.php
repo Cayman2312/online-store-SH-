@@ -71,7 +71,6 @@ $template['sizes'] = json_decode($row['product_sizes']);
     <div class="alert-box">
         <div class="alert-box__close"></div>
         <h3 class="alert-box__title"></h3>
-        <h3 class="alert-box__title">Пожалуйста попробуйте позднее.</h3>
         <div class="alert-box__button alert-box__button--error">Хорошо</div>
     </div>
 </div>
