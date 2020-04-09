@@ -16,6 +16,8 @@ document.addEventListener("DOMContentLoaded", function (e) {
     let service = +document.querySelector('.list-item.service').textContent.slice(0, -5);
     document.querySelector('.list-item.price').textContent = `${sum} руб.`;
     document.querySelector('.list-item.final-price').textContent = `${sum + service} руб.`;
+    document.forms.payment.price.value = sum;
+    document.forms.payment['full-price'].value = +sum + +document.forms.payment.service.value;
   }
 
   //программируем кнопку "удалить" у товара
@@ -104,7 +106,6 @@ document.addEventListener("DOMContentLoaded", function (e) {
 
   //меняем финальную сумму при изменении способа доставки
   let $formSelectService = document.forms.payment.service;
-  let service = $formSelectService.value;
 
   $formSelectService.addEventListener('change', function () {
     let service = +this.value;
@@ -112,6 +113,7 @@ document.addEventListener("DOMContentLoaded", function (e) {
 
     document.querySelector('.list-item.service').textContent = `${service} руб.`;
     document.querySelector('.list-item.final-price').textContent = `${currentSum + service} руб.`;
+    document.forms.payment['full-price'].value = +currentSum + +service;
 
   })
 
@@ -121,17 +123,17 @@ document.addEventListener("DOMContentLoaded", function (e) {
   let $formСheckoutInput = $formСheckout.querySelectorAll('input:not([type="submit"])');
 
   $formСheckout.addEventListener('submit', function (e) {
-    e.preventDefault();
+    let errCount = 0;
     $formСheckoutInput.forEach($input => {
       if ($input.value == '') {
         $input.classList.add('error');
+        errCount++;
       }
     })
 
-
-
-
-
+    if (errCount != 0) {
+      e.preventDefault();
+    }
 
   })
 

@@ -85,7 +85,7 @@ if (isset($_SESSION['basket']) && !empty($_SESSION['basket'])) {
             <h2 class="big-title">Адрес доставки</h2>
             <h3 class="min-title">Все поля обязательны для заполнения</h3>
 
-            <form action="#" method="POST" class="popup" name="payment">
+            <form action="/order.php" method="POST" class="popup" name="payment">
                 <div class="popup__box box_full">
                     <p>Выберите вариант доставки</p>
                     <select name="service">
@@ -147,6 +147,8 @@ if (isset($_SESSION['basket']) && !empty($_SESSION['basket'])) {
                 <div class="popup__box box_full" id="btn">
                     <input type="submit" value="заказать">
                 </div>
+                <input type="hidden" name="price" value="<?= $sum ?>">
+                <input type="hidden" name="full-price" value="<?= $sum + $service_courier ?>">
             </form>
         </div>
 
