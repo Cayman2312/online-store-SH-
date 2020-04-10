@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Хост: 127.0.0.1
--- Время создания: Апр 10 2020 г., 16:00
+-- Время создания: Апр 10 2020 г., 17:41
 -- Версия сервера: 10.4.11-MariaDB
 -- Версия PHP: 7.4.2
 
@@ -119,7 +119,7 @@ CREATE TABLE IF NOT EXISTS `products` (
   `price` float NOT NULL,
   `add_date` datetime NOT NULL DEFAULT current_timestamp(),
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=24 DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB AUTO_INCREMENT=25 DEFAULT CHARSET=utf8;
 
 --
 -- Дамп данных таблицы `products`
@@ -142,8 +142,7 @@ INSERT INTO `products` (`id`, `img_url`, `name`, `description`, `price`, `add_da
 (14, '/images/catalog/10.jpg', 'Кеды', 'Хорошие кеды', 999, '2020-04-10 15:24:47'),
 (15, '/images/catalog/1.jpg', 'Куртка', 'Ой какая красивая куртка', 500, '2020-04-10 15:24:47'),
 (16, '/images/catalog/12.jpg', 'Кеды', 'Хорошие кеды', 3000, '2020-04-10 15:24:47'),
-(22, 'https://avatars.mds.yandex.net/get-pdb/1946731/c0735a26-a68f-4aca-a37f-a1985c37fa1d/s1200', 'Холин Егор Александрович', 'Ой какая красивая куртка', 1200, '2020-04-10 15:24:47'),
-(23, '/images/catalog/1.jpg', 'Детская куртка', 'Хорошая и теплая детская куртка', 2000, '2020-04-10 15:28:51');
+(24, '/images/catalog/1.jpg', 'Жилетка', 'Очень годная жилетка', 2000, '2020-04-10 18:40:30');
 
 -- --------------------------------------------------------
 
@@ -156,7 +155,7 @@ CREATE TABLE IF NOT EXISTS `product_category` (
   `product_id` int(11) NOT NULL,
   `category_id` int(11) NOT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=34 DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB AUTO_INCREMENT=35 DEFAULT CHARSET=utf8;
 
 --
 -- Дамп данных таблицы `product_category`
@@ -181,7 +180,8 @@ INSERT INTO `product_category` (`id`, `product_id`, `category_id`) VALUES
 (16, 16, 1),
 (17, 11, 1),
 (32, 22, 3),
-(33, 23, 3);
+(33, 23, 3),
+(34, 24, 2);
 
 -- --------------------------------------------------------
 
@@ -194,7 +194,7 @@ CREATE TABLE IF NOT EXISTS `product_sizes` (
   `product_id` int(11) NOT NULL,
   `product_sizes` varchar(255) NOT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=17 DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB AUTO_INCREMENT=18 DEFAULT CHARSET=utf8;
 
 --
 -- Дамп данных таблицы `product_sizes`
@@ -216,7 +216,8 @@ INSERT INTO `product_sizes` (`id`, `product_id`, `product_sizes`) VALUES
 (13, 13, '[40,42,44,46,48,50,52,54,56,58]'),
 (14, 14, '[34,35,36,37,38,39,40,41,42,43,44,45,46]'),
 (15, 15, '[40,42,44,46,48,50,52,54,56,58]'),
-(16, 16, '[34,35,36,37,38,39,40,41,42,43,44,45,46]');
+(16, 16, '[34,35,36,37,38,39,40,41,42,43,44,45,46,58]'),
+(17, 24, '[38,39,40]');
 
 -- --------------------------------------------------------
 
