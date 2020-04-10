@@ -12,9 +12,8 @@ include('parts/header_conf.php');
 //подсчет количества элементов в корзине
 $basket_sum = 0;
 if (isset($_SESSION['basket']) && !empty($_SESSION['basket'])) {
-
     foreach ($_SESSION['basket'] as $id_array) {
-        $basket_sum =+ count($id_array);
+        $basket_sum += count($id_array);
     };
 }
 
