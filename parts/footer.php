@@ -5,11 +5,21 @@
 
   while ($category = mysqli_fetch_assoc($result_category_list)) {
 
-    $sql_count = "SELECT COUNT(id) AS count FROM product_category WHERE category_id='{$category['id']}'";
-    $result_count = mysqli_query($link, $sql_count);
-    $count = mysqli_fetch_assoc($result_count)['count'];
+    if ($category['id'] != 4) {
+      $sql_count = "SELECT COUNT(id) AS count FROM product_category WHERE category_id='{$category['id']}'";
+      $result_count = mysqli_query($link, $sql_count);
+      $count = mysqli_fetch_assoc($result_count)['count'];
 
-    $categories[$category['id']] = ['name' => $category['name'], 'count' => $count];
+      $categories[$category['id']] = ['name' => $category['name'], 'count' => $count];
+    } else {
+      $sql_count = "SELECT COUNT(id) AS count FROM products WHERE TIMESTAMPDIFF (HOUR, add_date, NOW()) < $product_remain_new";
+      $result_count = mysqli_query($link, $sql_count);
+      $count = mysqli_fetch_assoc($result_count)['count'];
+
+      $categories[$category['id']] = ['name' => $category['name'], 'count' => $count];
+    }
+
+
   }
 ?>
 
