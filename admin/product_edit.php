@@ -16,7 +16,13 @@
             WHERE id='{$_POST['id']}'";
         $result_update = mysqli_query($link, $sql_update);
 
-        if ($result_update) {
+        //конвертируем массив размеров товара в строку для отправки в базу
+        $size_string = '['.implode(",", $_POST['size']).']';
+        //отправляем размеры в базу
+        $sql_size_update = "UPDATE product_sizes SET product_sizes = '{$size_string}' WHERE product_id='{$_POST['id']}'";
+        $result_size_update = mysqli_query($link, $sql_size_update);
+
+        if ($result_update && $result_size_update) {
             echo '<div class="alert alert-success" role="alert">
                     Ваши изменения сохранены!
                 </div>';
@@ -59,6 +65,31 @@
         <input type="text" class="form-control" placeholder="Цена" name="price" value="<?= $data['price']; ?>">
     </div>
 
+    <p>Выберите имеющиеся размеры:</p>
+
+<?php
+    $query_size = "SELECT * FROM product_sizes WHERE product_id = '{$data['id']}'";
+    $result_size = mysqli_query($link, $query_size);
+    $row_size = mysqli_fetch_assoc($result_size);
+
+    $arr_size = explode(",", preg_replace('%[^0-9 | ,]%', '', $row_size['product_sizes']));
+?>
+    <?php for($size = 30; $size <=60; $size++) : ?>
+    <?php
+        $checked = '';
+        if (in_array($size , $arr_size)) {
+            $checked = 'checked';
+        }     
+    ?>
+
+    <div class="form-check form-check-inline">
+        <input class="form-check-input" type="checkbox" name="size[]" id="<?= $size ?>" value="<?= $size ?>" <?= $checked  ?>>
+        <label class="form-check-label" for="<?= $size ?>"><?= $size ?></label>
+    </div>
+
+    <?php endfor ; ?>
+
+    <br><br>
     <button type="submit" class="btn btn-primary">Сохранить</button>
 </form>
 

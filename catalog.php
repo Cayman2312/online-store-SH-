@@ -12,7 +12,8 @@ $header_config = [
 
 include('parts/header.php');
 
-$category_id = 1;
+$category_id = 4;
+
 
 if (!empty($_GET['category_id'])) {
     // (int) '10' - переведет из строки '10' в число 10

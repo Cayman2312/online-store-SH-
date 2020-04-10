@@ -37,24 +37,34 @@ class Catalog {
         xhr.addEventListener('load', () => {
             const response = JSON.parse(xhr.response);
 
-            // console.log(response);
+            //дополнительное условие, если в каталоге нет товара (например, в новинках)
+            if (response.products.length == 0) {
+                let $headerEmpty = document.createElement('h1');
+                $headerEmpty.classList.add('catalog-title');
+                $headerEmpty.style.gridColumn = '1/5';
+                $headerEmpty.style.textAlign = 'center';
+                $headerEmpty.textContent = 'К сожалению в данной категории нет товаров';
+                this.$catalogList.append($headerEmpty);
+                this.hideLoader();
+            } else {
 
-            response.products.forEach((item) => {
-                // console.log(item);
+                response.products.forEach((item) => {
+                    // console.log(item);
 
-                this.products.push(
-                    new Product(
-                        item.id,
-                        item.img_url,
-                        item.name,
-                        item.description,
-                        item.price
-                    )
-                );
-            });
+                    this.products.push(
+                        new Product(
+                            item.id,
+                            item.img_url,
+                            item.name,
+                            item.description,
+                            item.price
+                        )
+                    );
+                });
 
-            this.render();
-            this.renderPagination(response.pagination);
+                this.render();
+                this.renderPagination(response.pagination);
+            }
         });
     }
 

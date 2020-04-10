@@ -1,10 +1,35 @@
+<?php 
+  //получение данных по количеству категорий и товаров в соответствующих категориях для дальнейшей отрисовки в футере
+  $sql_category_list = "SELECT * FROM categories";
+  $result_category_list = mysqli_query($link, $sql_category_list);
+
+  while ($category = mysqli_fetch_assoc($result_category_list)) {
+
+    if ($category['id'] != 4) {
+      $sql_count = "SELECT COUNT(id) AS count FROM product_category WHERE category_id='{$category['id']}'";
+      $result_count = mysqli_query($link, $sql_count);
+      $count = mysqli_fetch_assoc($result_count)['count'];
+
+      $categories[$category['id']] = ['name' => $category['name'], 'count' => $count];
+    } else {
+      $sql_count = "SELECT COUNT(id) AS count FROM products WHERE TIMESTAMPDIFF (HOUR, add_date, NOW()) < $product_remain_new";
+      $result_count = mysqli_query($link, $sql_count);
+      $count = mysqli_fetch_assoc($result_count)['count'];
+
+      $categories[$category['id']] = ['name' => $category['name'], 'count' => $count];
+    }
+
+
+  }
+?>
+
+
 <footer class="footer">
   <div class="footer__container">
     <h3 class="title">Коллекции</h3>
-    <a href="/catalog.php?category_id=1" class="link">Женщинам ()</a>
-    <a href="/catalog.php?category_id=2" class="link">Мужчинам ()</a>
-    <a href="/catalog.php?category_id=3" class="link">Детям ()</a>
-    <a href="#" class="link">Новинки ()</a>
+    <?php foreach($categories as $id => $category) : ?>
+      <a href="/catalog.php?category_id=<?= $id ?>" class="link"><?= $category['name'] ?> (<?= $category['count'] ?>)</a>
+    <?php endforeach ; ?>
   </div>
   <div class="footer__container">
     <h3 class="title">Магазин</h3>
@@ -32,3 +57,7 @@
 </body>
 
 </html>
+
+<?php
+mysqli_close($link);
+?>

@@ -16,7 +16,14 @@
         $sql_set_category = "INSERT INTO product_category VALUES (null, $id, '{$_POST['category']}')";
         $result_set_category = mysqli_query($link, $sql_set_category);
 
-        if ($result_add_product && $result_set_category) {
+        // Добавляем размеры в таблицу размеров
+        //конвертируем массив размеров товара в строку для отправки в базу
+        $size_string = '['.implode(",", $_POST['size']).']';
+        //отправляем размеры в базу
+        $sql_set_sizes = "INSERT INTO product_sizes VALUES (null, $id, '{$size_string}')";
+        $result_set_sizes = mysqli_query($link, $sql_set_sizes);
+
+        if ($result_add_product && $result_set_category && $result_set_sizes) {
             echo "<div class='alert alert-success' role='alert'>
                     Товар успешно добавлен! (<a href='/admin/product_edit.php?id={$id}'>Редактировать</a>)
                 </div>";
@@ -59,6 +66,16 @@
         </select>
     </div>
 
+    <?php for($size = 30; $size <=60; $size++) : ?>
+
+    <div class="form-check form-check-inline">
+        <input class="form-check-input" type="checkbox" name="size[]" id="<?= $size ?>" value="<?= $size ?>">
+        <label class="form-check-label" for="<?= $size ?>"><?= $size ?></label>
+    </div>
+
+    <?php endfor ; ?>
+
+    <br><br>
     <button type="submit" class="btn btn-primary">Сохранить</button>
 </form>
 
