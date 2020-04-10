@@ -26,16 +26,9 @@ document.querySelector('.navbar-toggle').addEventListener('click', function () {
 const $navItems = document.querySelectorAll('.menu-item');
 
 $navItems.forEach(function (item) {
-
-    if (item.classList.contains('active')) {
-        item.classList.remove('active');
+    if (location.href === item.href) {
+        item.classList.add('active');
     }
-
-    item.addEventListener('click', function () {
-
-        this.classList.add('active');
-        // debugger
-    });
 });
 
 //------------------------------------------
@@ -103,9 +96,12 @@ function checkFormLog(form) {
 
 // Функции close/open popup ----------------
 
+const $body = document.body;
+
 function openPopup(popup) {
     $regBack.classList.add('openReg');
     popup.style.display = 'block';
+    $body.style.overflow = 'hidden';
     setTimeout(() => {
         popup.style.opacity = 1;
     }, 500);
@@ -115,6 +111,7 @@ function closePopup(popup) {
     $regBack.classList.remove('openReg');
     popup.style.display = '';
     popup.style.opacity = 0;
+    $body.style.overflow = '';
     popup.reset();
 }
 
