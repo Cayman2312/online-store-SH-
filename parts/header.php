@@ -21,7 +21,6 @@ if (isset($_SESSION['basket']) && !empty($_SESSION['basket'])) {
 }
 
 
-
 ?>
 
 <!DOCTYPE html>
@@ -52,13 +51,19 @@ if (isset($_SESSION['basket']) && !empty($_SESSION['basket'])) {
                 <a href="/catalog.php?category_id=1" class="menu-item">Женщинам</a>
                 <a href="/catalog.php?category_id=2" class="menu-item">Мужчинам</a>
                 <a href="/catalog.php?category_id=3" class="menu-item">Детям</a>
-                <a href="#" class="menu-item">Новинки</a>
-                <a href="#" class="menu-item">О нас</a>
             </div>
         </nav>
         <div class="header__user-box">
             <a href="#" class="user-box__login">Войти</a>
-            <a href="/basket.php" class="user-box__basket">Корзина (<strong><?= array_sum($countBasket) ?></strong>)</a>
+            <a href="/basket.php" class="user-box__basket">
+                Корзина (
+                <?php if (isset($_SESSION['basket']) && !empty($_SESSION['basket'])) : ?>
+                    <strong>
+                        <?= array_sum($countBasket) ?>
+                    </strong>
+                <?php endif; ?>
+                )
+            </a>
         </div>
         <div class="popup-log">
             <div class="popup-log__close"></div>
@@ -80,12 +85,10 @@ if (isset($_SESSION['basket']) && !empty($_SESSION['basket'])) {
             <span><a href="#" class="reg-href">регистрация</a></span>
         </div>
 
-        <div class="notice-popup">
-            <p class="notice-message">Поздравляем, вы успешно авторизовались</p>
-            <div class="notice-close"></div>
-        </div>
+        <!-- Попап уведомлений -->
+        <div class="notice-popup"></div>
 
-        <!-- Тут лежит попап регистрации новых пользователей -->
+        <!-- Тут лежит попап регистрации новых пользователей и попап восстановления пороля-->
         <?php include('parts/registration.php') ?>
     </header>
 
@@ -98,7 +101,7 @@ if (isset($_SESSION['basket']) && !empty($_SESSION['basket'])) {
 
         if (!empty($_GET['login']) && !empty($_GET['pass'])) {
 
-            exit("<meta http-equiv='refresh' content='0; url= /'>");
+//            exit("<meta http-equiv='refresh' content='0; url= /'>");
         }
     }
 

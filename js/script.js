@@ -1,8 +1,11 @@
-/**
- *
- * Общие js функции
- *
- */
+// Окно уведомлений -----------------------
+
+const $notice = document.querySelector('.notice-popup');
+const $noticeMess = document.querySelector('.notice-message');
+
+//-----------------------------------------
+
+
 document.querySelector('.navbar-toggle').addEventListener('click', function () {
     let navbarMenu = document.querySelector('.navbar-menu');
     navbarMenu.classList.toggle('open');

@@ -21,18 +21,57 @@ $navMenuBasket.classList.add('centre');
 
 // Валидация для subscribe -----------------
 
+const $subForm = document.querySelector('.subscribe__form');
 const $subError = document.querySelector('.subscribe__error');
 
-function checkFormSubscribe(form) {
-    if (!form[0].value.replace(/^\s+|\s+$/g, '')) {
-        $subError.style.opacity = 1;
-        return false;
-    } else {
-        $subError.style.opacity = 0;
-        alert('Поздравляем тебя, подписота! ;)')
-    }
-}
+$subForm.addEventListener('submit', function (e) {
+    e.preventDefault();
 
+
+    if (!this.elements[0].value.replace(/^\s+|\s+$/g, '')) {
+        $subError.style.opacity = 1;
+    } else {
+
+        const xhr = new XMLHttpRequest();
+
+        xhr.open('GET', '/handlers/handler_main.php?subscriber=' + this.elements[0].value);
+
+        xhr.onreadystatechange = () => {
+            this.elements[0].value = '';
+
+
+            if (this.readyState != 4) return;
+        };
+
+        xhr.send();
+
+        xhr.addEventListener('load', () => {
+            const response = xhr.response;
+            console.log(response);
+
+            $notice.classList.add('noticeAni');
+            $notice.innerHTML = `<p>${response}</p>`;
+
+            setTimeout(() => {
+                $notice.classList.remove('noticeAni');
+                $notice.innerHTML = '';
+            }, 3000);
+
+        });
+    }
+});
+
+// function checkFormSubscribe(form) {
+//     if (!form[0].value.replace(/^\s+|\s+$/g, '')) {
+//         $subError.style.opacity = 1;
+//         return false;
+//     } else {
+//         $subError.style.opacity = 0;
+//         // alert('Поздравляем тебя, подписота! ;)')
+//         $notice.classList.add('noticeAni');
+//     }
+// }
+//
 function checkKeyupFormSubscribe(form) {
     if (form[0].value.replace(/^\s+|\s+$/g, '')) {
         $subError.style.opacity = 0;
