@@ -402,8 +402,7 @@ body {
     right: 0;
     left: 0;
     background-color: rgba(255, 255, 255, 0.91);
-    z-index: 1000;
-    transition: 1.5s;
+    z-index: 100;
 
     &__title {
       font-size: 24px;
@@ -475,7 +474,6 @@ body {
     }
 
     &__popup {
-      display: none;
       position: relative;
       padding: 20px;
       width: 30%;
@@ -483,6 +481,7 @@ body {
       background-color: #f9f9f9;
       border: 1px solid #e5e5e5;
       opacity: 0;
+      display: none;
       transition: 1.5s;
 
       @include adaptive(notebook) {
@@ -547,13 +546,13 @@ body {
     // Форма забытого пароля
     .forgot-popup {
       width: 50%;
-      display: none;
       position: relative;
       background-color: #f9f9f9;
       border: 1px solid #e5e5e5;
       padding: 20px;
       margin: 120px auto;
       opacity: 0;
+      display: none;
       transition: 1.5s;
 
       @include adaptive(notebook) {
@@ -619,7 +618,6 @@ body {
   background-color: white;
   border: 1px solid #e5e5e5;
   border-top: 0;
-  z-index: 5;
   top: 0;
   bottom: 100%;
   opacity: 0;
@@ -630,6 +628,7 @@ body {
   justify-content: center;
   transition: 0.8s ease;
   font-style: italic;
+  z-index: 1000;
 }
 
 //----------------------------------------
@@ -848,6 +847,10 @@ body {
 
 .noticeAni {
   animation: notice 3s ease forwards;
+}
+
+.openReg {
+  animation: openReg 0.5s ease forwards;
 }
 
 //---------------------------------------

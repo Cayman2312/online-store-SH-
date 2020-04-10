@@ -78,6 +78,20 @@
   }
 }
 
+@keyframes logError {
+  20% {
+    transform: rotate(0);
+  }
+
+  80% {
+    transform: rotate(0);
+  }
+
+  100% {
+    transform: rotate(25deg);
+  }
+}
+
 //------------------------------------------------
 
 // Для preloader ---------------------------------
@@ -112,18 +126,29 @@
 
 @keyframes notice {
   20% {
-    bottom: 52%;
+    bottom: 295px;
     opacity: 1;
   }
 
   80% {
-    bottom: 52%;
+    bottom: 295px;
     opacity: 1;
   }
 
   100% {
     bottom: 100%;
     opacity: 0;
+  }
+}
+
+//------------------------------------------------
+
+// Open/close popup ------------------------------
+
+@keyframes openReg {
+  100% {
+    display: block;
+    bottom: 0;
   }
 }
 
