@@ -70,9 +70,10 @@ include('parts/header.php');
         <p class="subscribe__text">
             Подписывайся и следи за новинками и выгодными предложениями
         </p>
-        <form action="#" method="get" class="subscribe__form"
-              onsubmit="return checkFormSubscribe(this.elements)"
+        <form method="GET" class="subscribe__form"
               onkeyup="return checkKeyupFormSubscribe(this.elements)">
+<!--              onsubmit="return checkFormSubscribe(this.elements)"-->
+
             <input type="email" name="subscriber" placeholder="e-mail" class="input-email">
             <input type="submit" value="записаться" class="input-submit">
         </form>
@@ -80,17 +81,6 @@ include('parts/header.php');
     </div>
 
 <?php
-
-// Подписота ---------------------------
-
-if (!empty($_GET['subscriber'])) {
-    $sql_subscriber = "INSERT INTO subscribers (id, subscriber) VALUES (null, '{$_GET['subscriber']}')";
-    $result_sub = mysqli_query($link, $sql_subscriber);
-
-    exit("<meta http-equiv='refresh' content='0; url= /'>");
-}
-
-//--------------------------------------
 
 $footer_config = [
     'script' => 'index.js'
