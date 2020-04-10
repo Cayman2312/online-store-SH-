@@ -9,17 +9,14 @@
 
 include('parts/header_conf.php');
 
+$basket_sum = 0;
+
 if (isset($_SESSION['basket']) && !empty($_SESSION['basket'])) {
-    $countBasket = [];
 
-    foreach ($_SESSION['basket'] as $item) {
-        $item = count($item);
-        $countBasket[] = $item;
+    foreach ($_SESSION['basket'] as $id_array) {
+        $basket_sum =+ count($id_array);
     };
-
-    unset($item);
 }
-
 
 ?>
 
@@ -56,13 +53,7 @@ if (isset($_SESSION['basket']) && !empty($_SESSION['basket'])) {
         <div class="header__user-box">
             <a href="#" class="user-box__login">Войти</a>
             <a href="/basket.php" class="user-box__basket">
-                Корзина (
-                <?php if (isset($_SESSION['basket']) && !empty($_SESSION['basket'])) : ?>
-                    <strong>
-                        <?= array_sum($countBasket) ?>
-                    </strong>
-                <?php endif; ?>
-                )
+                Корзина (<strong><?= $basket_sum ?></strong>)
             </a>
         </div>
         <div class="popup-log">
