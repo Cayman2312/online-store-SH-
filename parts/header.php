@@ -9,14 +9,18 @@
 
 include('parts/header_conf.php');
 
+//подсчет количества элементов в корзине
 $basket_sum = 0;
-
 if (isset($_SESSION['basket']) && !empty($_SESSION['basket'])) {
 
     foreach ($_SESSION['basket'] as $id_array) {
         $basket_sum =+ count($id_array);
     };
 }
+
+//получение списка категорий для отрисовки на странице
+$sql_category_list = "SELECT * FROM categories";
+$result_category_list = mysqli_query($link, $sql_category_list);
 
 ?>
 
@@ -45,15 +49,15 @@ if (isset($_SESSION['basket']) && !empty($_SESSION['basket'])) {
                 <span></span>
             </div>
             <div class="navbar-menu">
-                <a href="/catalog.php?category_id=1" class="menu-item">Женщинам</a>
-                <a href="/catalog.php?category_id=2" class="menu-item">Мужчинам</a>
-                <a href="/catalog.php?category_id=3" class="menu-item">Детям</a>
+                <?php while ($category = mysqli_fetch_assoc($result_category_list)) : ?>
+                    <a href="/catalog.php?category_id=<?= $category['id'] ?>" class="menu-item"><?= $category['name'] ?></a>
+                <?php endwhile ; ?>
             </div>
         </nav>
         <div class="header__user-box">
             <a href="#" class="user-box__login">Войти</a>
             <a href="/basket.php" class="user-box__basket">
-                Корзина (<strong><?= $basket_sum ?></strong>)
+                Корзина (<b><?= $basket_sum ?></b>)
             </a>
         </div>
         <div class="popup-log">
