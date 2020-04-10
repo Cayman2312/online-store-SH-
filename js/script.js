@@ -1,7 +1,16 @@
 // Окно уведомлений -----------------------
 
 const $notice = document.querySelector('.notice-popup');
-const $noticeMess = document.querySelector('.notice-message');
+
+function notice (response) {
+    $notice.classList.add('noticeAni');
+    $notice.innerHTML = `<p>${response}</p>`;
+
+    setTimeout(() => {
+        $notice.classList.remove('noticeAni');
+        $notice.innerHTML = '';
+    }, 3000);
+}
 
 //-----------------------------------------
 

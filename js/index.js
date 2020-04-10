@@ -49,29 +49,20 @@ $subForm.addEventListener('submit', function (e) {
             const response = xhr.response;
             console.log(response);
 
-            $notice.classList.add('noticeAni');
-            $notice.innerHTML = `<p>${response}</p>`;
+            notice(response);
 
-            setTimeout(() => {
-                $notice.classList.remove('noticeAni');
-                $notice.innerHTML = '';
-            }, 3000);
+            // $notice.classList.add('noticeAni');
+            // $notice.innerHTML = `<p>${response}</p>`;
+            //
+            // setTimeout(() => {
+            //     $notice.classList.remove('noticeAni');
+            //     $notice.innerHTML = '';
+            // }, 3000);
 
         });
     }
 });
 
-// function checkFormSubscribe(form) {
-//     if (!form[0].value.replace(/^\s+|\s+$/g, '')) {
-//         $subError.style.opacity = 1;
-//         return false;
-//     } else {
-//         $subError.style.opacity = 0;
-//         // alert('Поздравляем тебя, подписота! ;)')
-//         $notice.classList.add('noticeAni');
-//     }
-// }
-//
 function checkKeyupFormSubscribe(form) {
     if (form[0].value.replace(/^\s+|\s+$/g, '')) {
         $subError.style.opacity = 0;
