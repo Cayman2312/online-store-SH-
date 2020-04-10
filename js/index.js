@@ -35,30 +35,13 @@ $subForm.addEventListener('submit', function (e) {
         const xhr = new XMLHttpRequest();
 
         xhr.open('GET', '/handlers/handler_main.php?subscriber=' + this.elements[0].value);
-
-        xhr.onreadystatechange = () => {
-            this.elements[0].value = '';
-
-
-            if (this.readyState != 4) return;
-        };
-
         xhr.send();
 
         xhr.addEventListener('load', () => {
             const response = xhr.response;
-            console.log(response);
 
             notice(response);
-
-            // $notice.classList.add('noticeAni');
-            // $notice.innerHTML = `<p>${response}</p>`;
-            //
-            // setTimeout(() => {
-            //     $notice.classList.remove('noticeAni');
-            //     $notice.innerHTML = '';
-            // }, 3000);
-
+            this.reset();
         });
     }
 });

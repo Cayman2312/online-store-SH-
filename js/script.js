@@ -2,7 +2,7 @@
 
 const $notice = document.querySelector('.notice-popup');
 
-function notice (response) {
+function notice(response) {
     $notice.classList.add('noticeAni');
     $notice.innerHTML = `<p>${response}</p>`;
 
@@ -101,6 +101,23 @@ function checkFormLog(form) {
 
 //------------------------------------------
 
+// Функции close/open popup ----------------
+
+function openPopup(popup) {
+    $regBack.classList.add('openReg');
+    popup.style.display = 'block';
+    setTimeout(() => {
+        popup.style.opacity = 1;
+    }, 500);
+}
+
+function closePopup(popup) {
+    $regBack.classList.remove('openReg');
+    popup.style.display = '';
+    popup.style.opacity = 0;
+    popup.reset();
+}
+
 // Попап регистрации нового пользователя ---
 
 const $regHref = document.querySelector('.reg-href');
@@ -114,65 +131,64 @@ const $regPassCheck = document.querySelector('.registration__popup [name="pass-c
 
 // Ссылка на регистрацию
 $regHref.addEventListener('click', function () {
-    $regBack.style.display = 'block';
-    setTimeout(function () {
-        $regBack.style.bottom = '-100%';
-    }, 100);
-
-    setTimeout(function () {
-        $regPopup.style.display = 'block';
-
-        setTimeout(function () {
-            $regPopup.style.opacity = 1;
-
-        }, 100);
-
-    }, 500);
+    openPopup($regPopup);
 });
 
 // Кнопка Close
 $regClose.addEventListener('click', function () {
-    $regBack.style.bottom = '0%';
-    $regBack.style.display = 'none';
-    $regPopup.style.opacity = 0;
-    $regPopup.style.display = '';
-    $errorReg.style.opacity = 0;
-
-    for (let i = 0; i < $regPopupEl.length - 1; i++) {
-        $regPopupEl[i].style.borderLeft = '';
-    }
-
-    $regPopup.reset();
+    closePopup($regPopup);
 });
 
-// Валидация submit
-function chekFormReg(form) {
-    let e = 0;
 
-    for (let i = 0; i < form.length - 1; i++) {
-        if (!form[i].value.replace(/^\s+|\s+$/g, '')) {
-            form[i].style.borderLeft = '2px solid red';
+// Валидация submit
+
+
+$regPopup.addEventListener('submit', function (e) {
+    e.preventDefault();
+
+    let errorCount = 0;
+
+    let message = '';
+
+    for (let i = 0; i < this.elements.length - 1; i++) {
+        if (!this.elements[i].value.replace(/^\s+|\s+$/g, '')) {
+            this.elements[i].style.borderLeft = '2px solid red';
             $errorReg.style.opacity = 1;
-            e = 1;
+            errorCount++;
         }
     }
 
-    if (e) {
-        return false;
-    }
+    if (errorCount == 0) {
 
-    if (!form['agree'].checked) {
-        alert('Либо за меня выходи, либо закрой страницу! xD');
-        return false;
-    }
+        if (this.elements['password'].value !== this.elements['password-check'].value) {
+            message = 'Пароли не совпадают';
+            notice(message);
+        } else if (!this.elements['agree'].checked) {
+            message = 'Либо за меня выходи, либо закрой страницу! xD';
+            notice(message);
+        } else {
 
-    if ($regPass.value !== $regPassCheck.value) {
-        alert('Пароли не совпадают');
-        return false;
-    }
+            let params = '';
 
-    alert('Поздравляю с регистрацией нашего брака! :D');
-}
+            for (let i = 0; i < this.elements.length - 1; i++) {
+               params += `${this.elements[i].name}=${this.elements[i].value}&`;
+            }
+
+            const xhr = new XMLHttpRequest();
+
+            xhr.open('GET', `/handlers/handler_reg.php?${params}`);
+            xhr.send();
+
+            xhr.addEventListener('load', () => {
+                const response = xhr.response;
+
+                notice(response);
+                this.reset();
+                // closePopup(this)
+            });
+        }
+    }
+});
 
 // Валидация keyup
 function checkKeyupFormReg(form) {
@@ -195,40 +211,35 @@ const $forgotPopup = document.querySelector('.forgot-popup');
 const $forgotClose = document.querySelector('.forgot-popup__close');
 const $forgotError = document.querySelector('.forgot-popup__error');
 
+
 $forgotHref.addEventListener('click', function () {
-    $regBack.style.display = 'block';
-    setTimeout(function () {
-        $regBack.style.bottom = '-100%';
-    }, 100);
-
-    setTimeout(function () {
-        $forgotPopup.style.display = 'block';
-
-        setTimeout(function () {
-            $forgotPopup.style.opacity = 1;
-
-        }, 100);
-
-    }, 500);
+    openPopup($forgotPopup);
 });
 
 $forgotClose.addEventListener('click', function () {
-    $regBack.style.display = 'none';
-    $regBack.style.bottom = '0%';
-    $forgotPopup.style.display = 'none';
-    $forgotPopup.style.opacity = 0;
-
-    $forgotPopup.reset();
+    closePopup($forgotPopup);
 });
 
-function checkFormForgot(form) {
-    if (!form[0].value.replace(/^\s+|\s+$/g, '')) {
+$forgotPopup.addEventListener('submit', function (e) {
+    e.preventDefault();
+
+    if (!this.elements[0].value.replace(/^\s+|\s+$/g, '')) {
         $forgotError.style.opacity = 1;
-        return false;
     } else {
-        $forgotError.style.opacity = 0;
+
+        const xhr = new XMLHttpRequest();
+
+        xhr.open('GET', '/handlers/handler_main.php?email=' + this.elements[0].value);
+        xhr.send();
+
+        xhr.addEventListener('load', () => {
+            const response = xhr.response;
+
+            notice(response);
+            closePopup(this);
+        });
     }
-}
+});
 
 function checkKeyupFormForgot(form) {
     if (form[0].value.replace(/^\s+|\s+$/g, '')) {

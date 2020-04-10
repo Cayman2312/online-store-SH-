@@ -1,12 +1,5 @@
 <?php
 
-/**
- *
- * Шапка сайта
- *
- */
-
-
 include('parts/header_conf.php');
 
 if (isset($_SESSION['basket']) && !empty($_SESSION['basket'])) {

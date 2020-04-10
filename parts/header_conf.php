@@ -7,6 +7,8 @@
 
 define('ROOT_PATH', $_SERVER['DOCUMENT_ROOT']);
 
+$salt = 'prowebers';
+
 session_start();
 
 include(ROOT_PATH.'/parts/functions.php');
