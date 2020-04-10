@@ -17,7 +17,7 @@ include('parts/header.php');
     <div class="offer">
         <h1 class="offer__title">Новые поступления весны</h1>
         <p class="offer__text">Мы подготовили для Вас лучшие новинки сезона</p>
-        <a href="#" class="offer__button centre">Посмотреть новинки</a>
+        <a href="catalog.php?category_id=4" class="offer__button centre">Посмотреть новинки</a>
         <div class="offer__grid-container">
             <div class="item fromLeft">
                 <h4 class="item-title">Джинсовые куртки</h4>

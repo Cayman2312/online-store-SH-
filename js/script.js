@@ -12,6 +12,23 @@ function notice(response) {
     }, 3000);
 }
 
+// Функции close/open popup ----------------
+
+function openPopup(popup) {
+    $regBack.classList.add('openReg');
+    popup.style.display = 'block';
+    setTimeout(() => {
+        popup.style.opacity = 1;
+    }, 500);
+}
+
+function closePopup(popup) {
+    $regBack.classList.remove('openReg');
+    popup.style.display = '';
+    popup.style.opacity = 0;
+    popup.reset();
+}
+
 //-----------------------------------------
 
 
@@ -81,7 +98,27 @@ $logIn.addEventListener('click', function () {
     });
 });
 
-//Валидация
+//Валидация и авторизация -------------------
+
+$logForm.addEventListener('submit', function (e) {
+    e.preventDefault();
+
+    const xhr = new XMLHttpRequest();
+
+    xhr.open('GET', `/handlers/handler_auth.php?email=${this.elements['email'].value}&password=${this.elements['password'].value}`);
+    xhr.send();
+
+    xhr.addEventListener('load', () => {
+        const response = xhr.response;
+
+        notice(response);
+        this.reset();
+        // closePopup(this)
+    });
+
+});
+
+
 function checkFormLog(form) {
     let errorsCounter = 0;
 
@@ -101,33 +138,13 @@ function checkFormLog(form) {
 
 //------------------------------------------
 
-// Функции close/open popup ----------------
-
-function openPopup(popup) {
-    $regBack.classList.add('openReg');
-    popup.style.display = 'block';
-    setTimeout(() => {
-        popup.style.opacity = 1;
-    }, 500);
-}
-
-function closePopup(popup) {
-    $regBack.classList.remove('openReg');
-    popup.style.display = '';
-    popup.style.opacity = 0;
-    popup.reset();
-}
-
 // Попап регистрации нового пользователя ---
 
 const $regHref = document.querySelector('.reg-href');
 const $regBack = document.querySelector('.registration');
 const $regPopup = document.querySelector('.registration__popup');
-const $regPopupEl = $regPopup.getElementsByTagName('*');
 const $regClose = document.querySelector('.registration__close');
 const $errorReg = document.querySelector('.registration__error');
-const $regPass = document.querySelector('.registration__popup [name="pass"]');
-const $regPassCheck = document.querySelector('.registration__popup [name="pass-check"]');
 
 // Ссылка на регистрацию
 $regHref.addEventListener('click', function () {

@@ -184,6 +184,7 @@ body {
   }
 
   &__user-box {
+    display: flex;
 
     @include adaptive(tablet) {
       width: 100%;
@@ -219,14 +220,6 @@ body {
         margin: auto 0;
       }
 
-      &.user-box__login {
-        animation-delay: 2s;
-
-        &::before {
-          background-image: url('/images/icons/account.png');
-        }
-      }
-
       &.user-box__basket {
         animation-delay: 2.5s;
 
@@ -251,6 +244,31 @@ body {
 
       &:hover::after {
         width: 100%;
+      }
+    }
+
+    & .user-box__login {
+      color: inherit;
+      margin-left: 70px;
+      padding: 5px 0;
+      position: relative;
+      animation-delay: 2s;
+      cursor: pointer;
+      transition: .8s ease;
+
+      &:hover {
+        transform: scale(1.05);
+        color: $orange;
+      }
+
+      &:before {
+        content: '';
+        width: 30px;
+        height: 30px;
+        left: -30px;
+        top: 2px;
+        position: absolute;
+        background-image: url('/images/icons/account.png');
       }
     }
   }

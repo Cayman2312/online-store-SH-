@@ -2,10 +2,10 @@
 -- version 5.0.1
 -- https://www.phpmyadmin.net/
 --
--- Хост: 127.0.0.1
--- Время создания: Апр 10 2020 г., 17:41
+-- Хост: localhost
+-- Время создания: Апр 10 2020 г., 23:44
 -- Версия сервера: 10.4.11-MariaDB
--- Версия PHP: 7.4.2
+-- Версия PHP: 7.2.27
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 SET AUTOCOMMIT = 0;
@@ -229,7 +229,7 @@ CREATE TABLE IF NOT EXISTS `subscribers` (
   `id` int(11) NOT NULL AUTO_INCREMENT,
   `subscriber` varchar(50) NOT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=83 DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB AUTO_INCREMENT=84 DEFAULT CHARSET=utf8;
 
 --
 -- Дамп данных таблицы `subscribers`
@@ -237,7 +237,8 @@ CREATE TABLE IF NOT EXISTS `subscribers` (
 
 INSERT INTO `subscribers` (`id`, `subscriber`) VALUES
 (81, 'asd@sad'),
-(82, 'asd@asdasd');
+(82, 'asd@asdasd'),
+(83, 'asd@asd');
 
 -- --------------------------------------------------------
 
@@ -253,7 +254,7 @@ CREATE TABLE IF NOT EXISTS `users` (
   `password` varchar(50) NOT NULL,
   `is_admin` tinyint(1) NOT NULL DEFAULT 0,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=10 DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB AUTO_INCREMENT=11 DEFAULT CHARSET=utf8;
 
 --
 -- Дамп данных таблицы `users`
@@ -261,7 +262,8 @@ CREATE TABLE IF NOT EXISTS `users` (
 
 INSERT INTO `users` (`id`, `first_name`, `last_name`, `email`, `password`, `is_admin`) VALUES
 (7, 'Михаил', 'Борунов', 'borunow.m@gmail.com', 'prfqPTTTRUVLc', 1),
-(8, 'Михаил', 'Студицкий', 'studitskiymv@yandex.ru', 'prfqPTTTRUVLc', 1);
+(8, 'Михаил', 'Студицкий', 'studitskiymv@yandex.ru', 'prfqPTTTRUVLc', 1),
+(10, 'San', 'E4ek', 'awesom@awesome.com', 'prfqPTTTRUVLc', 1);
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;

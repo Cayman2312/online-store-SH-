@@ -25,6 +25,7 @@ $result_category_list = mysqli_query($link, $sql_category_list);
     <title><?= $header_config['title'] ?></title>
 
     <link rel="stylesheet" href="/styles/styles.css">
+    <link rel="shortcut icon" type="image/ico" href="/images/icons/favicon.ico"/>
     <link rel="stylesheet" href="/styles/<?= $header_config['style'] ?>">
     <link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet"
           integrity="sha384-wvfXpqpZZVQGK6TAh5PVlGOfQNHSoD2xbE+QkPxCAFlNEevoEH3Sl0sibVcOQVnN" crossorigin="anonymous">
@@ -47,7 +48,7 @@ $result_category_list = mysqli_query($link, $sql_category_list);
             </div>
         </nav>
         <div class="header__user-box">
-            <a href="#" class="user-box__login">Войти</a>
+            <div class="user-box__login">Войти</div>
             <a href="/basket.php" class="user-box__basket">
                 Корзина (<b><?= $basket_sum ?></b>)
             </a>
@@ -55,14 +56,13 @@ $result_category_list = mysqli_query($link, $sql_category_list);
         <div class="popup-log">
             <div class="popup-log__close"></div>
             <form method="GET" action="/#" class="popup-log__form"
-                  onsubmit="return checkFormLog(this.elements)"
                   onkeyup="return checkFormLog(this.elements)">
                 <div class="form__group">
-                    <input type="email" name="login" placeholder=" ">
+                    <input type="email" name="email" placeholder=" ">
                     <label>Email</label>
                 </div>
                 <div class="form__group">
-                    <input type="password" name="pass" placeholder=" ">
+                    <input type="password" name="password" placeholder=" ">
                     <label>Пароль</label>
                 </div>
                 <input type="submit" value="Войти" disabled>
