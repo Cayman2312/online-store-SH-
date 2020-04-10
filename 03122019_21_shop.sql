@@ -2,10 +2,10 @@
 -- version 5.0.1
 -- https://www.phpmyadmin.net/
 --
--- Хост: localhost
--- Время создания: Апр 09 2020 г., 20:40
+-- Хост: 127.0.0.1
+-- Время создания: Апр 10 2020 г., 16:00
 -- Версия сервера: 10.4.11-MariaDB
--- Версия PHP: 7.2.27
+-- Версия PHP: 7.4.2
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 SET AUTOCOMMIT = 0;
@@ -34,7 +34,7 @@ CREATE TABLE IF NOT EXISTS `categories` (
   `id` int(11) NOT NULL AUTO_INCREMENT,
   `name` varchar(30) NOT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=4 DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB AUTO_INCREMENT=5 DEFAULT CHARSET=utf8;
 
 --
 -- Дамп данных таблицы `categories`
@@ -43,7 +43,8 @@ CREATE TABLE IF NOT EXISTS `categories` (
 INSERT INTO `categories` (`id`, `name`) VALUES
 (1, 'Женщинам'),
 (2, 'Мужчинам'),
-(3, 'Детям');
+(3, 'Детям'),
+(4, 'Новинки');
 
 -- --------------------------------------------------------
 
@@ -116,31 +117,33 @@ CREATE TABLE IF NOT EXISTS `products` (
   `name` varchar(255) NOT NULL,
   `description` text NOT NULL,
   `price` float NOT NULL,
+  `add_date` datetime NOT NULL DEFAULT current_timestamp(),
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=23 DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB AUTO_INCREMENT=24 DEFAULT CHARSET=utf8;
 
 --
 -- Дамп данных таблицы `products`
 --
 
-INSERT INTO `products` (`id`, `img_url`, `name`, `description`, `price`) VALUES
-(1, '/images/catalog/1.jpg', 'Куртка', 'Ой какая красивая куртка', 4500),
-(2, '/images/catalog/9.jpg', 'Кеды', 'Хорошие кеды', 999),
-(3, '/images/catalog/7.jpg', 'Куртка', 'Ой какая красивая куртка', 500),
-(4, '/images/catalog/3.png', 'Кеды', 'Хорошие кеды', 3000),
-(5, '/images/catalog/12.jpg', 'Куртка', 'Ой какая красивая куртка', 4500),
-(6, '/images/catalog/10.jpg', 'Кеды', 'Хорошие кеды', 999),
-(7, '/images/catalog/4.jpg', 'Куртка', 'Ой какая красивая куртка', 500),
-(8, '/images/catalog/1.jpg', 'Кеды', 'Хорошие кеды', 3000),
-(9, '/images/catalog/6.jpg', 'Куртка', 'Ой какая красивая куртка', 4500),
-(10, '/images/catalog/5.jpg', 'Кеды', 'Хорошие кеды', 999),
-(11, '/images/catalog/4.jpg', 'Куртка', 'Ой какая красивая куртка', 500),
-(12, '/images/catalog/8.jpg', 'Кеды', 'Хорошие кеды', 3000),
-(13, '/images/catalog/11.jpg', 'Куртка', 'Ой какая красивая куртка', 4500),
-(14, '/images/catalog/10.jpg', 'Кеды', 'Хорошие кеды', 999),
-(15, '/images/catalog/1.jpg', 'Куртка', 'Ой какая красивая куртка', 500),
-(16, '/images/catalog/12.jpg', 'Кеды', 'Хорошие кеды', 3000),
-(22, 'https://avatars.mds.yandex.net/get-pdb/1946731/c0735a26-a68f-4aca-a37f-a1985c37fa1d/s1200', 'Холин Егор Александрович', 'Ой какая красивая куртка', 1200);
+INSERT INTO `products` (`id`, `img_url`, `name`, `description`, `price`, `add_date`) VALUES
+(1, '/images/catalog/1.jpg', 'Куртка', 'Ой какая красивая куртка', 4500, '2020-04-10 15:35:35'),
+(2, '/images/catalog/9.jpg', 'Кеды', 'Хорошие кеды', 999, '2020-04-10 15:24:47'),
+(3, '/images/catalog/7.jpg', 'Куртка', 'Ой какая красивая куртка', 500, '2020-04-10 15:24:47'),
+(4, '/images/catalog/3.png', 'Кеды', 'Хорошие кеды', 3000, '2020-04-10 15:24:47'),
+(5, '/images/catalog/12.jpg', 'Куртка', 'Ой какая красивая куртка', 4500, '2020-04-10 15:24:47'),
+(6, '/images/catalog/10.jpg', 'Кеды', 'Хорошие кеды', 999, '2020-04-10 15:24:47'),
+(7, '/images/catalog/4.jpg', 'Куртка', 'Ой какая красивая куртка', 500, '2020-04-10 15:24:47'),
+(8, '/images/catalog/1.jpg', 'Кеды', 'Хорошие кеды', 3000, '2020-04-10 15:24:47'),
+(9, '/images/catalog/6.jpg', 'Куртка', 'Ой какая красивая куртка', 4500, '2020-04-10 15:24:47'),
+(10, '/images/catalog/5.jpg', 'Кеды', 'Хорошие кеды', 999, '2020-04-10 15:24:47'),
+(11, '/images/catalog/4.jpg', 'Куртка', 'Ой какая красивая куртка', 500, '2020-04-10 15:24:47'),
+(12, '/images/catalog/8.jpg', 'Кеды', 'Хорошие кеды', 3000, '2020-04-10 15:24:47'),
+(13, '/images/catalog/11.jpg', 'Куртка', 'Ой какая красивая куртка', 4500, '2020-04-10 15:24:47'),
+(14, '/images/catalog/10.jpg', 'Кеды', 'Хорошие кеды', 999, '2020-04-10 15:24:47'),
+(15, '/images/catalog/1.jpg', 'Куртка', 'Ой какая красивая куртка', 500, '2020-04-10 15:24:47'),
+(16, '/images/catalog/12.jpg', 'Кеды', 'Хорошие кеды', 3000, '2020-04-10 15:24:47'),
+(22, 'https://avatars.mds.yandex.net/get-pdb/1946731/c0735a26-a68f-4aca-a37f-a1985c37fa1d/s1200', 'Холин Егор Александрович', 'Ой какая красивая куртка', 1200, '2020-04-10 15:24:47'),
+(23, '/images/catalog/1.jpg', 'Детская куртка', 'Хорошая и теплая детская куртка', 2000, '2020-04-10 15:28:51');
 
 -- --------------------------------------------------------
 
@@ -153,7 +156,7 @@ CREATE TABLE IF NOT EXISTS `product_category` (
   `product_id` int(11) NOT NULL,
   `category_id` int(11) NOT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=33 DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB AUTO_INCREMENT=34 DEFAULT CHARSET=utf8;
 
 --
 -- Дамп данных таблицы `product_category`
@@ -177,7 +180,8 @@ INSERT INTO `product_category` (`id`, `product_id`, `category_id`) VALUES
 (15, 15, 1),
 (16, 16, 1),
 (17, 11, 1),
-(32, 22, 3);
+(32, 22, 3),
+(33, 23, 3);
 
 -- --------------------------------------------------------
 
@@ -248,14 +252,15 @@ CREATE TABLE IF NOT EXISTS `users` (
   `password` varchar(50) NOT NULL,
   `is_admin` tinyint(1) NOT NULL DEFAULT 0,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=8 DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB AUTO_INCREMENT=10 DEFAULT CHARSET=utf8;
 
 --
 -- Дамп данных таблицы `users`
 --
 
 INSERT INTO `users` (`id`, `first_name`, `last_name`, `email`, `password`, `is_admin`) VALUES
-(7, 'Михаил', 'Борунов', 'borunow.m@gmail.com', 'prfqPTTTRUVLc', 1);
+(7, 'Михаил', 'Борунов', 'borunow.m@gmail.com', 'prfqPTTTRUVLc', 1),
+(8, 'Михаил', 'Студицкий', 'studitskiymv@yandex.ru', 'prfqPTTTRUVLc', 1);
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
