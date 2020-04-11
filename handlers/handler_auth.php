@@ -17,7 +17,16 @@ if ($isset_required_fields && $not_empty_required_fields) {
     $user = mysqli_fetch_assoc($result_get_user);
 
     if ($user) {
-        echo "Успешная авторизация! Добро пожаловать! :)";
+        $_SESSION['is_auth'] = true;
+        $_SESSION['user_name'] = $user['first_name'];
+
+        if ($user['is_admin'] == 1) {
+            $_SESSION['is_admin'] = true;
+            echo "Привет, админ ", $user['first_name'], " :)";
+        } else {
+            echo "Успешная авторизация! Добро пожаловать, ", $user['first_name'], "! :)";
+        }
+
     } else {
         echo "Неверный логин или пароль";
     }

@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Хост: localhost
--- Время создания: Апр 10 2020 г., 23:44
+-- Время создания: Апр 12 2020 г., 00:50
 -- Версия сервера: 10.4.11-MariaDB
 -- Версия PHP: 7.2.27
 
@@ -254,7 +254,7 @@ CREATE TABLE IF NOT EXISTS `users` (
   `password` varchar(50) NOT NULL,
   `is_admin` tinyint(1) NOT NULL DEFAULT 0,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=11 DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB AUTO_INCREMENT=12 DEFAULT CHARSET=utf8;
 
 --
 -- Дамп данных таблицы `users`
@@ -263,7 +263,8 @@ CREATE TABLE IF NOT EXISTS `users` (
 INSERT INTO `users` (`id`, `first_name`, `last_name`, `email`, `password`, `is_admin`) VALUES
 (7, 'Михаил', 'Борунов', 'borunow.m@gmail.com', 'prfqPTTTRUVLc', 1),
 (8, 'Михаил', 'Студицкий', 'studitskiymv@yandex.ru', 'prfqPTTTRUVLc', 1),
-(10, 'San', 'E4ek', 'awesom@awesome.com', 'prfqPTTTRUVLc', 1);
+(10, 'San', 'E4ek', 'awesom@awesome.com', 'prfqPTTTRUVLc', 1),
+(11, 'test', 'test', 'test@test', 'prfqPTTTRUVLc', 0);
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;

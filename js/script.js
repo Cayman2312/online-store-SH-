@@ -89,7 +89,12 @@ $logForm.addEventListener('submit', function (e) {
 
         notice(response);
         this.reset();
-        // closePopup(this)
+        if (response != "Неверный логин или пароль") {
+            setTimeout(() => {
+                location.href = "/";
+            }, 1000)
+        }
+
     });
 
 });
@@ -185,7 +190,7 @@ $regPopup.addEventListener('submit', function (e) {
             let params = '';
 
             for (let i = 0; i < this.elements.length - 1; i++) {
-               params += `${this.elements[i].name}=${this.elements[i].value}&`;
+                params += `${this.elements[i].name}=${this.elements[i].value}&`;
             }
 
             const xhr = new XMLHttpRequest();
@@ -198,7 +203,12 @@ $regPopup.addEventListener('submit', function (e) {
 
                 notice(response);
                 this.reset();
-                // closePopup(this)
+
+                if (response != "Увы! :( супруга с таким email у меня уже есть") {
+                    setTimeout(() => {
+                        closePopup(this)
+                    }, 1000)
+                }
             });
         }
     }
@@ -250,7 +260,13 @@ $forgotPopup.addEventListener('submit', function (e) {
             const response = xhr.response;
 
             notice(response);
-            closePopup(this);
+            this.reset();
+
+            if (response != "К сожалению, пользователь с таким email не найден :(") {
+                setTimeout(() => {
+                    closePopup(this)
+                }, 1000)
+            }
         });
     }
 });
