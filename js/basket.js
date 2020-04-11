@@ -136,9 +136,20 @@ document.addEventListener("DOMContentLoaded", function (e) {
 
     if (errCount != 0) {
       e.preventDefault();
+      console.log($formСheckout.getBoundingClientRect().top);
+      scrollUpTo($formСheckout);
     }
 
   })
+
+  function scrollUpTo($item) {
+    if ($item.getBoundingClientRect().top < 0) {
+      window.scrollBy(0, -40);
+      setTimeout(() => {
+        scrollUpTo($item);
+      }, 10)
+    }
+  }
 
   //валидация данных каждого input при изменении
 
