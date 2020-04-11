@@ -5,15 +5,17 @@ document.addEventListener("DOMContentLoaded", function (e) {
   function requestGet(action, id, size, sizeAmount) {
     let xhr = new XMLHttpRequest();
     xhr.open('GET', `/handlers/handler_basket.php?action=${action}&id=${id}&size=${size}&sizeAmount=${sizeAmount}`);
-    xhr.addEventListener('load', () => {
-      console.log(xhr.response);
-    });
+    // xhr.addEventListener('load', () => {
+    //   console.log(xhr.response);
+    // });
     xhr.addEventListener('error', () => { console.error('ошибка!') });
     xhr.send();
   }
 
   function changeFinalPrice(sum) {
     let service = +document.querySelector('.list-item.service').textContent.slice(0, -5);
+
+    document.querySelector('.centre.orange').textContent = `${sum} руб.`;
     document.querySelector('.list-item.price').textContent = `${sum} руб.`;
     document.querySelector('.list-item.final-price').textContent = `${sum + service} руб.`;
     document.forms.payment.price.value = sum;
@@ -31,8 +33,10 @@ document.addEventListener("DOMContentLoaded", function (e) {
         let priceDeleted = +item.parentNode.querySelector('.price.centre').textContent.slice(0, -5);
         sum -= priceDeleted;
         document.querySelector('.list-item.price').textContent = `${sum} руб.`;
-        changeFinalPrice(sum);
 
+        document.querySelector('.centre.orange').textContent = `${sum} руб.`;
+
+        changeFinalPrice(sum);
 
         //удаляем товар из $_SESSION
         requestGet('remove', item.parentNode.dataset.productId, item.parentNode.dataset.productSize, item.parentNode.dataset.productSizeAmount);
@@ -60,8 +64,8 @@ document.addEventListener("DOMContentLoaded", function (e) {
       let cost = sum / amount;
 
       finalSum += cost;
-      document.querySelector('.centre.orange').textContent = `${finalSum} руб.`;
       sum = +sum + cost;
+
       $item.querySelector('.price.centre').textContent = `${sum} руб.`;
 
       changeFinalPrice(finalSum);
@@ -92,7 +96,6 @@ document.addEventListener("DOMContentLoaded", function (e) {
         let cost = sum / amount;
 
         finalSum -= cost;
-        document.querySelector('.centre.orange').textContent = `${finalSum} руб.`;
         sum -= cost;
         $item.querySelector('.price.centre').textContent = `${sum} руб.`;
 
