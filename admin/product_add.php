@@ -13,8 +13,13 @@
         $id = mysqli_insert_id($link);
 
         // Привязываем товар к категории
-        $sql_set_category = "INSERT INTO product_category VALUES (null, $id, '{$_POST['category']}')";
-        $result_set_category = mysqli_query($link, $sql_set_category);
+        $categoty_string = '['.implode(",",$_POST['category']).']';
+        d($categoty_string);
+//        $count = 0;
+        for ($count = 0; $count < count($_POST['category']); $count++) {
+            $sql_set_category = "INSERT INTO product_category VALUES (null, $id, '{$categoty_string[$count]}')";
+            $result_set_category = mysqli_query($link, $sql_set_category);
+        }
 
         // Добавляем размеры в таблицу размеров
         //конвертируем массив размеров товара в строку для отправки в базу
@@ -59,7 +64,7 @@
     </div>
 
     <div class="form-group">
-        <select class="form-control" placeholder="Категория" name="category">
+        <select multiple class="form-control" placeholder="Категория" name="category[]">
             <?php while($row = mysqli_fetch_assoc($result_get_categories)) : ?>
             <option value="<?= $row['id']; ?>"><?= $row['name']; ?></option>
             <?php endwhile; ?>
