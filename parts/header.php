@@ -20,7 +20,11 @@ $result_category_list = mysqli_query($link, $sql_category_list);
 
 $is_auth = isset($_SESSION['is_auth']) && $_SESSION['is_auth'];
 $is_admin = isset($_SESSION['is_admin']) && $_SESSION['is_admin'];
-$user_name = $_SESSION['user_name'];
+
+if (isset($_SESSION['user_name']) && !empty($_SESSION['user_name'])) {
+
+    $user_name = $_SESSION['user_name'];
+}
 
 if (!$is_auth && (!isset($auth_page) || !$auth_page)) {
     header('Location: /');

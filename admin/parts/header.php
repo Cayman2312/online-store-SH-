@@ -2,10 +2,10 @@
     $salt = 'prowebers';
     include('../parts/header_conf.php');
 
-    $is_auth = isset($_SESSION['is_auth']) && $_SESSION['is_auth'];
+    $is_admin = isset($_SESSION['is_admin']) && $_SESSION['is_admin'];
 
-    if (!$is_auth && (!isset($auth_page) || !$auth_page)) {
-        header('Location: /admin/auth.php');
+    if (!$is_admin) {
+        header('Location: /');
     }
 ?>
 
@@ -37,10 +37,9 @@
             <li class="nav-item">
                 <a class="nav-link" href="/admin/orders.php">Заказы</a>
             </li>
-            <?php if($is_auth) : ?>
+
             <li class="nav-item">
-                <a class="nav-link" href="/admin/exit.php">Выход</a>
+                <a class="nav-link" href="/exit.php">Выход</a>
             </li>
-            <?php endif; ?>
         </ul>
         <br/><br/>
