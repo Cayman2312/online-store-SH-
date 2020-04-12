@@ -13,11 +13,11 @@
         $id = mysqli_insert_id($link);
 
         // Привязываем товар к категории
-        $categoty_string = '['.implode(",",$_POST['category']).']';
-        d($categoty_string);
-//        $count = 0;
+        // Конвертируем массив категорий в сторку для отправки в базу
+        $category_string = '['.implode(",",$_POST['category']).']';
+
         for ($count = 0; $count < count($_POST['category']); $count++) {
-            $sql_set_category = "INSERT INTO product_category VALUES (null, $id, '{$categoty_string[$count]}')";
+            $sql_set_category = "INSERT INTO product_category VALUES (null, $id, '{$category_string[$count]}')";
             $result_set_category = mysqli_query($link, $sql_set_category);
         }
 
