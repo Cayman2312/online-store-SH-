@@ -42,7 +42,12 @@
     Редактирование товара "<?= $data['name']; ?>"
 </h1>
 
-<form method="POST">
+<div class="card" style="width: 18rem;">
+  <img src="<?= $data['img_url'] ?>" class="card-img-top" alt="Здесь подгрузится изображение">
+</div>
+<br>
+
+<form method="POST" name="edit">
     <input type="hidden" name="edit" value="edit">
 
     <div class="form-group">
@@ -64,6 +69,14 @@
     <div class="form-group">
         <input type="text" class="form-control" placeholder="Цена" name="price" value="<?= $data['price']; ?>">
     </div>
+
+    <label class="mr-sm-2" for="inlineFormCustomSelect">Тип товара:</label>
+    <select class="custom-select mr-sm-2" id="inlineFormCustomSelect" name="type" data-type="<?= $data['type']; ?>">
+        <option value="Верхняя одежда">Верхняя одежда</option>
+        <option value="Обувь">Обувь</option>
+        <option value="Джинсы">Джинсы</option>
+    </select>
+    <br><br>
 
     <p>Выберите имеющиеся размеры:</p>
 
@@ -92,5 +105,6 @@
     <br><br>
     <button type="submit" class="btn btn-primary">Сохранить</button>
 </form>
+<script src="js/product_edit.js"></script>
 
 <?php include('parts/footer.php'); ?>
