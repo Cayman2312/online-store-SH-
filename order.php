@@ -44,9 +44,6 @@ foreach ($arr as $id => $sizes) {
 
 
 <?php
-$footer_config = [
-  'script' => 'product.js'
-];
 
 include('parts/footer.php');
 ?>
