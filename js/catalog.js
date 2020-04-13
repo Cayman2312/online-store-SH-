@@ -67,8 +67,6 @@ class Catalog {
                 this.renderPagination(response.pagination);
             }
 
-            console.log(response.type);
-            console.log(response.size);
             let sizeTitle;
             if (response.size == '') {
                 sizeTitle = 'Размер';
@@ -248,21 +246,19 @@ const catalog = new Catalog();
 catalog.load();
 
 let $formFilter = document.forms.filter;
-// console.log($formFilter.querySelectorAll('select'));
+
 $formFilter.querySelectorAll('select').forEach(function ($select) {
     $select.addEventListener('change', function () {
         let $filterType = $formFilter.type.value;
         if ($filterType == $formFilter.type[0].value) { $filterType = '' }
 
         let $filterSize = $formFilter.size.value;
-        console.log(isNaN($filterSize));
         if (isNaN($filterSize)) { $filterSize = '' }
 
         let $filterPrice = $formFilter.price.value;
         if ($filterPrice == $formFilter.price[0].value) { $filterPrice = '' }
 
         catalog.load(1, $filterType, $filterSize, $filterPrice);
-        console.log('Type = ' + $filterType + ' size = ' + $filterSize + ' price = ' + $filterPrice);
     })
 })
 
