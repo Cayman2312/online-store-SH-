@@ -38,20 +38,17 @@ $result_price_range = mysqli_query($link, $sql_price_range);
 
     <form name="filter" method="GET" class="label-wrap">
         <div class="form-group">
-            <select class="label" name="category" value="Категория">
+            <select class="label" name="type" value="Категория">
                 <option>Категория</option>
-                <option value="jacets">Куртки</option>
-                <option value="snakers">Кеды</option>
-                <option value="jeans">Джинсы</option>
+                <option value="Верхняя одежда">Верхняя одежда</option>
+                <option value="Обувь">Обувь</option>
+                <option value="Джинсы">Джинсы</option>
             </select>
         </div>
 
         <div class="form-group">
             <select class="label" name="size">
                 <option>Размер</option>
-                <option value="s">S</option>
-                <option value="m">M</option>
-                <option value="l">L</option>
             </select>
         </div>
 

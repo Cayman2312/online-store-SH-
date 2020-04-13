@@ -18,7 +18,7 @@ class Catalog {
         this.categoryId = this.$catalog.dataset.categoryId;
     }
 
-    load(active = 1, priceRange = '') {
+    load(active = 1, filterType = '', filterSize = '', filterPrice = '') {
         // Будет загружать данные по ajax
         // После загрузки будет вызывать метод render
         /**
@@ -32,7 +32,7 @@ class Catalog {
         this.showLoader();
 
         const xhr = new XMLHttpRequest();
-        xhr.open('GET', `/handlers/handler_catalog.php?category_id=${this.categoryId}&active=${active}&price_range=${priceRange}`);
+        xhr.open('GET', `/handlers/handler_catalog.php?category_id=${this.categoryId}&active=${active}&filter_type=${filterType}&filter_size=${filterSize}&filter_price=${filterPrice}`);
         xhr.send();
 
         xhr.addEventListener('load', () => {
@@ -65,6 +65,71 @@ class Catalog {
 
                 this.render();
                 this.renderPagination(response.pagination);
+            }
+
+            console.log(response.type);
+            let sizeTitle;
+            if (response.size == '') {
+                sizeTitle = 'Размер';
+            } else {
+                sizeTitle = response.size;
+            }
+            if (response.type == '') {
+                let $parentNode = document.forms.filter.size;
+                $parentNode.innerHTML = '';
+                let $start = document.createElement('option');
+                let $option = document.createElement('option');
+
+                $start.textContent = sizeTitle;
+                $option.textContent = 'Выберите категорию товара';
+
+                $parentNode.append($start);
+                $parentNode.append($option);
+            } else if (response.type == 'Верхняя одежда') {
+                let $parentNode = document.forms.filter.size;
+                $parentNode.innerHTML = '';
+
+                let $fragment = document.createDocumentFragment();
+                let $start = document.createElement('option');
+                $start.textContent = sizeTitle;
+                $fragment.append($start);
+                for (let i = 38; i <= 60; i += 2) {
+                    let $option = document.createElement('option');
+                    $option.value = i;
+                    $option.textContent = i;
+                    $fragment.append($option);
+                }
+                $parentNode.append($fragment);
+            } else if (response.type == 'Обувь') {
+                let $parentNode = document.forms.filter.size;
+                $parentNode.innerHTML = '';
+
+                let $fragment = document.createDocumentFragment();
+                let $start = document.createElement('option');
+                $start.textContent = sizeTitle;
+                $fragment.append($start);
+                for (let i = 34; i <= 46; i++) {
+                    let $option = document.createElement('option');
+                    $option.value = i;
+                    $option.textContent = i;
+                    $fragment.append($option);
+                }
+                $parentNode.append($fragment);
+            } else if (response.type == 'Джинсы') {
+                let $parentNode = document.forms.filter.size;
+                $parentNode.innerHTML = '';
+
+                let $fragment = document.createDocumentFragment();
+                let $start = document.createElement('option');
+                $start.textContent = 'Размер';
+                $fragment.append($start);
+                for (let i = 30; i <= 50; i += 2) {
+                    let $option = document.createElement('option');
+                    $option.value = i;
+                    $option.textContent = i;
+                    $fragment.append($option);
+                }
+                $parentNode.append($fragment);
             }
         });
     }
@@ -162,11 +227,25 @@ const catalog = new Catalog();
 // Вызываем загрузку данных
 catalog.load();
 
-let $priceFilter = document.forms.filter.price;
-$priceFilter.addEventListener('change', function () {
-    console.log(this.value);
-    catalog.load(1, this.value);
+let $formFilter = document.forms.filter;
+// console.log($formFilter.querySelectorAll('select'));
+$formFilter.querySelectorAll('select').forEach(function ($select) {
+    $select.addEventListener('change', function () {
+        let $filterType = $formFilter.type.value;
+        if ($filterType == $formFilter.type[0].value) { $filterType = '' }
+
+        let $filterSize = $formFilter.size.value;
+        if ($filterSize == $formFilter.size[0].value) { $filterSize = '' }
+
+        let $filterPrice = $formFilter.price.value;
+        if ($filterPrice == $formFilter.price[0].value) { $filterPrice = '' }
+
+        catalog.load(1, $filterType, $filterSize, $filterPrice);
+        // console.log('Type = ' + $filterType + ' size = ' + $filterSize + ' price = ' + $filterPrice);
+    })
 })
+
+
 // Loader ----------------------------------
 
 const $loader = document.querySelector('.loader__coub');

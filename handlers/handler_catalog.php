@@ -14,22 +14,50 @@
     $limit_products = 8;
     $pagination_active = (int) $_GET['active'];
 
-    if (!empty($_GET['price_range']) && $_GET['price_range'] != "Стоимость") {
-        $price_range_arr = explode('-', $_GET['price_range']);
+    if (!empty($_GET['filter_type'])) {
+        $filter_type = $_GET['filter_type'];
+        $query_filter_type = " AND products.type = '$filter_type' ";
+    } else {
+        $query_filter_type = "";
+    }
+
+    $query_filter_size = "";
+    if (!empty($_GET['filter_size'])) {
+        $filter_size = $_GET['filter_size'];
+        $product_has_size = [];
+        
+        $query_all_sizes = "SELECT * FROM product_sizes";
+        $result_all_sizes = mysqli_query($link, $query_all_sizes);
+
+        while ($row = mysqli_fetch_assoc($result_all_sizes)) {
+            if (strpos ( $row['product_sizes'] , $filter_size) != false) {
+                $product_has_size[] = $row['product_id'];
+            };
+        }
+        if ($product_has_size != []) {
+            $product_has_size_str = '('.implode ( ', ' , $product_has_size).')';
+            $query_filter_size = " AND products.id IN $product_has_size_str ";
+        } else {
+            $query_filter_size = " AND products.id = false ";
+        }
+
+    } 
+    
+    if (!empty($_GET['filter_price'])) {
+        $price_range_arr = explode('-', $_GET['filter_price']);
         $price_range_min = $price_range_arr[0];
         $price_range_max = $price_range_arr[1];
+        $query_filter_price = " AND products.price BETWEEN $price_range_min AND $price_range_max ";
     } else {
-        $price_range_min = 0;
-        $price_range_max = 1000000;
+        $query_filter_price = "";
     }
 
     if ($_GET['category_id'] != 4) {
-
         $sql_all_products = "SELECT products.* FROM products
         INNER JOIN product_category ON products.id = product_category.product_id 
-        WHERE product_category.category_id={$_GET['category_id']} AND products.price >= $price_range_min AND products.price <= $price_range_max ";
+        WHERE product_category.category_id={$_GET['category_id']}".$query_filter_type.$query_filter_price.$query_filter_size;
     } else {
-        $sql_all_products = "SELECT * FROM products WHERE TIMESTAMPDIFF (HOUR, add_date, NOW()) < $product_remain_new ORDER BY add_date";
+        $sql_all_products = "SELECT * FROM products WHERE TIMESTAMPDIFF (HOUR, add_date, NOW()) < $product_remain_new ".$query_filter_type.$query_filter_price.$query_filter_size."ORDER BY add_date";
     }
 
     $result_all_products = mysqli_query($link, $sql_all_products);
@@ -38,6 +66,16 @@
 
     $response['pagination']['count'] = $pagination_count;
     $response['pagination']['active'] = $pagination_active;
+    if (!empty($filter_type)) {
+        $response['type'] = $filter_type;
+    } else {
+        $response['type'] = '';
+    }
+    if (!empty($filter_size)) {
+        $response['size'] = $filter_size;
+    } else {
+        $response['size'] = '';
+    }
 
     $start_limit = ($pagination_active - 1) * $limit_products;
 
