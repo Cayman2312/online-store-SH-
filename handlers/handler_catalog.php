@@ -24,6 +24,7 @@
     $query_filter_size = "";
     if (!empty($_GET['filter_size'])) {
         $filter_size = $_GET['filter_size'];
+        $_SESSION['filter']['size'] = $filter_size;
         $product_has_size = [];
         
         $query_all_sizes = "SELECT * FROM product_sizes";

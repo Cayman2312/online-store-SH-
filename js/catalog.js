@@ -68,6 +68,7 @@ class Catalog {
             }
 
             console.log(response.type);
+            console.log(response.size);
             let sizeTitle;
             if (response.size == '') {
                 sizeTitle = 'Размер';
@@ -76,32 +77,37 @@ class Catalog {
             }
             if (response.type == '') {
                 let $parentNode = document.forms.filter.size;
-                $parentNode.innerHTML = '';
-                let $start = document.createElement('option');
                 let $option = document.createElement('option');
 
-                $start.textContent = sizeTitle;
-                $option.textContent = 'Выберите категорию товара';
-
-                $parentNode.append($start);
+                $parentNode.innerHTML = '';
+                $option.textContent = 'Выберите категорию';
                 $parentNode.append($option);
+
             } else if (response.type == 'Верхняя одежда') {
                 let $parentNode = document.forms.filter.size;
+
                 $parentNode.innerHTML = '';
 
                 let $fragment = document.createDocumentFragment();
                 let $start = document.createElement('option');
                 $start.textContent = sizeTitle;
+                $start.value = sizeTitle;
                 $fragment.append($start);
                 for (let i = 38; i <= 60; i += 2) {
+                    if (i == sizeTitle) { continue; }
                     let $option = document.createElement('option');
                     $option.value = i;
                     $option.textContent = i;
                     $fragment.append($option);
                 }
+                let $end = document.createElement('option');
                 $parentNode.append($fragment);
+                $end.textContent = 'Все размеры';
+                $end.value = 'Все размеры';
+                $parentNode.append($end);
             } else if (response.type == 'Обувь') {
                 let $parentNode = document.forms.filter.size;
+
                 $parentNode.innerHTML = '';
 
                 let $fragment = document.createDocumentFragment();
@@ -115,8 +121,14 @@ class Catalog {
                     $fragment.append($option);
                 }
                 $parentNode.append($fragment);
+                let $end = document.createElement('option');
+                $parentNode.append($fragment);
+                $end.textContent = 'Все размеры';
+                $end.value = 'Все размеры';
+                $parentNode.append($end);
             } else if (response.type == 'Джинсы') {
                 let $parentNode = document.forms.filter.size;
+
                 $parentNode.innerHTML = '';
 
                 let $fragment = document.createDocumentFragment();
@@ -130,6 +142,11 @@ class Catalog {
                     $fragment.append($option);
                 }
                 $parentNode.append($fragment);
+                let $end = document.createElement('option');
+                $parentNode.append($fragment);
+                $end.textContent = 'Все размеры';
+                $end.value = 'Все размеры';
+                $parentNode.append($end);
             }
         });
     }
@@ -217,6 +234,9 @@ class Product {
             <div class="catalog-item__name">${this.name}</div>
             <div class="catalog-item__price">${this.price} руб.</div>
         `;
+        $cataloItem.addEventListener('click', () => {
+            document.forms.filter.reset();
+        });
 
         return $cataloItem;
     }
@@ -235,13 +255,14 @@ $formFilter.querySelectorAll('select').forEach(function ($select) {
         if ($filterType == $formFilter.type[0].value) { $filterType = '' }
 
         let $filterSize = $formFilter.size.value;
-        if ($filterSize == $formFilter.size[0].value) { $filterSize = '' }
+        console.log(isNaN($filterSize));
+        if (isNaN($filterSize)) { $filterSize = '' }
 
         let $filterPrice = $formFilter.price.value;
         if ($filterPrice == $formFilter.price[0].value) { $filterPrice = '' }
 
         catalog.load(1, $filterType, $filterSize, $filterPrice);
-        // console.log('Type = ' + $filterType + ' size = ' + $filterSize + ' price = ' + $filterPrice);
+        console.log('Type = ' + $filterType + ' size = ' + $filterSize + ' price = ' + $filterPrice);
     })
 })
 
