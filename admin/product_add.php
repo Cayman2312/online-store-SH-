@@ -11,8 +11,8 @@
     // Сделать добавление товара в базу
     if (isset($_POST['add'])) {
         // Добавляем товар в базу
-        $sql_add_product = "INSERT INTO products (id, img_url, name, description, price) 
-                VALUES (null, '{$_POST['img_url']}', '{$_POST['name']}', '{$_POST['description']}', '{$_POST['price']}')";
+        $sql_add_product = "INSERT INTO products (id, img_url, name, description, type, price) 
+                VALUES (null, '{$_POST['img_url']}', '{$_POST['name']}', '{$_POST['description']}', '{$_POST['type']}','{$_POST['price']}')";
         $result_add_product = mysqli_query($link, $sql_add_product);
         $id = mysqli_insert_id($link);
 
@@ -45,8 +45,12 @@
 <h1>
     Добавление нового товара
 </h1>
+<div class="card" style="width: 18rem;">
+  <img src="" class="card-img-top" alt="Здесь подгрузится изображение">
+</div>
+<br>
 
-<form method="POST">
+<form name="add" method="POST">
     <input type="hidden" name="add" value="add">
 
     <div class="form-group">
@@ -73,6 +77,17 @@
         </select>
     </div>
 
+
+    <label class="mr-sm-2" for="inlineFormCustomSelect">Тип товара:</label>
+    <select class="custom-select mr-sm-2" id="inlineFormCustomSelect" name="type">
+        <option selected>Выберите тип товара</option>
+        <option value="Верхняя одежда">Верхняя одежда</option>
+        <option value="Обувь">Обувь</option>
+        <option value="Джинсы">Джинсы</option>
+    </select>
+    <br><br>
+
+    <p>Размеры товара:</p>
     <?php for($size = 30; $size <=60; $size++) : ?>
 
     <div class="form-check form-check-inline">
@@ -85,5 +100,7 @@
     <br><br>
     <button type="submit" class="btn btn-primary">Сохранить</button>
 </form>
+
+<script src="js/product_add.js"></script>
 
 <?php include('parts/footer.php'); ?>
