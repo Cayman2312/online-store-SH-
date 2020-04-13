@@ -18,7 +18,7 @@ class Catalog {
         this.categoryId = this.$catalog.dataset.categoryId;
     }
 
-    load(active = 1) {
+    load(active = 1, priceRange = '') {
         // Будет загружать данные по ajax
         // После загрузки будет вызывать метод render
         /**
@@ -26,12 +26,13 @@ class Catalog {
          * и вывести их в консоль
          */
 
+
         this.removeCatalogData();
 
         this.showLoader();
 
         const xhr = new XMLHttpRequest();
-        xhr.open('GET', `/handlers/handler_catalog.php?category_id=${this.categoryId}&active=${active}`);
+        xhr.open('GET', `/handlers/handler_catalog.php?category_id=${this.categoryId}&active=${active}&price_range=${priceRange}`);
         xhr.send();
 
         xhr.addEventListener('load', () => {
@@ -161,7 +162,11 @@ const catalog = new Catalog();
 // Вызываем загрузку данных
 catalog.load();
 
-
+let $priceFilter = document.forms.filter.price;
+$priceFilter.addEventListener('change', function () {
+    console.log(this.value);
+    catalog.load(1, this.value);
+})
 // Loader ----------------------------------
 
 const $loader = document.querySelector('.loader__coub');

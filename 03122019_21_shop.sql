@@ -2,10 +2,10 @@
 -- version 5.0.1
 -- https://www.phpmyadmin.net/
 --
--- Хост: localhost
--- Время создания: Апр 12 2020 г., 00:50
+-- Хост: 127.0.0.1
+-- Время создания: Апр 13 2020 г., 09:27
 -- Версия сервера: 10.4.11-MariaDB
--- Версия PHP: 7.2.27
+-- Версия PHP: 7.4.2
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 SET AUTOCOMMIT = 0;
@@ -104,6 +104,29 @@ INSERT INTO `orders_list` (`id`, `name`, `lastname`, `phone`, `email`, `adress`,
 (7, 'Иван', 'Петров', '84995525423', 'ivan@mail.ru', '5-ая улица Строителей', 'Москва', 112111, 'card', 21500, 500, 22000),
 (8, 'Петр', 'Иванов', '89035214524', 'pishma@mail.ru', 'Болотная улица, д.5', 'Верхние Пупки', 665523, 'card', 999, 500, 1499),
 (9, 'Иван', 'Грозный', '89262265125', 'tsar@azesm.ru', 'Палаты', 'Москва', 111111, 'card', 13500, 500, 14000);
+
+-- --------------------------------------------------------
+
+--
+-- Структура таблицы `price_range`
+--
+
+CREATE TABLE IF NOT EXISTS `price_range` (
+  `id` int(11) NOT NULL AUTO_INCREMENT,
+  `min` int(11) NOT NULL,
+  `max` int(11) NOT NULL,
+  PRIMARY KEY (`id`)
+) ENGINE=InnoDB AUTO_INCREMENT=5 DEFAULT CHARSET=utf8;
+
+--
+-- Дамп данных таблицы `price_range`
+--
+
+INSERT INTO `price_range` (`id`, `min`, `max`) VALUES
+(1, 0, 1000),
+(2, 1000, 3000),
+(3, 3000, 5000),
+(4, 5000, 10000);
 
 -- --------------------------------------------------------
 
