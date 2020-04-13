@@ -1,6 +1,6 @@
 <?php
-    include('parts/header.php'); 
-    
+    include('parts/header.php');
+
     // Если не передан параметр id делаем редирект на страницу с товарами
     if (!isset($_GET['id']) || (isset($_GET['id']) && empty($_GET['id']))) {
         header('Location: /admin/products.php');
@@ -15,6 +15,15 @@
             price = {$_POST['price']}
             WHERE id='{$_POST['id']}'";
         $result_update = mysqli_query($link, $sql_update);
+
+         //Сохранение в базу категорий
+        d($_POST['category']);
+        for ($count = 0; $count < count($_POST['category']); $count++) {
+            $sql_update = "UPDATE product_category SET
+            category_id = '{$_POST[$count]['category']}'
+            WHERE product_id = '{$_POST['id']}'";
+        }
+
 
         //конвертируем массив размеров товара в строку для отправки в базу
         $size_string = '['.implode(",", $_POST['size']).']';
@@ -36,6 +45,13 @@
     $sql = "SELECT * from products WHERE id='{$_GET['id']}'";
     $result = mysqli_query($link, $sql);
     $data = mysqli_fetch_assoc($result);
+
+    $sql_get_categories = "SELECT * FROM categories";
+    $result_get_categories = mysqli_query($link, $sql_get_categories);
+
+    for ($i = 0; $i < 3; $i++) {
+        $row[$i] = mysqli_fetch_assoc($result_get_categories);
+    }
 ?>
 
 <h1>
@@ -65,6 +81,14 @@
         <input type="text" class="form-control" placeholder="Цена" name="price" value="<?= $data['price']; ?>">
     </div>
 
+    <div class="form-group">
+        <select multiple class="form-control" placeholder="Категория" name="category[]">
+            <?php for($count = 0; $count < count($row); $count++) : ?>
+                <option value="<?= $row[$count]['id']; ?>"><?= $row[$count]['name']; ?></option>
+            <?php endfor; ?>
+        </select>
+    </div>
+
     <p>Выберите имеющиеся размеры:</p>
 
 <?php
@@ -79,7 +103,7 @@
         $checked = '';
         if (in_array($size , $arr_size)) {
             $checked = 'checked';
-        }     
+        }
     ?>
 
     <div class="form-check form-check-inline">
