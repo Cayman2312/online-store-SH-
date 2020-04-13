@@ -21,9 +21,13 @@ if (!empty($_GET['category_id'])) {
 }
 
 $sql_category = "SELECT * FROM categories WHERE id='{$category_id}'";
-$result = mysqli_query($link, $sql_category);
+$result_category = mysqli_query($link, $sql_category);
 
-$category = mysqli_fetch_assoc($result);
+$category = mysqli_fetch_assoc($result_category);
+
+$sql_price_range = "SELECT * FROM price_range";
+$result_price_range = mysqli_query($link, $sql_price_range);
+
 ?>
 
 <div class="catalog" data-category-id="<?= $category['id'] ?>">
@@ -32,34 +36,31 @@ $category = mysqli_fetch_assoc($result);
         <div class="catalog-subtitle">Все товары</div>
     </div>
 
-    <div class="label-wrap">
+    <form name="filter" method="GET" class="label-wrap">
         <div class="form-group">
-            <select class="label" name="category" value="Категория">
+            <select class="label" name="type" value="Категория">
                 <option>Категория</option>
-                <option value="jacets">Куртки</option>
-                <option value="snakers">Кеды</option>
-                <option value="jeans">Джинсы</option>
+                <option value="Верхняя одежда">Верхняя одежда</option>
+                <option value="Обувь">Обувь</option>
+                <option value="Джинсы">Джинсы</option>
             </select>
         </div>
 
         <div class="form-group">
             <select class="label" name="size">
                 <option>Размер</option>
-                <option value="s">S</option>
-                <option value="m">M</option>
-                <option value="l">L</option>
             </select>
         </div>
 
         <div class="form-group">
             <select class="label" name="price">
                 <option>Стоимость</option>
-                <option value="cheap">0-1000</option>
-                <option value="medium">1000-5000</option>
-                <option value="expensive">5000-10000</option>
+                <?php while ($row = mysqli_fetch_assoc($result_price_range)) : ?>
+                    <option class="price-range" value = "<?= $row['min'] ?>-<?= $row['max'] ?>"><?= $row['min'] ?>-<?= $row['max'] ?></option>
+                <?php endwhile ; ?>
             </select>
         </div>
-    </div>
+    </form>
 
     <div class="catalog-list"></div>
 

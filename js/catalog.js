@@ -18,7 +18,7 @@ class Catalog {
         this.categoryId = this.$catalog.dataset.categoryId;
     }
 
-    load(active = 1) {
+    load(active = 1, filterType = '', filterSize = '', filterPrice = '') {
         // Будет загружать данные по ajax
         // После загрузки будет вызывать метод render
         /**
@@ -26,12 +26,13 @@ class Catalog {
          * и вывести их в консоль
          */
 
+
         this.removeCatalogData();
 
         this.showLoader();
 
         const xhr = new XMLHttpRequest();
-        xhr.open('GET', `/handlers/handler_catalog.php?category_id=${this.categoryId}&active=${active}`);
+        xhr.open('GET', `/handlers/handler_catalog.php?category_id=${this.categoryId}&active=${active}&filter_type=${filterType}&filter_size=${filterSize}&filter_price=${filterPrice}`);
         xhr.send();
 
         xhr.addEventListener('load', () => {
@@ -64,6 +65,86 @@ class Catalog {
 
                 this.render();
                 this.renderPagination(response.pagination);
+            }
+
+            let sizeTitle;
+            if (response.size == '') {
+                sizeTitle = 'Размер';
+            } else {
+                sizeTitle = response.size;
+            }
+            if (response.type == '') {
+                let $parentNode = document.forms.filter.size;
+                let $option = document.createElement('option');
+
+                $parentNode.innerHTML = '';
+                $option.textContent = 'Выберите категорию';
+                $parentNode.append($option);
+
+            } else if (response.type == 'Верхняя одежда') {
+                let $parentNode = document.forms.filter.size;
+
+                $parentNode.innerHTML = '';
+
+                let $fragment = document.createDocumentFragment();
+                let $start = document.createElement('option');
+                $start.textContent = sizeTitle;
+                $start.value = sizeTitle;
+                $fragment.append($start);
+                for (let i = 38; i <= 60; i += 2) {
+                    if (i == sizeTitle) { continue; }
+                    let $option = document.createElement('option');
+                    $option.value = i;
+                    $option.textContent = i;
+                    $fragment.append($option);
+                }
+                let $end = document.createElement('option');
+                $parentNode.append($fragment);
+                $end.textContent = 'Все размеры';
+                $end.value = 'Все размеры';
+                $parentNode.append($end);
+            } else if (response.type == 'Обувь') {
+                let $parentNode = document.forms.filter.size;
+
+                $parentNode.innerHTML = '';
+
+                let $fragment = document.createDocumentFragment();
+                let $start = document.createElement('option');
+                $start.textContent = sizeTitle;
+                $fragment.append($start);
+                for (let i = 34; i <= 46; i++) {
+                    let $option = document.createElement('option');
+                    $option.value = i;
+                    $option.textContent = i;
+                    $fragment.append($option);
+                }
+                $parentNode.append($fragment);
+                let $end = document.createElement('option');
+                $parentNode.append($fragment);
+                $end.textContent = 'Все размеры';
+                $end.value = 'Все размеры';
+                $parentNode.append($end);
+            } else if (response.type == 'Джинсы') {
+                let $parentNode = document.forms.filter.size;
+
+                $parentNode.innerHTML = '';
+
+                let $fragment = document.createDocumentFragment();
+                let $start = document.createElement('option');
+                $start.textContent = 'Размер';
+                $fragment.append($start);
+                for (let i = 30; i <= 50; i += 2) {
+                    let $option = document.createElement('option');
+                    $option.value = i;
+                    $option.textContent = i;
+                    $fragment.append($option);
+                }
+                $parentNode.append($fragment);
+                let $end = document.createElement('option');
+                $parentNode.append($fragment);
+                $end.textContent = 'Все размеры';
+                $end.value = 'Все размеры';
+                $parentNode.append($end);
             }
         });
     }
@@ -151,6 +232,9 @@ class Product {
             <div class="catalog-item__name">${this.name}</div>
             <div class="catalog-item__price">${this.price} руб.</div>
         `;
+        $cataloItem.addEventListener('click', () => {
+            document.forms.filter.reset();
+        });
 
         return $cataloItem;
     }
@@ -160,6 +244,23 @@ const catalog = new Catalog();
 
 // Вызываем загрузку данных
 catalog.load();
+
+let $formFilter = document.forms.filter;
+
+$formFilter.querySelectorAll('select').forEach(function ($select) {
+    $select.addEventListener('change', function () {
+        let $filterType = $formFilter.type.value;
+        if ($filterType == $formFilter.type[0].value) { $filterType = '' }
+
+        let $filterSize = $formFilter.size.value;
+        if (isNaN($filterSize)) { $filterSize = '' }
+
+        let $filterPrice = $formFilter.price.value;
+        if ($filterPrice == $formFilter.price[0].value) { $filterPrice = '' }
+
+        catalog.load(1, $filterType, $filterSize, $filterPrice);
+    })
+})
 
 
 // Loader ----------------------------------

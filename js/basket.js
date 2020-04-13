@@ -138,8 +138,12 @@ document.addEventListener("DOMContentLoaded", function (e) {
       e.preventDefault();
       console.log($formСheckout.getBoundingClientRect().top);
       scrollUpTo($formСheckout);
+    } else {
+      //валидация и трансформация данных перед отправкой
+      for (let $input of $formСheckoutInput) {
+        $input.value = checkOutData.call($input);
+      }
     }
-
   })
 
   function scrollUpTo($item) {
@@ -152,41 +156,42 @@ document.addEventListener("DOMContentLoaded", function (e) {
   }
 
   //валидация данных каждого input при изменении
-
-
   for (let $input of $formСheckoutInput) {
-    $input.addEventListener('blur', function () {
-      this.value = this.value.trim();
-      let rule = this.dataset.rule;
-      let err;
-      switch (rule) {
-        case "name":
-          this.value = this.value.replace(/\d/gu, '');
-          if (this.value.length == 0) { err = true } else { err = false }
-          break;
-        case "index":
-          this.value = this.value.replace(/\D/gu, '');
-          if (this.value.length != 6) { err = true } else { err = false }
-          break;
-        case "phone":
-          this.value = this.value.replace(/\D/gu, '');
-          if (this.value[0] == "7") this.value = '8' + this.value.slice(1);
-          if (this.value.length != 11) { err = true } else { err = false }
-          break;
-        case "email":
-          err = !(/^\w+@\w+\.\w+$/g.test(this.value));
-          break;
-        default:
-          break;
-      }
-
-      if (err) {
-        this.classList.add('error');
-      } else {
-        this.classList.remove('error');
-      }
-    })
-
+    $input.addEventListener('input', checkOutData);
   }
 
+  //функция проверки данных, возвращающая изменное значение
+  function checkOutData() {
+    let value = this.value.trim();
+    let rule = this.dataset.rule;
+    let err;
+    switch (rule) {
+      case "name":
+        value = value.replace(/\d/gu, '');
+        if (value.length == 0) { err = true } else { err = false }
+        break;
+      case "index":
+        value = value.replace(/\D/gu, '');
+        if (value.length != 6) { err = true } else { err = false }
+        break;
+      case "phone":
+        value = value.replace(/\D/gu, '');
+        if (value[0] == "7") value = '8' + value.slice(1);
+        if (value.length != 11) { err = true } else { err = false }
+        break;
+      case "email":
+        err = !(/^\w+@\w+\.\w+$/g.test(value));
+        break;
+      default:
+        break;
+    }
+
+    if (err) {
+      this.classList.add('error');
+    } else {
+      this.classList.remove('error');
+    }
+
+    return value;
+  }
 });
