@@ -4,6 +4,10 @@
     $sql_get_categories = "SELECT * FROM categories";
     $result_get_categories = mysqli_query($link, $sql_get_categories);
 
+    for ($i = 0; $i < 3; $i++) {
+        $row[$i] = mysqli_fetch_assoc($result_get_categories);
+    }
+
     // Сделать добавление товара в базу
     if (isset($_POST['add'])) {
         // Добавляем товар в базу
@@ -13,11 +17,9 @@
         $id = mysqli_insert_id($link);
 
         // Привязываем товар к категории
-        // Конвертируем массив категорий в сторку для отправки в базу
-        $category_string = '['.implode(",",$_POST['category']).']';
 
         for ($count = 0; $count < count($_POST['category']); $count++) {
-            $sql_set_category = "INSERT INTO product_category VALUES (null, $id, '{$category_string[$count]}')";
+            $sql_set_category = "INSERT INTO product_category VALUES (null, $id, '{$_POST['category'][$count]}')";
             $result_set_category = mysqli_query($link, $sql_set_category);
         }
 
@@ -65,9 +67,9 @@
 
     <div class="form-group">
         <select multiple class="form-control" placeholder="Категория" name="category[]">
-            <?php while($row = mysqli_fetch_assoc($result_get_categories)) : ?>
-            <option value="<?= $row['id']; ?>"><?= $row['name']; ?></option>
-            <?php endwhile; ?>
+            <?php for($count = 0; $count < count($row); $count++) : ?>
+            <option value="<?= $row[$count]['id']; ?>"><?= $row[$count]['name']; ?></option>
+            <?php endfor; ?>
         </select>
     </div>
 
