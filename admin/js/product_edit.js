@@ -19,7 +19,6 @@ document.addEventListener("DOMContentLoaded", function (e) {
     }
   } else {
     productCategory = productCategory.split(',');
-    console.log(productCategory);
     for (let $input of $inputProductCategory) {
       for (let item of productCategory) {
         if ($input.dataset.category == item) {
